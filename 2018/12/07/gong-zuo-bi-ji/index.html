@@ -6,13 +6,9 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="工作笔记, 彪彪">
-    <meta name="description" content="git 操作查看git webhttp://10.10.1.18:8080/#/admin/projects/
-
-
-查找git 库device/qcom/sepolicy
-
-(gitweb)(browse) &amp;lt;-- 点击
-      ">
+    <meta name="description" content="从ffbm切回android：
+adb root    (如果前面有过这个就不用重新root了）
+adb shell &amp;quot;echo normal &amp;gt; /dev/block/bootdevice/by-name/misc&amp;quo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -288,46 +284,16 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="git-操作"><a href="#git-操作" class="headerlink" title="git 操作"></a>git 操作</h1><h2 id="查看git-web"><a href="#查看git-web" class="headerlink" title="查看git web"></a>查看git web</h2><font size="5"><code>http://10.10.1.18:8080/#/admin/projects/</code></font>
-
-
-<h2 id="查找git-库"><a href="#查找git-库" class="headerlink" title="查找git 库"></a>查找git 库</h2><pre><code>device/qcom/sepolicy
-
-(gitweb)(browse) &lt;-- 点击
-</code></pre><h2 id=""><a href="#" class="headerlink" title="  "></a><img src="amWiki/images/git01.png=800x400" alt="alt文本" title="Title">  </h2><h2 id="-1"><a href="#-1" class="headerlink" title="  "></a><img src="amWiki/images/git02.png=800x400" alt="alt文本" title="Title">  </h2><h2 id="-2"><a href="#-2" class="headerlink" title="  "></a><img src="amWiki/images/git03.png=800x400" alt="alt文本" title="Title">  </h2><h2 id="提交单个git"><a href="#提交单个git" class="headerlink" title="提交单个git"></a>提交单个git</h2><pre name="code" class="Shell">
-<font size="5">
-git status
-git add .
-git commit -m "[QS5509-QL][Hipad][Loglevel]Set default loglevel to KERN_DEBUG"
-git push ssh://laimingquan@10.10.1.18:29418//device/qcom/common - HEAD:refs/for/QS5509-QL.dint
-git push ssh://weibiao@10.10.1.18:29418//development HEAD:refs/for/QS5509-QL.dint
-git push ssh://weibiao@10.1.6.17:29418/platform/development HEAD:refs/for/QS5509-QL.dint
-</font>
-</pre>
-
-
-
-
-<h2 id="从ffbm切回android："><a href="#从ffbm切回android：" class="headerlink" title="从ffbm切回android："></a>从ffbm切回android：</h2><ul>
+                <h2 id="从ffbm切回android："><a href="#从ffbm切回android：" class="headerlink" title="从ffbm切回android："></a>从ffbm切回android：</h2><ul>
 <li><code>adb root</code>    (如果前面有过这个就不用重新root了）</li>
 <li><code>adb shell &quot;echo normal &gt; /dev/block/bootdevice/by-name/misc&quot;</code></li>
 <li><code>adb reboot</code>  等待重新开机即可</li>
 </ul>
-<h2 id="松下项目-拉取代码"><a href="#松下项目-拉取代码" class="headerlink" title="松下项目,拉取代码"></a>松下项目,拉取代码</h2><font size="5"><br><code>repo init -u ssh://weibiao@10.1.6.13:29418/platform/manifest.git -b hipad -m 8909_30.hipad.main.xml</code><br></font>
-
 <h2 id="MMITEST-暗码"><a href="#MMITEST-暗码" class="headerlink" title="MMITEST 暗码"></a>MMITEST 暗码</h2><font size="5"><br><code>*#*#83789#*#*</code><br></font>
 
 
 
 <h2 id="编译遇到的错误"><a href="#编译遇到的错误" class="headerlink" title="编译遇到的错误"></a>编译遇到的错误</h2><font size="5"><br><code>.te 无法查找, 原因是文件名字里面有空格 -____-!</code><br></font>
-
-<h2 id="Panasonic-MMITEST-暗码"><a href="#Panasonic-MMITEST-暗码" class="headerlink" title="Panasonic MMITEST 暗码:"></a>Panasonic MMITEST 暗码:</h2><font size="5"><br><code>*#*#83789#*#*</code><br></font>
-
-
-<h2 id="hipad-QXDM-4激活："><a href="#hipad-QXDM-4激活：" class="headerlink" title="hipad QXDM 4激活："></a>hipad QXDM 4激活：</h2><font size="5"><br>User name:HipadTelcom<br>password :ShTtech725<br>Admin key:6542<br></font>
-
-
-<h2 id="拉取服务器上的编译好了的软件"><a href="#拉取服务器上的编译好了的软件" class="headerlink" title="拉取服务器上的编译好了的软件"></a>拉取服务器上的编译好了的软件</h2><font size="3"><br> scp <a href="mailto:android@10.1.6.26" target="_blank" rel="noopener">android@10.1.6.26</a>:/mfs/ImageStore/QS5509QL/daily_version/v1A52-1/userdebug/QS5509QL_1A52-1_fastboot.zip /home/android/softwareDownload/<br></font>
 
 
 
@@ -522,25 +488,25 @@ git push ssh://weibiao@10.1.6.17:29418/platform/development HEAD:refs/for/QS5509
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
-                <a href="/2018/12/07/ke-xue-shang-wang/">
+                <a href="/2018/12/07/gong-zuo-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="科学上网">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="工作笔记">
                         
-                        <span class="card-title">科学上网</span>
+                        <span class="card-title">工作笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">让终端走代理的几种方法Macproxyterminal（2017.9.17更新）
-方法1:在终端中直接运行命令
-export http_proxy=”socks5://127.0.0.1:1080”export https_proxy=”s</div>
+                    <div class="summary">从ffbm切回android：
+adb root    (如果前面有过这个就不用重新root了）
+adb shell &quot;echo normal &gt; /dev/block/bootdevice/by-name/misc&quo</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -549,6 +515,7 @@ export http_proxy=”socks5://127.0.0.1:1080”export https_proxy=”s</div>
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -557,22 +524,22 @@ export http_proxy=”socks5://127.0.0.1:1080”export https_proxy=”s</div>
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/12/06/flash-yue-jie/">
+                <a href="/2018/12/07/binder-xin-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Flash 越界">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="binder 信息">
                         
-                        <span class="card-title">Flash 越界</span>
+                        <span class="card-title">binder 信息</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">现象
-[  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6
-[  122.454233] attempt to acce</div>
+                    <div class="summary">大体信息:/sys/kernel/debug/binder/transactions
+每个进程的单个信息:/sys/kernel/debug/binder/proc
+</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                             </span>
                         <span class="publish-author">
                             
