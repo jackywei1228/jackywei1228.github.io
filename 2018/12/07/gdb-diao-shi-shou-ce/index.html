@@ -5,8 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 彪彪">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="GDB调试手机工程, 彪彪">
+    <meta name="description" content="GDB调试手机工程挂载自己编译好的工程
+以我自己在10.1.6.32编译的工程为例.
+sudo mount -t cifs -o username=&amp;quot;android&amp;quot;,password=&amp;quot;mobile#5&amp;qu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 彪彪</title>
+    <title>GDB调试手机工程 | 彪彪</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -247,13 +249,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        GDB调试手机工程
                     </div>
                 </div>
             </div>
@@ -275,22 +277,52 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-06
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-07
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="GDB调试手机工程"><a href="#GDB调试手机工程" class="headerlink" title="GDB调试手机工程"></a>GDB调试手机工程</h1><h2 id="挂载自己编译好的工程"><a href="#挂载自己编译好的工程" class="headerlink" title="挂载自己编译好的工程"></a>挂载自己编译好的工程</h2><ul>
+<li><p>以我自己在10.1.6.32编译的工程为例.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mount -t cifs -o username=&quot;android&quot;,password=&quot;mobile#5&quot; //10.1.6.32/android /mnt/10.1.6.32</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误提示:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount: block device //10.1.6.36/android is write-protected, mounting read-only</span><br><span class="line">mount: cannot mount block device //10.1.6.36/android read-only</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实际是密码错误:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mount -t cifs -o username=&quot;android&quot;,password=&quot;hipad@123&quot; //10.1.6.36/android /mnt/10.1.6.36</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mount -t cifs -o username=&quot;android&quot;,password=&quot;hipad@123&quot; //10.1.6.14/android /mnt/10.1.6.14</span><br></pre></td></tr></table></figure>
+<h2 id="CIFS文件系统的读写权限"><a href="#CIFS文件系统的读写权限" class="headerlink" title="CIFS文件系统的读写权限"></a>CIFS文件系统的读写权限</h2><ul>
+<li><p>查看用户ID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat /etc/passwd | grep 你的用户名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考网址:<br><a href="https://blog.csdn.net/qq_21808961/article/details/78532487" target="_blank" rel="noopener">https://blog.csdn.net/qq_21808961/article/details/78532487</a></p>
+</li>
+<li><p>普通用户如何拥有挂载的CIFS文件系统的读写权限:<br><a href="https://blog.csdn.net/u012487272/article/details/80530473" target="_blank" rel="noopener">https://blog.csdn.net/u012487272/article/details/80530473</a></p>
+</li>
+<li><p>可读写挂载方法:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mount -t cifs -o username=&quot;android&quot;,password=&quot;hipad@123&quot;,uid=1000,gid=1000 //10.1.6.14/android /mnt/10.1.6.14</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TIPS:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参考文档:</span><br><span class="line">http://www.vixual.net/blog/archives/228</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="编译gdbserver-或者直接用ndk里面的"><a href="#编译gdbserver-或者直接用ndk里面的" class="headerlink" title="编译gdbserver(或者直接用ndk里面的)"></a>编译gdbserver(或者直接用ndk里面的)</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mmm prebuilts/misc/android-arm/gdbserver/ -j8</span><br><span class="line"></span><br><span class="line">adb push out/target/product/QS5509QL/system/bin/gdbserver system/bin/</span><br></pre></td></tr></table></figure>
+<h2 id="Gdbserver-attatch-你要测试的程序"><a href="#Gdbserver-attatch-你要测试的程序" class="headerlink" title="Gdbserver attatch 你要测试的程序"></a>Gdbserver attatch 你要测试的程序</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell gdbserver :5039 --attach 2275 (3474 是你要debug的PROCESS PID)</span><br></pre></td></tr></table></figure>
+<h2 id="设置手机端口映射到PC"><a href="#设置手机端口映射到PC" class="headerlink" title="设置手机端口映射到PC"></a>设置手机端口映射到PC</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb forward tcp:5039 tcp:5039</span><br></pre></td></tr></table></figure>
+<h2 id="GDB-调试连接"><a href="#GDB-调试连接" class="headerlink" title="GDB 调试连接"></a>GDB 调试连接</h2><ul>
+<li><p>启动GDB</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak$</span><br><span class="line"></span><br><span class="line">prebuilts/gdb/linux-x86/bin/gdb</span><br><span class="line"></span><br><span class="line">(gdb) set solib-absolute-prefix /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/</span><br><span class="line">(gdb) set solib-search-path /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/system/lib/</span><br><span class="line">(gdb) target remote :5039</span><br><span class="line">(gdb) b jpeg_start_decompress</span><br><span class="line">(gdb) b je_malloc if size &gt; 100000 &amp;&amp; size != 1336</span><br><span class="line">(gdb) c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Thread 40 &quot;Measurement Wor&quot; hit Breakpoint 2, je_malloc (size=120000) at external/jemalloc/src/jemalloc.c:1649</span><br><span class="line">1649		if (likely(!malloc_slow)) &#123;</span><br><span class="line">(gdb) bt</span><br><span class="line">#0  je_malloc (size=120000) at external/jemalloc/src/jemalloc.c:1649</span><br><span class="line">#1  0xa99da590 in sqlite3MemMalloc (nByte=120000) at external/sqlite/dist/sqlite3.c:20840</span><br><span class="line">#2  0xa9986d1c in mallocWithAlarm (n=120000, pp=&lt;optimized out&gt;) at external/sqlite/dist/sqlite3.c:24524</span><br><span class="line">#3  sqlite3Malloc (n=5153960875200) at external/sqlite/dist/sqlite3.c:24554</span><br><span class="line">#4  0xa999007c in setupLookaside (db=0x8b9e6e00, pBuf=0x0, sz=1200, cnt=100) at external/sqlite/dist/sqlite3.c:141298</span><br><span class="line">#5  0xa99915f2 in openDatabase (zFilename=&lt;optimized out&gt;, ppDb=&lt;optimized out&gt;, flags=&lt;optimized out&gt;, zVfs=&lt;optimized out&gt;) at external/sqlite/dist/sqlite3.c:143682</span><br><span class="line">#6  0xa9f94f3c in android::nativeOpen (env=0x9d6daf80, clazz=&lt;optimized out&gt;, pathStr=&lt;optimized out&gt;, openFlags=268435456, labelStr=&lt;optimized out&gt;, enableTrace=6 &apos;\006&apos;, enableProfile=0 &apos;\000&apos;, </span><br><span class="line">    lookasideSz=0, lookasideCnt=-2024916864) at frameworks/base/core/jni/android_database_SQLiteConnection.cpp:135</span><br><span class="line">#7  0x70f9719c in android.database.sqlite.SQLiteConnection.nativeOpen ()</span><br><span class="line">   from /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/system/framework/arm/boot-framework.oat</span><br><span class="line">#8  0x70f975ba in android.database.sqlite.SQLiteConnection.open ()</span><br><span class="line">   from /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/system/framework/arm/boot-framework.oat</span><br><span class="line">#9  0x70f974ce in android.database.sqlite.SQLiteConnection.open ()</span><br><span class="line">   from /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/system/framework/arm/boot-framework.oat</span><br><span class="line">#10 0x70f9bf86 in android.database.sqlite.SQLiteConnectionPool.open ()</span><br><span class="line">   from /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/system/framework/arm/boot-framework.oat</span><br><span class="line">#11 0x70f9bf12 in android.database.sqlite.SQLiteConnectionPool.open ()</span><br><span class="line">   from /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/system/framework/arm/boot-framework.oat</span><br><span class="line">#12 0x70fa0c8a in android.database.sqlite.SQLiteDatabase.openInner ()</span><br><span class="line">   from /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/system/framework/arm/boot-framework.oat</span><br><span class="line">#13 0x70fa0858 in android.database.sqlite.SQLiteDatabase.open ()</span><br><span class="line">   from /mnt/10.1.6.32/black/QS5509QL-black/v1A5Z-black-test_memory_leak/out/target/product/QS5509QL/symbols/system/framework/arm/boot-framework.oat</span><br><span class="line">#14 0x70fa0ba6 in android.database.sqlite.SQLiteDatabase.openDatabase ()</span><br></pre></td></tr></table></figure>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档:"></a>参考文档:</h2><p><a href="https://wladimir-tm4pda.github.io/porting/debugging_gdb.html" target="_blank" rel="noopener">https://wladimir-tm4pda.github.io/porting/debugging_gdb.html</a></p>
 
             </div>
             <hr>
@@ -429,7 +461,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://yoursite.com" class="b-link-green">彪彪</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/06/hello-world/" class="b-link-green">Hello World</a>
+                    <a href="/2018/12/07/gdb-diao-shi-shou-ce/" class="b-link-green">GDB调试手机工程</a>
                 </p>
             </div>
         </div>
@@ -453,22 +485,24 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2018/12/06/flash-yue-jie/">
+                <a href="/2018/12/07/apache2-xia-zai-fu-wu-qi-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Flash 越界">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="apache2 下载服务器配置">
                         
-                        <span class="card-title">Flash 越界</span>
+                        <span class="card-title">apache2 下载服务器配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">现象
-[  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6
-[  122.454233] attempt to acce</div>
+                    <div class="summary">apache2 下载服务器配置
+新建配置文件:
+
+sudo vi /etc/apache2/sites-available/001-download.conf
+内容:&lt;VirtualHost *:3002&gt;        Ser</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                         </span>
                         <span class="publish-author">
                             
@@ -484,22 +518,22 @@
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">本篇</div>
+            <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/12/06/hello-world/">
+                <a href="/2018/12/07/git-xia-zai-dai-li-she-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Git 下载代理设置">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Git 下载代理设置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="summary">Git 下载代理设置永久代理git config –global http.proxy ‘socks5://127.0.0.1:1080’git config –global https.proxy ‘socks5://127.0.0.1:</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                             </span>
                         <span class="publish-author">
                             
@@ -509,7 +543,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

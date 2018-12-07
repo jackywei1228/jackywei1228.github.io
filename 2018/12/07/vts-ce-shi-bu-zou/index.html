@@ -5,8 +5,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 彪彪">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="VTS测试说明, 彪彪">
+    <meta name="description" content="VTS测试说明VTS包目录结构
+  
+解压包(如果设备是64位的就解压64位,32位就解压32位)
+unzip android-vts-4632653-v4-arm_64.zipunzip system-aosp_arm_a-4632655">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 彪彪</title>
+    <title>VTS测试说明 | 彪彪</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -247,13 +250,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        VTS测试说明
                     </div>
                 </div>
             </div>
@@ -275,22 +278,45 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-06
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-07
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="VTS测试说明"><a href="#VTS测试说明" class="headerlink" title="VTS测试说明"></a>VTS测试说明</h1><h2 id="VTS包目录结构"><a href="#VTS包目录结构" class="headerlink" title="VTS包目录结构"></a>VTS包目录结构</h2><hr>
+<h2 id=""><a href="#" class="headerlink" title="  "></a><img src="amWiki/images/vts01.png" alt="vts" title="vts">  </h2><hr>
+<p>解压包(如果设备是64位的就解压64位,32位就解压32位)</p>
+<font size="5"><br>unzip android-vts-4632653-v4-arm_64.zip<br>unzip system-aosp_arm_a-4632655.zip<br></font>
+
+<hr>
+<p>解压完成之后,目录结构如下:</p>
+<p><img src="amWiki/images/vts02.png" alt="vts" title="vts">  </p>
+<h2 id="烧入GSI包里面对应的system-image"><a href="#烧入GSI包里面对应的system-image" class="headerlink" title="烧入GSI包里面对应的system image"></a>烧入GSI包里面对应的system image</h2><ul>
+<li>确认手机安全patch的版本:</li>
+</ul>
+<p>Settings –&gt; Security &amp; location –&gt; Security update</p>
+<p><img src="amWiki/images/vts03.png" alt="vts" title="vts"> </p>
+<ul>
+<li>刷对应的 system image:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd GSI/</span><br><span class="line">adb reboot bootloader</span><br><span class="line">fastboot flash system system-aosp_arm_a-2018-03-05.img</span><br><span class="line">fastboot erase userdata</span><br><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
+<ul>
+<li>跑VTS:</li>
+</ul>
+<ol>
+<li><p>Settings –&gt; Display –&gt; Sleep –&gt; 30 minutes(or never)</p>
+</li>
+<li><p>打开开发者选项,连接usb</p>
+</li>
+<li><p>开始跑vts</p>
+</li>
+</ol>
+<p>cd android-vts/tools/<br>./vts-tradefed<br>run vts</p>
+<p><img src="amWiki/images/vts04.png" alt="vts" title="vts"> </p>
+<h2 id="单独测试某个模块"><a href="#单独测试某个模块" class="headerlink" title="单独测试某个模块"></a>单独测试某个模块</h2><p>run vts -m  VtsHalDrmV1_0Target</p>
+<h2 id="读取设备唯一值"><a href="#读取设备唯一值" class="headerlink" title="读取设备唯一值"></a>读取设备唯一值</h2><p>adb shell cat /sys/devices/soc/7824900.sdhci/mmc_host/mmc0/mmc0:0001/serial<br>adb shell getprop ro.boot.serialno</p>
 
             </div>
             <hr>
@@ -429,7 +455,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://yoursite.com" class="b-link-green">彪彪</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/06/hello-world/" class="b-link-green">Hello World</a>
+                    <a href="/2018/12/07/vts-ce-shi-bu-zou/" class="b-link-green">VTS测试说明</a>
                 </p>
             </div>
         </div>
@@ -453,22 +479,20 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2018/12/06/flash-yue-jie/">
+                <a href="/2018/12/07/ubuntu-mysql-install/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Flash 越界">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="ubuntu Mysql 安装">
                         
-                        <span class="card-title">Flash 越界</span>
+                        <span class="card-title">ubuntu Mysql 安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">现象
-[  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6
-[  122.454233] attempt to acce</div>
+                    <div class="summary">ubuntu Mysql 安装安装命令sudo apt-get install mysql-serversudo apt-get install mysql-clientsudo apt-get install libmysqlclient</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                         </span>
                         <span class="publish-author">
                             
@@ -484,22 +508,23 @@
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">本篇</div>
+            <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/12/06/hello-world/">
+                <a href="/2018/12/07/an-zhuang-vtiger/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Vtiger 安装">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Vtiger 安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="summary">Vtiger 安装1. 安装阿里云ECS centos 网页镜像.里面会有php,mysql,apache2等应用,不再需要自己安装.
+2. 安装vtiger参考文档:https://www.dailyrazor.com/blog/inst</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                             </span>
                         <span class="publish-author">
                             
@@ -509,7 +534,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

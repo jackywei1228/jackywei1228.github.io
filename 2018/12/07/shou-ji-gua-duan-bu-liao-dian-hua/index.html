@@ -5,8 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 彪彪">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="多次拨打电话并且挂断之后.会在某一次拨号界面会冻住, 彪彪">
+    <meta name="description" content="多次拨打电话并且挂断之后.会在某一次拨号界面会冻住.分析过程出问题的
+有很多pending async transaction未返回.binder proc state:proc 3419context hwbinder  thread 7">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 彪彪</title>
+    <title>多次拨打电话并且挂断之后.会在某一次拨号界面会冻住 | 彪彪</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -247,13 +248,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        多次拨打电话并且挂断之后.会在某一次拨号界面会冻住
                     </div>
                 </div>
             </div>
@@ -275,23 +276,20 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-06
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-07
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+                <h1 id="多次拨打电话并且挂断之后-会在某一次拨号界面会冻住"><a href="#多次拨打电话并且挂断之后-会在某一次拨号界面会冻住" class="headerlink" title="多次拨打电话并且挂断之后.会在某一次拨号界面会冻住."></a>多次拨打电话并且挂断之后.会在某一次拨号界面会冻住.</h1><h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>出问题的</p>
+<h2 id="有很多pending-async-transaction未返回"><a href="#有很多pending-async-transaction未返回" class="headerlink" title="有很多pending async transaction未返回."></a>有很多pending async transaction未返回.</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">binder proc state:</span><br><span class="line">proc 3419</span><br><span class="line">context hwbinder</span><br><span class="line">  thread 760: l 00 need_return 0 tr 0</span><br><span class="line">  thread 1655: l 00 need_return 0 tr 0</span><br><span class="line">  thread 2858: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3419: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3442: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3453: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3512: l 02 need_return 0 tr 0</span><br><span class="line">  thread 3586: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3597: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3600: l 00 need_return 0 tr 0</span><br><span class="line">  thread 4031: l 00 need_return 0 tr 0</span><br><span class="line">  node 123985: u0000000097ea23c0 c0000000097e9d8f0 pri 0:120 hs 0 hw 1 ls 0 lw 0 is 0 iw 1 tr 1 proc 251</span><br><span class="line">  node 138919: u0000000097ea2c60 c0000000097e9e750 pri 0:120 hs 0 hw 1 ls 0 lw 0 is 0 iw 1 tr 1 proc 251</span><br><span class="line">  node 15269: u00000000a64e9a40 c00000000a6712660 pri 0:120 hs 1 hw 1 ls 8 lw 0 is 1 iw 1 tr 1 proc 431</span><br><span class="line">    pending async transaction 149963: e6fb8c80 from 0:0 to 3419:0 code 63 flags 11 pri 0:120 r0 node 15269 size 452:68 data f6a004d4</span><br><span class="line">    pending async transaction 150734: c621e200 from 0:0 to 3419:0 code 37 flags 11 pri 0:120 r0 node 15269 size 68:4 data f6a008b8</span><br><span class="line">    pending async transaction 162914: e96bc400 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a040e4</span><br><span class="line">    pending async transaction 164153: dc771b80 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a04b3c</span><br><span class="line">    pending async transaction 166022: ce803000 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a05884</span><br><span class="line">    pending async transaction 168226: d996c600 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a06afc</span><br><span class="line">    pending async transaction 168903: dfc07200 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a07610</span><br><span class="line">  node 15271: u00000000a64e9a60 c00000000a67126a0 pri 0:120 hs 1 hw 1 ls 55 lw 0 is 1 iw 1 tr 1 proc 431</span><br><span class="line">    pending async transaction 148293: eac90a80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a00418</span><br><span class="line">    pending async transaction 154669: d2824780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a03580</span><br><span class="line">    pending async transaction 155165: ce943e00 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0363c</span><br><span class="line">    pending async transaction 159800: ec976600 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a038a8</span><br><span class="line">    pending async transaction 160862: ce943300 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a039d0</span><br><span class="line">    pending async transaction 162027: c6249780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a03cd4</span><br><span class="line">    pending async transaction 162517: ec2b6c80 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a03d90</span><br><span class="line">    pending async transaction 162713: d7bae800 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04028</span><br><span class="line">    pending async transaction 162915: c3dfa980 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a041a4</span><br><span class="line">    pending async transaction 162997: ec2b6400 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0443c</span><br><span class="line">    pending async transaction 163477: cea1c680 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a044f8</span><br><span class="line">    pending async transaction 163528: dfc07900 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a045b4</span><br><span class="line">    pending async transaction 163529: d086a080 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04670</span><br><span class="line">    pending async transaction 163571: d527dd80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04908</span><br><span class="line">    pending async transaction 163931: e96bc780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a049c4</span><br><span class="line">    pending async transaction 163968: d0a73900 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04a80</span><br><span class="line">    pending async transaction 164154: dc771680 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04bfc</span><br><span class="line">    pending async transaction 164192: d7bae280 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04e94</span><br><span class="line">    pending async transaction 164243: d7bae680 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04f50</span><br><span class="line">    pending async transaction 164271: d7bae980 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a051e8</span><br><span class="line">    pending async transaction 164388: e5a41f80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a052a4</span><br><span class="line">    pending async transaction 164785: e96bc800 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a05360</span><br><span class="line">    pending async transaction 164894: dc31c500 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0541c</span><br></pre></td></tr></table></figure>
+<h2 id="另外-会有一个"><a href="#另外-会有一个" class="headerlink" title="另外,会有一个:"></a>另外,会有一个:</h2><pre><code>radio         2973  1612   270 1131000  78576 diagchar_read af10a6a0 S m.android.phone
+这样的进程.
+</code></pre><h2 id="kill-3-某个2973-程序会继续往下跑"><a href="#kill-3-某个2973-程序会继续往下跑" class="headerlink" title="kill -3 某个2973,程序会继续往下跑"></a>kill -3 某个2973,程序会继续往下跑</h2><h2 id="具体看附件"><a href="#具体看附件" class="headerlink" title="具体看附件"></a>具体看附件</h2><pre><code>file 目录下面
+</code></pre><h2 id="改NV值70287-可以规避问题-但未找到根本原因"><a href="#改NV值70287-可以规避问题-但未找到根本原因" class="headerlink" title="改NV值70287 可以规避问题,但未找到根本原因."></a>改NV值70287 可以规避问题,但未找到根本原因.</h2><pre><code>后续有时间继续跟踪
+</code></pre>
             </div>
             <hr>
 
@@ -429,7 +427,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://yoursite.com" class="b-link-green">彪彪</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/06/hello-world/" class="b-link-green">Hello World</a>
+                    <a href="/2018/12/07/shou-ji-gua-duan-bu-liao-dian-hua/" class="b-link-green">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</a>
                 </p>
             </div>
         </div>
@@ -453,22 +451,36 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2018/12/06/flash-yue-jie/">
+                <a href="/2018/12/07/chang-yong-an-ma/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Flash 越界">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="常用暗码">
                         
-                        <span class="card-title">Flash 越界</span>
+                        <span class="card-title">常用暗码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">现象
-[  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6
-[  122.454233] attempt to acce</div>
+                    <div class="summary">常用暗码
+
+
+描述
+旧暗码
+修过后暗码
+来源
+状态
+
+
+
+
+MMI_REGULATORY_INFO_DISPLAY
+*#07#
+*#07#
+Android默认，不用修改
+Delete, Default not show and no req</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                         </span>
                         <span class="publish-author">
                             
@@ -484,22 +496,23 @@
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">本篇</div>
+            <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/12/06/hello-world/">
+                <a href="/2018/12/07/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="批量替换代码中的字符串">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">批量替换代码中的字符串</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="summary">批量替换代码中的字符串
+下面command 的意思是： 找出所有含有xxx.字符串的文件,并且把xxx换成hangrep -r &apos;xxx\.&apos; . |awk -F&apos;:&apos; &apos;&#123;pri</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                             </span>
                         <span class="publish-author">
                             
@@ -509,7 +522,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

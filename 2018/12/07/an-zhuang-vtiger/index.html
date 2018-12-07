@@ -5,8 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 彪彪">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Vtiger 安装, 彪彪">
+    <meta name="description" content="Vtiger 安装1. 安装阿里云ECS centos 网页镜像.里面会有php,mysql,apache2等应用,不再需要自己安装.
+2. 安装vtiger参考文档:https://www.dailyrazor.com/blog/inst">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 彪彪</title>
+    <title>Vtiger 安装 | 彪彪</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -247,13 +248,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        Vtiger 安装
                     </div>
                 </div>
             </div>
@@ -275,22 +276,29 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-06
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-07
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="Vtiger-安装"><a href="#Vtiger-安装" class="headerlink" title="Vtiger 安装"></a>Vtiger 安装</h1><h2 id="1-安装阿里云ECS-centos-网页镜像"><a href="#1-安装阿里云ECS-centos-网页镜像" class="headerlink" title="1. 安装阿里云ECS centos 网页镜像."></a>1. 安装阿里云ECS centos 网页镜像.</h2><p>里面会有php,mysql,apache2等应用,不再需要自己安装.</p>
+<h2 id="2-安装vtiger"><a href="#2-安装vtiger" class="headerlink" title="2. 安装vtiger"></a>2. 安装vtiger</h2><p>参考文档:<br><a href="https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps" target="_blank" rel="noopener">https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps</a></p>
+<h2 id="3-修改文件"><a href="#3-修改文件" class="headerlink" title="3. 修改文件:"></a>3. 修改文件:</h2><ul>
+<li><p>修改 /etc/my.cnf</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改/etc/php.ini文件.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display_errors = On</span><br><span class="line">max_execution_time = 600</span><br><span class="line">error_reporting = E_WARNING &amp; ~E_NOTICE &amp; ~E_DEPRECATED</span><br><span class="line">log_errors = Off</span><br><span class="line">short_open_tag = On</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-新增文件"><a href="#4-新增文件" class="headerlink" title="4. 新增文件"></a>4. 新增文件</h2><p>vi /etc/httpd/conf.d/crm.conf</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;Directory &quot;/var/www/html/crm&quot;&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Order deny,allow</span><br><span class="line">        Allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="5-下载vtiger"><a href="#5-下载vtiger" class="headerlink" title="5. 下载vtiger"></a>5. 下载vtiger</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://superb-dca2.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.1.0/Core%20Product/vtigercrm7.1.0.tar.gz</span><br></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -429,7 +437,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://yoursite.com" class="b-link-green">彪彪</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/06/hello-world/" class="b-link-green">Hello World</a>
+                    <a href="/2018/12/07/an-zhuang-vtiger/" class="b-link-green">Vtiger 安装</a>
                 </p>
             </div>
         </div>
@@ -453,22 +461,23 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2018/12/06/flash-yue-jie/">
+                <a href="/2018/12/07/vts-ce-shi-bu-zou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Flash 越界">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="VTS测试说明">
                         
-                        <span class="card-title">Flash 越界</span>
+                        <span class="card-title">VTS测试说明</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">现象
-[  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6
-[  122.454233] attempt to acce</div>
+                    <div class="summary">VTS测试说明VTS包目录结构
+  
+解压包(如果设备是64位的就解压64位,32位就解压32位)
+unzip android-vts-4632653-v4-arm_64.zipunzip system-aosp_arm_a-4632655</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                         </span>
                         <span class="publish-author">
                             
@@ -484,22 +493,38 @@
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">本篇</div>
+            <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/12/06/hello-world/">
+                <a href="/2018/12/07/chang-yong-an-ma/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="常用暗码">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">常用暗码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="summary">常用暗码
+
+
+描述
+旧暗码
+修过后暗码
+来源
+状态
+
+
+
+
+MMI_REGULATORY_INFO_DISPLAY
+*#07#
+*#07#
+Android默认，不用修改
+Delete, Default not show and no req</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
                             </span>
                         <span class="publish-author">
                             
@@ -509,7 +534,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
