@@ -5,10 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="binder 信息, 彪彪">
-    <meta name="description" content="大体信息:/sys/kernel/debug/binder/transactions
-每个进程的单个信息:/sys/kernel/debug/binder/proc
-">
+    <meta name="keywords" content="Android_Mat_工具使用, 彪彪">
+    <meta name="description" content="Android_Mat_工具使用抓取hprofadb shell am dumpheap [pid] /data/local/tmp/[pid].hprofhprof-conv 3725.hprof 3725.mat.hprof
+adb s">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>binder 信息 | 彪彪</title>
+    <title>Android_Mat_工具使用 | 彪彪</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -249,13 +248,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        binder 信息
+                        Android_Mat_工具使用
                     </div>
                 </div>
             </div>
@@ -275,17 +274,31 @@
             
             <div class="post-info">
                 
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Android/" class="post-category" target="_blank">
+                        Android
+                    </a>
+                    
+                </span>
+                
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-07
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-10
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>大体信息:<br>/sys/kernel/debug/binder/transactions</p>
-<p>每个进程的单个信息:<br>/sys/kernel/debug/binder/proc</p>
+                <h1 id="Android-Mat-工具使用"><a href="#Android-Mat-工具使用" class="headerlink" title="Android_Mat_工具使用"></a>Android_Mat_工具使用</h1><h2 id="抓取hprof"><a href="#抓取hprof" class="headerlink" title="抓取hprof"></a>抓取hprof</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell am dumpheap [pid] /data/local/tmp/[pid].hprof</span><br><span class="line">hprof-conv 3725.hprof 3725.mat.hprof</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell am dumpheap 9384 /data/local/tmp/9384_02.hprof</span><br></pre></td></tr></table></figure>
+<h2 id="使用MAT"><a href="#使用MAT" class="headerlink" title="使用MAT"></a>使用MAT</h2><h2 id="这里需要修改-改为144就可以了"><a href="#这里需要修改-改为144就可以了" class="headerlink" title="这里需要修改,改为144就可以了."></a>这里需要修改,改为144就可以了.</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private static final int DUMPSYS_ENTRY_COUNT_LIMIT = 14400; // 12 hours on 3 second poll</span><br></pre></td></tr></table></figure>
+<h2 id="查找下面这段LOG"><a href="#查找下面这段LOG" class="headerlink" title="查找下面这段LOG"></a>查找下面这段LOG</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fling expand=false aboveThreshold=false thresholdNeeded=false screenOnFromTouch=false</span><br></pre></td></tr></table></figure>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://stackoverflow.com/questions/25795458/is-it-possible-to-trigger-an-android-heap-dump-from-the-command-line" target="_blank" rel="noopener">https://stackoverflow.com/questions/25795458/is-it-possible-to-trigger-an-android-heap-dump-from-the-command-line</a></p>
+<p><a href="https://stackoverflow.com/questions/6483714/live-memory-analysis-tool-for-android/6483906#6483906" target="_blank" rel="noopener">https://stackoverflow.com/questions/6483714/live-memory-analysis-tool-for-android/6483906#6483906</a></p>
+<p><a href="https://developer.android.com/studio/profile/investigate-ram#hdanalyze" target="_blank" rel="noopener">https://developer.android.com/studio/profile/investigate-ram#hdanalyze</a></p>
 
             </div>
             <hr>
@@ -424,7 +437,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="https://ifonly.me" class="b-link-green">彪彪</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/07/binder-xin-xi/" class="b-link-green">binder 信息</a>
+                    <a href="/2018/12/10/android-mat-gong-ju-shi-yong/" class="b-link-green">Android_Mat_工具使用</a>
                 </p>
             </div>
         </div>
@@ -446,7 +459,44 @@
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">本篇</div>
+            <div class="card">
+                <a href="/2018/12/10/android-mat-gong-ju-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Android_Mat_工具使用">
+                        
+                        <span class="card-title">Android_Mat_工具使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Android_Mat_工具使用抓取hprofadb shell am dumpheap [pid] /data/local/tmp/[pid].hprofhprof-conv 3725.hprof 3725.mat.hprof
+adb s</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Android/" class="post-category" target="_blank">
+                                    Android
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
                 <a href="/2018/12/07/gong-zuo-bi-ji/">
                     <div class="card-image">
@@ -461,41 +511,6 @@
                     <div class="summary">从ffbm切回android：
 adb root    (如果前面有过这个就不用重新root了）
 adb shell &quot;echo normal &gt; /dev/block/bootdevice/by-name/misc&quo</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            彪彪
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">下一篇</div>
-            <div class="card">
-                <a href="/2018/12/07/apache2-xia-zai-fu-wu-qi-pei-zhi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="apache2 下载服务器配置">
-                        
-                        <span class="card-title">apache2 下载服务器配置</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">apache2 下载服务器配置
-新建配置文件:
-
-sudo vi /etc/apache2/sites-available/001-download.conf
-内容:&lt;VirtualHost *:3002&gt;        Ser</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07

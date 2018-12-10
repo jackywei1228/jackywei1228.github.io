@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title>Android_Mat_工具使用</title>
+      <link href="/2018/12/10/android-mat-gong-ju-shi-yong/"/>
+      <url>/2018/12/10/android-mat-gong-ju-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Android-Mat-工具使用"><a href="#Android-Mat-工具使用" class="headerlink" title="Android_Mat_工具使用"></a>Android_Mat_工具使用</h1><h2 id="抓取hprof"><a href="#抓取hprof" class="headerlink" title="抓取hprof"></a>抓取hprof</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell am dumpheap [pid] /data/local/tmp/[pid].hprof</span><br><span class="line">hprof-conv 3725.hprof 3725.mat.hprof</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell am dumpheap 9384 /data/local/tmp/9384_02.hprof</span><br></pre></td></tr></table></figure><h2 id="使用MAT"><a href="#使用MAT" class="headerlink" title="使用MAT"></a>使用MAT</h2><h2 id="这里需要修改-改为144就可以了"><a href="#这里需要修改-改为144就可以了" class="headerlink" title="这里需要修改,改为144就可以了."></a>这里需要修改,改为144就可以了.</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private static final int DUMPSYS_ENTRY_COUNT_LIMIT = 14400; // 12 hours on 3 second poll</span><br></pre></td></tr></table></figure><h2 id="查找下面这段LOG"><a href="#查找下面这段LOG" class="headerlink" title="查找下面这段LOG"></a>查找下面这段LOG</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fling expand=false aboveThreshold=false thresholdNeeded=false screenOnFromTouch=false</span><br></pre></td></tr></table></figure><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://stackoverflow.com/questions/25795458/is-it-possible-to-trigger-an-android-heap-dump-from-the-command-line" target="_blank" rel="noopener">https://stackoverflow.com/questions/25795458/is-it-possible-to-trigger-an-android-heap-dump-from-the-command-line</a></p><p><a href="https://stackoverflow.com/questions/6483714/live-memory-analysis-tool-for-android/6483906#6483906" target="_blank" rel="noopener">https://stackoverflow.com/questions/6483714/live-memory-analysis-tool-for-android/6483906#6483906</a></p><p><a href="https://developer.android.com/studio/profile/investigate-ram#hdanalyze" target="_blank" rel="noopener">https://developer.android.com/studio/profile/investigate-ram#hdanalyze</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>工作笔记</title>
       <link href="/2018/12/07/gong-zuo-bi-ji/"/>
       <url>/2018/12/07/gong-zuo-bi-ji/</url>
@@ -19,17 +36,6 @@
       <url>/2018/12/07/binder-xin-xi/</url>
       
         <content type="html"><![CDATA[<p>大体信息:<br>/sys/kernel/debug/binder/transactions</p><p>每个进程的单个信息:<br>/sys/kernel/debug/binder/proc</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    <entry>
-      <title>Android_Mat_工具使用</title>
-      <link href="/2018/12/07/android-mat-gong-ju-shi-yong/"/>
-      <url>/2018/12/07/android-mat-gong-ju-shi-yong/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Android-Mat-工具使用"><a href="#Android-Mat-工具使用" class="headerlink" title="Android_Mat_工具使用"></a>Android_Mat_工具使用</h1><h2 id="抓取hprof"><a href="#抓取hprof" class="headerlink" title="抓取hprof"></a>抓取hprof</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell am dumpheap [pid] /data/local/tmp/[pid].hprof</span><br><span class="line">hprof-conv 3725.hprof 3725.mat.hprof</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell am dumpheap 9384 /data/local/tmp/9384_02.hprof</span><br></pre></td></tr></table></figure><h2 id="使用MAT"><a href="#使用MAT" class="headerlink" title="使用MAT"></a>使用MAT</h2><h2 id="这里需要修改-改为144就可以了"><a href="#这里需要修改-改为144就可以了" class="headerlink" title="这里需要修改,改为144就可以了."></a>这里需要修改,改为144就可以了.</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private static final int DUMPSYS_ENTRY_COUNT_LIMIT = 14400; // 12 hours on 3 second poll</span><br></pre></td></tr></table></figure><h2 id="查找下面这段LOG"><a href="#查找下面这段LOG" class="headerlink" title="查找下面这段LOG"></a>查找下面这段LOG</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fling expand=false aboveThreshold=false thresholdNeeded=false screenOnFromTouch=false</span><br></pre></td></tr></table></figure><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://stackoverflow.com/questions/25795458/is-it-possible-to-trigger-an-android-heap-dump-from-the-command-line" target="_blank" rel="noopener">https://stackoverflow.com/questions/25795458/is-it-possible-to-trigger-an-android-heap-dump-from-the-command-line</a></p><p><a href="https://stackoverflow.com/questions/6483714/live-memory-analysis-tool-for-android/6483906#6483906" target="_blank" rel="noopener">https://stackoverflow.com/questions/6483714/live-memory-analysis-tool-for-android/6483906#6483906</a></p><p><a href="https://developer.android.com/studio/profile/investigate-ram#hdanalyze" target="_blank" rel="noopener">https://developer.android.com/studio/profile/investigate-ram#hdanalyze</a></p>]]></content>
       
       
       
