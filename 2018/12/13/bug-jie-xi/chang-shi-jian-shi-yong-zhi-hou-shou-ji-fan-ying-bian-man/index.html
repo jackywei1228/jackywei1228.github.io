@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>长时间使用之后手机变慢 | 彪彪</title>
+    
+    
+        <meta name="keywords" content="长时间使用之后手机变慢">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="长时间使用之后手机变慢现象描述:长时间使用之后手机变慢 抓取java traceview如下显示: traceview显示是:WindowsContianer.forAllWindows()占了大量CPU时间.  怀疑是anmimation相关的对象没有释放 用MAT抓取 hprof有900个WindowStateAnimator对象 Class Name">
+<meta property="og:type" content="article">
+<meta property="og:title" content="长时间使用之后手机变慢">
+<meta property="og:url" content="https://ifonly.me/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/index.html">
+<meta property="og:site_name" content="彪彪">
+<meta property="og:description" content="长时间使用之后手机变慢现象描述:长时间使用之后手机变慢 抓取java traceview如下显示: traceview显示是:WindowsContianer.forAllWindows()占了大量CPU时间.  怀疑是anmimation相关的对象没有释放 用MAT抓取 hprof有900个WindowStateAnimator对象 Class Name">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ifonly.me/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/amWiki/images/system_server_slowly01.png">
+<meta property="og:updated_time" content="2018-12-13T07:52:00.017Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="长时间使用之后手机变慢">
+<meta name="twitter:description" content="长时间使用之后手机变慢现象描述:长时间使用之后手机变慢 抓取java traceview如下显示: traceview显示是:WindowsContianer.forAllWindows()占了大量CPU时间.  怀疑是anmimation相关的对象没有释放 用MAT抓取 hprof有900个WindowStateAnimator对象 Class Name">
+<meta name="twitter:image" content="https://ifonly.me/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/amWiki/images/system_server_slowly01.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="彪彪" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">彪彪</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            BUG解析
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/bug-jie-xi/flash-yue-jie/">Flash越界</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">Fota升级之后无法开机</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">慢的问题2</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/">system_server内存泄漏</a></li>  <li class="file active"><a href="/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/">长时间使用之后手机变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shan-ping-fen-xi/">闪屏分析</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/diag-kou-man-de-wen-ti/">Diag 口慢的问题</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shou-ji-fan-ying-ji-su-bian-man/">手机反应速度变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/whatsapp-lai-dian-qi-dong-man-de-wen-ti/">Whatsapp 来电启动慢的问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            React学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/">学习资料</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工作小贴士
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/android-mat-gong-ju-shi-yong/">Android_Mat_工具使用</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntuinstallshadowsocks/">ubuntu Shadowsocks 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/monkey-ce-shi-ming-ling-xing/">Monkey test command</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/">Git 下载代理设置</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/performance/">Performance</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/vts-ce-shi-bu-zou/">VTS测试说明</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gdb-diao-shi-shou-ce/">GDB调试手机工程</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejscluster/">解读Nodejs多核处理模块cluster</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/">Hello World</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/memory-debug/">Memory debug</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejs-an-zhuang/">nodejs 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/">qcn备份</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/trace32/">ubuntu trace32 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/">ubuntu Shadowsocks Error</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/binder-xin-xi/">binder 信息</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/">ubuntu Mysql 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/">Vtiger 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">批量替换代码中的字符串</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/">把所有CPU拉到最高</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/">科学上网</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/">常用暗码</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/flash-yue-jie/">Flash 越界</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/">黑屏分析</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gong-zuo-bi-ji/">工作笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/apache2-xia-zai-fu-wu-qi-pei-zhi/">apache2 下载服务器配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            框架设计
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/kuang-jia-she-ji/001-log-gong-ju-she-ji/">LOG工具设计</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            需求实现
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Fota功能的实现
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/">业务逻辑规划</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/bei-fen/">备份</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/shu-ju-ku-biao-de-jian-li/">数据库表的建立</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/databasesinfo/">DatabasesInfo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-BUG解析/长时间使用之后手机反应变慢" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/">
+            <time datetime="2018-12-13T07:54:01.173Z" itemprop="datePublished">2018-12-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/BUG解析/长时间使用之后手机反应变慢.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/BUG解析/长时间使用之后手机反应变慢.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/BUG解析/长时间使用之后手机反应变慢.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            长时间使用之后手机变慢
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="长时间使用之后手机变慢"><a href="#长时间使用之后手机变慢" class="headerlink" title="长时间使用之后手机变慢"></a>长时间使用之后手机变慢</h1><h2 id="现象描述"><a href="#现象描述" class="headerlink" title="现象描述:"></a>现象描述:</h2><pre><code>长时间使用之后手机变慢
+</code></pre><h2 id="抓取java-traceview如下显示"><a href="#抓取java-traceview如下显示" class="headerlink" title="抓取java traceview如下显示:"></a>抓取java traceview如下显示:</h2><p><img src="amWiki/images/system_server_slowly01.png" alt="system_server_slowly01" title="system_server_slowly01"></p>
+<h3 id="traceview显示是"><a href="#traceview显示是" class="headerlink" title="traceview显示是:"></a>traceview显示是:</h3><pre><code>WindowsContianer.forAllWindows()占了大量CPU时间.
+
+怀疑是anmimation相关的对象没有释放
+</code></pre><h3 id="用MAT抓取-hprof"><a href="#用MAT抓取-hprof" class="headerlink" title="用MAT抓取 hprof"></a>用MAT抓取 hprof</h3><p>有900个WindowStateAnimator对象</p>
+<h2 id="Class-Name-Objects-Shallow-Heap-Retained-Heap"><a href="#Class-Name-Objects-Shallow-Heap-Retained-Heap" class="headerlink" title="Class Name                               | Objects | Shallow Heap | Retained Heap"></a>Class Name                               | Objects | Shallow Heap | Retained Heap</h2><h2 id="com-android-server-wm-WindowStateAnimator-900-201-600-gt-490-432"><a href="#com-android-server-wm-WindowStateAnimator-900-201-600-gt-490-432" class="headerlink" title="com.android.server.wm.WindowStateAnimator|     900 |      201,600 |    &gt;= 490,432"></a>com.android.server.wm.WindowStateAnimator|     900 |      201,600 |    &gt;= 490,432</h2><p>被mTokenMap 引用780次</p>
+<h2 id="Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap"><a href="#Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap" class="headerlink" title="Class Name                              | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap"></a>Class Name                              | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap</h2><h2 id="mTokenMap-java-util-HashMap-0x1340b950-780-40-174-720-30-080"><a href="#mTokenMap-java-util-HashMap-0x1340b950-780-40-174-720-30-080" class="headerlink" title="mTokenMap java.util.HashMap @ 0x1340b950|          780 |           40 |           174,720 |        30,080"></a>mTokenMap java.util.HashMap @ 0x1340b950|          780 |           40 |           174,720 |        30,080</h2><p>代码:<br>mTokenMap? 没有释放?</p>
+<p>// Mapping from a token IBinder to a WindowToken object on this display.<br>private final HashMap&lt;IBinder, WindowToken&gt; mTokenMap = new HashMap();</p>
+<pre><code>private void addWindowToken(IBinder binder, WindowToken token) {
+        xxxxx
+        xxxxx
+        if (token == null) {
+            throw new IllegalArgumentException(&quot;Can&apos;t map null token to display=&quot;
+                    + getName() + &quot; binder=&quot; + binder);
+        }
+
+        mTokenMap.put(binder, token);
+        xxxx
+        xxxx
+}
+
+WindowToken removeWindowToken(IBinder binder) {
+    final WindowToken token = mTokenMap.remove(binder);
+    if (token != null &amp;&amp; token.asAppWindowToken() == null) {
+        token.setExiting();
+    }
+    return token;
+}
+
+/** Changes the display the input window token is housed on to this one. */
+void reParentWindowToken(WindowToken token) {
+    final DisplayContent prevDc = token.getDisplayContent();
+    if (prevDc == this) {
+        return;
+    }
+    if (prevDc != null &amp;&amp; prevDc.mTokenMap.remove(token.token) != null
+            &amp;&amp; token.asAppWindowToken() == null) {
+        // Removed the token from the map, but made sure it&apos;s not an app token before removing
+        // from parent.
+        token.getParent().removeChild(token);
+    }
+
+    addWindowToken(token.token, token);
+}
+
+void removeAppToken(IBinder binder) {
+    final WindowToken token = removeWindowToken(binder);
+    if (token == null) {
+        Slog.w(TAG_WM, &quot;removeAppToken: Attempted to remove non-existing token: &quot; + binder);
+        return;
+    }
+
+    final AppWindowToken appToken = token.asAppWindowToken();
+
+    if (appToken == null) {
+        Slog.w(TAG_WM, &quot;Attempted to remove non-App token: &quot; + binder + &quot; token=&quot; + token);
+        return;
+    }
+
+    appToken.onRemovedFromDisplay();
+}
+</code></pre><hr>
+<ol>
+<li>调用:removeWindowToken的地方:<br>./DisplayContent.java: removeAppToken(IBinder binder) {<br>./DisplayContent.java:855:        final WindowToken token = removeWindowToken(binder);</li>
+</ol>
+<p>./WindowManagerService.java: public void removeWindowToken(IBinder binder, int displayId) {<br>./WindowManagerService.java:2496:                final WindowToken token = dc.removeWindowToken(binder);<br>./WindowManagerService.java:7530:        public void removeWindowToken(IBinder binder, boolean removeWindows, int displayId) {<br>./WindowManagerService.java:7540:                    final WindowToken token = dc.removeWindowToken(binder);<br>./WindowManagerService.java:7549:                WindowManagerService.this.removeWindowToken(binder, displayId);</p>
+<p>./WindowToken.java:239:            mDisplayContent.removeWindowToken(token);</p>
+<hr>
+<ol start="2">
+<li>调用:removeAppToken 的地方:<br>./AppWindowContainerController.java:246:            dc.removeAppToken(mToken.asBinder());</li>
+</ol>
+<hr>
+<p>从上述查看:<br>WindowToken 对象和<br>AppWindowContainerController对象</p>
+<h2 id="Class-Name-Objects-Shallow-Heap-Retained-Heap-1"><a href="#Class-Name-Objects-Shallow-Heap-Retained-Heap-1" class="headerlink" title="Class Name                          | Objects | Shallow Heap | Retained Heap"></a>Class Name                          | Objects | Shallow Heap | Retained Heap</h2><h2 id="com-android-server-wm-AppWindowToken-905-181-000-gt-1-169-272"><a href="#com-android-server-wm-AppWindowToken-905-181-000-gt-1-169-272" class="headerlink" title="com.android.server.wm.AppWindowToken|     905 |      181,000 |  &gt;= 1,169,272"></a>com.android.server.wm.AppWindowToken|     905 |      181,000 |  &gt;= 1,169,272</h2><h2 id="Class-Name-Objects-Shallow-Heap-Retained-Heap-2"><a href="#Class-Name-Objects-Shallow-Heap-Retained-Heap-2" class="headerlink" title="Class Name                                        | Objects | Shallow Heap | Retained Heap"></a>Class Name                                        | Objects | Shallow Heap | Retained Heap</h2><h2 id="com-android-server-wm-AppWindowContainerController-904-43-392-gt-116-032"><a href="#com-android-server-wm-AppWindowContainerController-904-43-392-gt-116-032" class="headerlink" title="com.android.server.wm.AppWindowContainerController|     904 |       43,392 |    &gt;= 116,032"></a>com.android.server.wm.AppWindowContainerController|     904 |       43,392 |    &gt;= 116,032</h2><p>都是没有释放的.</p>
+<hr>
+<h3 id="分析WindowStateAnimator-的释放过程-找出不释放的原因"><a href="#分析WindowStateAnimator-的释放过程-找出不释放的原因" class="headerlink" title="分析WindowStateAnimator 的释放过程,找出不释放的原因"></a>分析WindowStateAnimator 的释放过程,找出不释放的原因</h3><p>加上LOG:</p>
+<pre><code>WindowToken removeWindowToken(IBinder binder) {
+    android.util.Log.w(&quot;jackywei&quot;,&quot;removeWindowToken&quot;);
+    android.util.Log.w(&quot;jackywei&quot;,android.util.Log.getStackTraceString(new Throwable()));
+    android.util.Log.w(&quot;jackywei&quot;,&quot;++++++++++++++++++++removeWindowToken++++++++++++++++++++&quot;);
+    final WindowToken token = mTokenMap.remove(binder);
+    if (token != null &amp;&amp; token.asAppWindowToken() == null) {
+        token.setExiting();
+    }
+    return token;
+}
+</code></pre><p>应用died的时候会主动释放:</p>
+<p>01-02 12:44:01.223   746  1581 W jackywei: removeWindowToken<br>01-02 12:44:01.225   746  1581 W jackywei: java.lang.Throwable<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.wm.DisplayContent.removeWindowToken(DisplayContent.java:832)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.wm.DisplayContent.removeAppToken(DisplayContent.java:858)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.wm.AppWindowContainerController.removeContainer(AppWindowContainerController.java:246)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.am.ActivityRecord.removeWindowContainer(ActivityRecord.java:1001)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.am.ActivityStack.removeActivityFromHistoryLocked(ActivityStack.java:4169)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.am.ActivityStack.removeHistoryRecordsForAppLocked(ActivityStack.java:4544)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.am.ActivityStack.handleAppDiedLocked(ActivityStack.java:5095)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.am.ActivityStackSupervisor.handleAppDiedLocked(ActivityStackSupervisor.java:2008)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.am.ActivityManagerService.handleAppDiedLocked(ActivityManagerService.java:5413)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.am.ActivityManagerService.appDiedLocked(ActivityManagerService.java:5594)<br>01-02 12:44:01.225   746  1581 W jackywei:     at com.android.server.am.ActivityManagerService$AppDeathRecipient.binderDied(ActivityManagerService.java:1641)<br>01-02 12:44:01.225   746  1581 W jackywei:     at android.os.BinderProxy.sendDeathNotice(Binder.java:844)<br>01-02 12:44:01.226   746  1581 W jackywei: ++++++++++++++++++++removeWindowToken++++++++++++++++++++<br>01-02 12:44:01.227   746  1581 W jackywei: removeWindowToken<br>01-02 12:44:01.228   746  1581 W jackywei: java.lang.Throwable<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.wm.DisplayContent.removeWindowToken(DisplayContent.java:832)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.wm.WindowToken.removeImmediately(WindowToken.java:239)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.wm.AppWindowToken.removeImmediately(AppWindowToken.java:528)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.wm.AppWindowToken.removeIfPossible(AppWindowToken.java:535)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.wm.AppWindowToken.onRemovedFromDisplay(AppWindowToken.java:601)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.wm.DisplayContent.removeAppToken(DisplayContent.java:871)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.wm.AppWindowContainerController.removeContainer(AppWindowContainerController.java:246)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.am.ActivityRecord.removeWindowContainer(ActivityRecord.java:1001)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.am.ActivityStack.removeActivityFromHistoryLocked(ActivityStack.java:4169)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.am.ActivityStack.removeHistoryRecordsForAppLocked(ActivityStack.java:4544)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.am.ActivityStack.handleAppDiedLocked(ActivityStack.java:5095)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.am.ActivityStackSupervisor.handleAppDiedLocked(ActivityStackSupervisor.java:2008)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.am.ActivityManagerService.handleAppDiedLocked(ActivityManagerService.java:5413)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.am.ActivityManagerService.appDiedLocked(ActivityManagerService.java:5594)<br>01-02 12:44:01.228   746  1581 W jackywei:     at com.android.server.am.ActivityManagerService$AppDeathRecipient.binderDied(ActivityManagerService.java:1641)<br>01-02 12:44:01.228   746  1581 W jackywei:     at android.os.BinderProxy.sendDeathNotice(Binder.java:844)<br>01-02 12:44:01.228   746  1581 W jackywei: ++++++++++++++++++++removeWindowToken++++++++++++++++++++</p>
+<p>如果应用没有退出,会一直有?</p>
+<h2 id="Class-Name-Shallow-Heap-Retained-Heap"><a href="#Class-Name-Shallow-Heap-Retained-Heap" class="headerlink" title="Class Name                                                                | Shallow Heap | Retained Heap"></a>Class Name                                                                | Shallow Heap | Retained Heap</h2><h2 id="com-android-server-wm-WindowState-DeathRecipient-0x133e3d40-Native-Stack-16-16"><a href="#com-android-server-wm-WindowState-DeathRecipient-0x133e3d40-Native-Stack-16-16" class="headerlink" title="com.android.server.wm.WindowState$DeathRecipient @ 0x133e3d40 Native Stack|           16 |            16"></a>com.android.server.wm.WindowState$DeathRecipient @ 0x133e3d40 Native Stack|           16 |            16</h2><h2 id="Class-Name-Objects-Shallow-Heap-Retained-Heap-3"><a href="#Class-Name-Objects-Shallow-Heap-Retained-Heap-3" class="headerlink" title="Class Name                                      | Objects | Shallow Heap | Retained Heap"></a>Class Name                                      | Objects | Shallow Heap | Retained Heap</h2><p>com.android.server.wm.WindowState               |     900 |      396,000 |  &gt;= 2,334,112<br>com.android.server.wm.WindowStateAnimator       |     900 |      201,600 |    &gt;= 490,432<br>com.android.server.wm.WindowState$WindowId      |     900 |       28,800 |     &gt;= 50,800</p>
+<h2 id="com-android-server-wm-WindowState-DeathRecipient-900-14-400-gt-14-632"><a href="#com-android-server-wm-WindowState-DeathRecipient-900-14-400-gt-14-632" class="headerlink" title="com.android.server.wm.WindowState$DeathRecipient|     900 |       14,400 |     &gt;= 14,632"></a>com.android.server.wm.WindowState$DeathRecipient|     900 |       14,400 |     &gt;= 14,632</h2><p>下面某个应用:</p>
+<pre><code>129,325K: Persistent
+     71,069K: com.android.systemui (pid 3694 / activities)
+     23,604K: com.android.phone (pid 3862)
+     10,641K: com.han.dmfota (pid 952)
+      9,753K: com.qualcomm.qti.telephonyservice (pid 3853)
+      6,689K: com.qualcomm.telephony (pid 970)
+      3,948K: .dataservices (pid 3821)
+      3,621K: com.han.tetherEntitlement (pid 947)
+ 17,922K: Persistent Service
+     17,922K: com.android.bluetooth (pid 3483 / activities)
+ 43,253K: Foreground
+     26,516K: com.android.launcher3 (pid 785 / activities)
+     10,029K: com.android.chrome (pid 2044 / activities)
+      3,663K: com.google.process.gservices (pid 1992)
+      3,045K: com.android.partnerbrowsercustomizations (pid 2264)
+ 81,973K: Visible
+     63,027K: com.google.android.gms.persistent (pid 3046)
+     12,505K: com.android.printspooler (pid 2361)
+      3,243K: com.android.chrome:sandboxed_process0 (pid 2292)
+      3,198K: com.qualcomm.qcrilmsgtunnel (pid 574)
+115,042K: Perceptible
+     76,266K: com.android.mms (pid 3376 / activities)
+     38,776K: com.google.android.inputmethod.latin (pid 2321)
+  4,831K: A Services
+      4,831K: com.facebook.lite:fbns (pid 402)
+ 18,116K: Previous
+     12,914K: com.android.dialer (pid 775 / activities)
+      5,202K: android.process.acore (pid 3926)
+  7,047K: B Services
+      2,947K: com.android.batterywarning (pid 2601)
+      2,098K: com.qualcomm.simcontacts (pid 4018)
+      2,002K: com.qti.diagrestoreservice (pid 3986)
+153,398K: Cached
+     22,953K: com.google.android.apps.photos (pid 1307 / activities)
+     18,624K: com.android.settings (pid 2041 / activities)
+     16,262K: com.google.android.gms (pid 971)
+     15,582K: com.android.vending (pid 1183)
+     13,022K: com.google.android.gms:snet (pid 1781)
+     10,308K: com.android.vending:instant_app_installer (pid 2183)
+      9,190K: com.google.android.gms.unstable (pid 2130)
+      9,068K: com.google.android.apps.speechservices:search (pid 570)
+      8,063K: com.google.android.apps.searchlite (pid 3329)
+      7,290K: com.google.android.calendar (pid 2969)
+      5,409K: com.facebook.appmanager (pid 1112)
+      4,426K: com.facebook.lite (pid 1195)
+      3,074K: android.process.media (pid 321)
+      2,966K: com.android.providers.calendar (pid 3012)
+      2,783K: com.google.process.gapps (pid 699)
+      2,356K: com.google.android.partnersetup (pid 3835)
+      2,022K: com.han.feedback (pid 2461)
+</code></pre><p>由于都是window产生的问题,先download window</p>
+<p>adb shell dumpsys  window &gt; window.log</p>
+<p>确实有很多对象:</p>
+<p>WINDOW MANAGER ANIMATOR STATE (dumpsys window animator)<br>    DisplayContentsAnimator #0:<br>      Window #0: WindowStateAnimator{970b521 com.android.systemui.ImageWallpaper}<br>      Window #1: WindowStateAnimator{4b35d46 com.android.systemui/com.android.systemui.recents.RecentsActivity}<br>      Window #2: WindowStateAnimator{9ace6a5 com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #3: WindowStateAnimator{8a51c9c PopupWindow:8bce4ca}<br>      Window #4: WindowStateAnimator{fa27f6a com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #5: WindowStateAnimator{9d57434 com.android.bluetooth/com.android.bluetooth.opp.BluetoothOppTransferActivity}<br>      Window #6: WindowStateAnimator{d82825d com.android.bluetooth/com.android.bluetooth.opp.BluetoothOppTransferHistory}<br>      Window #7: WindowStateAnimator{53807d2 com.android.launcher3/com.android.launcher3.SettingsActivity}<br>      Window #8: WindowStateAnimator{9a980a3 com.android.chrome/org.chromium.chrome.browser.webapps.WebApkActivity}<br>      Window #9: WindowStateAnimator{b9b240f com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #10: WindowStateAnimator{b9da56e com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #11: WindowStateAnimator{903e4e9 com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #12: WindowStateAnimator{883d970 com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #13: WindowStateAnimator{3063fb3 com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #14: WindowStateAnimator{cc31922 com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #15: WindowStateAnimator{314c6ed com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #16: WindowStateAnimator{d8ab104 com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #17: WindowStateAnimator{8922917 com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #18: WindowStateAnimator{d78f996 com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #19: WindowStateAnimator{bb4d0b1 com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #20: WindowStateAnimator{4497758 com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #21: WindowStateAnimator{c99843b com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #22: WindowStateAnimator{a0dfaca com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #23: WindowStateAnimator{12d0635 com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #24: WindowStateAnimator{a3ac06c com.android.mms/com.android.mms.ui.MessagingPreferenceActivity}<br>      Window #25: WindowStateAnimator{a54b51f com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #26: WindowStateAnimator{78d90be com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #27: WindowStateAnimator{87e2b79 com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #28: WindowStateAnimator{97e040 com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #29: WindowStateAnimator{17ddfc3 com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #30: WindowStateAnimator{d73ef72 com.android.mms/com.android.mms.ui.ComposeMessageActivity}<br>      Window #31: WindowStateAnimator{d64c47d com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #32: WindowStateAnimator{9ecead4 com.android.mms/com.android.mms.ui.SearchConversationActivity}<br>      Window #33: WindowStateAnimator{db4e827 com.android.mms/com.android.mms.ui.ConversationList}<br>      Window #34: WindowStateAnimator{c220ae6 com.android.mms/com.android.mms.ui.ComposeMessageActivity}</p>
+<p>activity 没有释放?</p>
+<pre><code>appTokens=[AppWindowToken{ae9bcb7 token=Token{58a53c7 ActivityRecord{3c16106 u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{aaecd1f token=Token{72108be ActivityRecord{4d48379 u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{1de4337 token=Token{1c4cce5 ActivityRecord{eafb3dc u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{833e334 token=Token{3150607 ActivityRecord{d5a7446 u0 com.android.mms/.ui.MessagingPreferenceActivity t470}}}, AppWindowToken{2a510e3 token=Token{c22b112 ActivityRecord{b5089d u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{ba134dc token=Token{993754f ActivityRecord{86b73ae u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{c6dbbe9 token=Token{bd77727 ActivityRecord{6a34c41 u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{f142eaa token=Token{6cc657f ActivityRecord{70e469e u0 com.android.mms/.ui.MessagingPreferenceActivity t470}}}, AppWindowToken{c75e755 token=Token{4c3f20c ActivityRecord{fa3293f u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{8693e35 token=Token{a956609 ActivityRecord{8942b10 u0 com.android.mms/.ui.ComposeMessageActivity t232}}}, AppWindowToken{5c70d81 token=Token{d9e6568 ActivityRecord{b34208b u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{19989f0 token=Token{e1a6233 ActivityRecord{5e035a2 u0 com.android.mms/.ui.MessagingPreferenceActivity t470}}}, AppWindowToken{aa8ca9e token=Token{33ca0d9 ActivityRecord{5db4f20 u0 com.android.mms/.ui.SmsPreferenceActivity t470}}}, AppWindowToken{1d926be token=Token{4563612 ActivityRecord{e55e874 u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{5757ec3 token=Token{41aaa72 ActivityRecord{dd58b7d u0 com.android.mms/.ui.SearchConversationActivity t470}}}, AppWindowToken{6674364 token=Token{95608f7 ActivityRecord{222ecf6 u0 com.android.mms/.ui.ComposeMessageActivity t499}}}, AppWindowToken{7e1b21c token=Token{53e9f8f ActivityRecord{afbdeee u0 com.android.mms/.ui.ComposeMessageActivity t232}}}, AppWindowToken{2520d2e token=Token{b3b573d ActivityRecord{5010ce7 u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{36f253 token=Token{b267bd5 ActivityRecord{940088c u0 com.android.mms/.ui.ComposeMessageActivity t499}}}, AppWindowToken{bc306e8 token=Token{76eebef ActivityRecord{f8620ce u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{81bd64a token=Token{4a31fb5 ActivityRecord{ebb4fec u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{81887e6 token=Token{488b10c ActivityRecord{42ba85e u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{21804fa token=Token{12d1b25 ActivityRecord{eeb531c u0 com.android.mms/.ui.MessagingPreferenceActivity t470}}}, AppWindowToken{4b37307 token=Token{e1b1be ActivityRecord{c1cd940 u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{cfac063 token=Token{b8b6e92 ActivityRecord{c7c4c1d u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{1d7627c token=Token{fbd020 ActivityRecord{f47a452 u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{5002c62 token=Token{3d069ac ActivityRecord{3fe3b5f u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{9b74477 token=Token{f07a608 ActivityRecord{8affdfa u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{3cc5e55 token=Token{81de50c ActivityRecord{f31083f u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{6887990 token=Token{972f01d ActivityRecord{c9c02c7 u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{e305c5b token=Token{2169f6a ActivityRecord{354d955 u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{f6fb906 token=Token{9e5f9f5 ActivityRecord{9fa12df u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{eafe567 token=Token{8e1b526 ActivityRecord{b440081 u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{e465bf2 token=Token{7dbdc51 ActivityRecord{dfced78 u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{18e58da token=Token{6bad285 ActivityRecord{b89cbfc u0 com.android.mms/.ui.ComposeMessageActivity t470}}}, AppWindowToken{59d2447 token=Token{e8b1675 ActivityRecord{781e9ac u0 com.android.mms/.ui.ConversationList t470}}}, AppWindowToken{7fb9721 token=Token{156b3 ActivityRecord{8f02c22 u0
+</code></pre><p>下面这个hold住了 29 个ComposeMessageActivity</p>
+<h2 id="Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap-1"><a href="#Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap-1" class="headerlink" title="Class Name                               | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap"></a>Class Name                               | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap</h2><h2 id="mArray-java-lang-Object-180-0x14d79ce8-29-736-19-256-736"><a href="#mArray-java-lang-Object-180-0x14d79ce8-29-736-19-256-736" class="headerlink" title="mArray java.lang.Object[180] @ 0x14d79ce8|           29 |          736 |            19,256 |           736"></a>mArray java.lang.Object[180] @ 0x14d79ce8|           29 |          736 |            19,256 |           736</h2><p>下面这个hold住了 32 个 ConversationList</p>
+<h2 id="Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap-2"><a href="#Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap-2" class="headerlink" title="Class Name                               | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap"></a>Class Name                               | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap</h2><h2 id="mArray-java-lang-Object-180-0x14d79ce8-32-736-11-520-736"><a href="#mArray-java-lang-Object-180-0x14d79ce8-32-736-11-520-736" class="headerlink" title="mArray java.lang.Object[180] @ 0x14d79ce8|           32 |          736 |            11,520 |           736"></a>mArray java.lang.Object[180] @ 0x14d79ce8|           32 |          736 |            11,520 |           736</h2><p>也就是说因为某种原因ConversationList压根没有被释放</p>
+<h1 id="排除com-android-mms的问题"><a href="#排除com-android-mms的问题" class="headerlink" title="排除com.android.mms的问题"></a>排除com.android.mms的问题</h1><p>adb shell kill -9 com.android.mms</p>
+<p>问题依然存在.但是,这些对象都有所减少.</p>
+<h2 id="Class-Name-Objects-Shallow-Heap-Retained-Heap-4"><a href="#Class-Name-Objects-Shallow-Heap-Retained-Heap-4" class="headerlink" title="Class Name                                      | Objects | Shallow Heap | Retained Heap"></a>Class Name                                      | Objects | Shallow Heap | Retained Heap</h2><p>com.android.server.wm.WindowState               |     761 |      334,840 |  &gt;= 1,964,544<br>com.android.server.wm.WindowStateAnimator       |     761 |      170,464 |    &gt;= 414,736<br>com.android.server.wm.WindowState$WindowId      |     761 |       24,352 |     &gt;= 43,016</p>
+<h2 id="com-android-server-wm-WindowState-DeathRecipient-761-12-176-gt-12-408"><a href="#com-android-server-wm-WindowState-DeathRecipient-761-12-176-gt-12-408" class="headerlink" title="com.android.server.wm.WindowState$DeathRecipient|     761 |       12,176 |     &gt;= 12,408"></a>com.android.server.wm.WindowState$DeathRecipient|     761 |       12,176 |     &gt;= 12,408</h2><p>#################################################3</p>
+<p>adb shell kill -9 23,153K: com.android.phone (pid 3862)<br>没有减少:</p>
+<h2 id="Class-Name-Objects-Shallow-Heap-Retained-Heap-5"><a href="#Class-Name-Objects-Shallow-Heap-Retained-Heap-5" class="headerlink" title="Class Name                                      | Objects | Shallow Heap | Retained Heap"></a>Class Name                                      | Objects | Shallow Heap | Retained Heap</h2><p>com.android.server.wm.WindowState               |     763 |      335,720 |  &gt;= 1,970,008<br>com.android.server.wm.WindowStateAnimator       |     763 |      170,912 |    &gt;= 415,824<br>com.android.server.wm.WindowState$WindowId      |     763 |       24,416 |     &gt;= 43,128</p>
+<h2 id="com-android-server-wm-WindowState-DeathRecipient-763-12-208-gt-12-440"><a href="#com-android-server-wm-WindowState-DeathRecipient-763-12-208-gt-12-440" class="headerlink" title="com.android.server.wm.WindowState$DeathRecipient|     763 |       12,208 |     &gt;= 12,440"></a>com.android.server.wm.WindowState$DeathRecipient|     763 |       12,208 |     &gt;= 12,440</h2><p>adb shell kill -9  com.android.systemui<br>adb shell kill -9  com.android.dialer</p>
+<p>都没有减少</p>
+<h2 id="Class-Name-Objects-Shallow-Heap-Retained-Heap-6"><a href="#Class-Name-Objects-Shallow-Heap-Retained-Heap-6" class="headerlink" title="Class Name                                      | Objects | Shallow Heap | Retained Heap"></a>Class Name                                      | Objects | Shallow Heap | Retained Heap</h2><p>com.android.server.wm.WindowState               |     761 |      334,840 |  &gt;= 1,964,496<br>com.android.server.wm.WindowStateAnimator       |     761 |      170,464 |    &gt;= 414,736<br>com.android.server.wm.WindowState$WindowId      |     761 |       24,352 |     &gt;= 43,016</p>
+<h2 id="com-android-server-wm-WindowState-DeathRecipient-761-12-176-gt-12-408-1"><a href="#com-android-server-wm-WindowState-DeathRecipient-761-12-176-gt-12-408-1" class="headerlink" title="com.android.server.wm.WindowState$DeathRecipient|     761 |       12,176 |     &gt;= 12,408"></a>com.android.server.wm.WindowState$DeathRecipient|     761 |       12,176 |     &gt;= 12,408</h2><h2 id="Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap-3"><a href="#Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap-3" class="headerlink" title="Class Name                                                       | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap"></a>Class Name                                                       | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap</h2><h2 id="mAppAnimator-com-android-server-wm-AppWindowAnimator-0x15041678-1-96-96-288"><a href="#mAppAnimator-com-android-server-wm-AppWindowAnimator-0x15041678-1-96-96-288" class="headerlink" title="mAppAnimator com.android.server.wm.AppWindowAnimator @ 0x15041678|            1 |           96 |                96 |           288"></a>mAppAnimator com.android.server.wm.AppWindowAnimator @ 0x15041678|            1 |           96 |                96 |           288</h2><h2 id="Type-Name-Value"><a href="#Type-Name-Value" class="headerlink" title="Type|Name       |Value"></a>Type|Name       |Value</h2><h2 id="ref-mDescriptor-java-lang-String-0x70c4d0e8"><a href="#ref-mDescriptor-java-lang-String-0x70c4d0e8" class="headerlink" title="ref |mDescriptor|java.lang.String @ 0x70c4d0e8"></a>ref |mDescriptor|java.lang.String @ 0x70c4d0e8</h2><h2 id="Type-Name-Value-1"><a href="#Type-Name-Value-1" class="headerlink" title="Type|Name|Value"></a>Type|Name|Value</h2><p>byte|[0] |97<br>byte|[1] |110<br>byte|[2] |100<br>byte|[3] |114<br>byte|[4] |111<br>byte|[5] |105<br>byte|[6] |100<br>byte|[7] |46<br>byte|[8] |118<br>byte|[9] |105<br>byte|[10]|101<br>byte|[11]|119<br>byte|[12]|46<br>byte|[13]|73<br>byte|[14]|65<br>byte|[15]|112<br>byte|[16]|112<br>byte|[17]|108<br>byte|[18]|105<br>byte|[19]|99<br>byte|[20]|97<br>byte|[21]|116<br>byte|[22]|105<br>byte|[23]|111<br>byte|[24]|110<br>byte|[25]|84<br>byte|[26]|111<br>byte|[27]|107<br>byte|[28]|101</p>
+<h2 id="byte-29-110"><a href="#byte-29-110" class="headerlink" title="byte|[29]|110"></a>byte|[29]|110</h2><p>转成字符串:<br>a n d r o i d . v i e w . I A p p l i c a t i o n T o k e n</p>
+<p>日了狗了…哎.</p>
+<p>找出申请和释放 WindowStateAnimator的地方,加上LOG,再测试复现</p>
+<p>for i in <code>cat all_process.txt  | awk &#39;{print $2}&#39;</code>;do adb shell kill -9 $i; sleep 30;adb shell am dumpheap 1061 /data/local/tmp/1061.hprof;sleep 30; adb pull /data/local/tmp/1061.hprof; mv 1061.hprof after_$i_1061.hprof;hprof-conv after_$i_1061.hprof after_$i_1061_mat.hprof;done</p>
+<p>for i in <code>cat all_process.txt  | awk &#39;{print $2}&#39;</code>;do echo adb shell kill -9 $i &amp;&amp; echo sleep 5 &amp;&amp; echo adb shell am dumpheap 1061 /data/local/tmp/1061.hprof &amp;&amp; echo sleep 30 &amp;&amp; echo adb pull /data/local/tmp/1061.hprof &amp;&amp; echo mv 1061.hprof after-$i-1061.hprof &amp;&amp; echo hprof-conv after-$i-1061.hprof after-$i-1061_mat.hprof &amp;&amp; echo ———————— ; done</p>
+<p>for i in <code>cat all_process.txt  | awk &#39;{print $2}&#39;</code>;do adb shell kill -9 $i &amp;&amp; sleep 5 &amp;&amp;  adb shell am dumpheap 1061 /data/local/tmp/1061.hprof &amp;&amp; sleep 30 &amp;&amp; adb pull /data/local/tmp/1061.hprof &amp;&amp; mv 1061.hprof after-$i-1061.hprof &amp;&amp; hprof-conv after-$i-1061.hprof after-$i-1061_mat.hprof &amp;&amp; echo ———————— ; done</p>
+<p>kill 了 所有 com. 打头的APP,</p>
+<h2 id="Class-Name-Objects-Shallow-Heap-Retained-Heap-7"><a href="#Class-Name-Objects-Shallow-Heap-Retained-Heap-7" class="headerlink" title="Class Name                                                       | Objects | Shallow Heap | Retained Heap"></a>Class Name                                                       | Objects | Shallow Heap | Retained Heap</h2><p>com.android.server.wm.WindowState                                |     759 |      333,960 |  &gt;= 1,959,816<br>com.android.server.wm.WindowStateAnimator                        |     759 |      170,016 |    &gt;= 413,568<br>com.android.server.wm.WindowState$WindowId                       |     759 |       24,288 |     &gt;= 42,904<br>com.android.server.wm.WindowState$UpdateReportedVisibilityResults|     785 |       18,840 |     &gt;= 19,032</p>
+<h2 id="com-android-server-wm-WindowState-DeathRecipient-759-12-144-gt-12-376"><a href="#com-android-server-wm-WindowState-DeathRecipient-759-12-144-gt-12-376" class="headerlink" title="com.android.server.wm.WindowState$DeathRecipient                 |     759 |       12,144 |     &gt;= 12,376"></a>com.android.server.wm.WindowState$DeathRecipient                 |     759 |       12,144 |     &gt;= 12,376</h2><p>还是需要在system_server里面排查未释放的原因.</p>
+<p>可以在 ActivityRecord 里面找对应的 strings.<br>01-01 12:58:16.621   823  3071 W jackywei: this = 48097705,wallpaperTarget.mAppToken = AppWindowToken{50cb356 token=Token{e782efb ActivityRecord{265988a u0 com.android.phone/.EmergencyDialer t7}}}</p>
+<p>大部分指向:<br>com.google.android.apps.searchlite</p>
+<p>###################################################################################################</p>
+<h2 id="Class-Name-Shallow-Heap-Retained-Heap-Percentage"><a href="#Class-Name-Shallow-Heap-Retained-Heap-Percentage" class="headerlink" title="Class Name                                            | Shallow Heap | Retained Heap | Percentage"></a>Class Name                                            | Shallow Heap | Retained Heap | Percentage</h2><h2 id="com-android-server-wm-WindowStateAnimator-0x154814c8-224-544-0-00"><a href="#com-android-server-wm-WindowStateAnimator-0x154814c8-224-544-0-00" class="headerlink" title="com.android.server.wm.WindowStateAnimator @ 0x154814c8|          224 |           544 |      0.00%"></a>com.android.server.wm.WindowStateAnimator @ 0x154814c8|          224 |           544 |      0.00%</h2><h2 id="Type-Name-Value-2"><a href="#Type-Name-Value-2" class="headerlink" title="Type|Name     |Value"></a>Type|Name     |Value</h2><h2 id="ref-mAppToken-com-android-server-wm-AppWindowToken-0x15480e60"><a href="#ref-mAppToken-com-android-server-wm-AppWindowToken-0x15480e60" class="headerlink" title="ref |mAppToken|com.android.server.wm.AppWindowToken @ 0x15480e60"></a>ref |mAppToken|com.android.server.wm.AppWindowToken @ 0x15480e60</h2><h2 id="Type-Name-Value-3"><a href="#Type-Name-Value-3" class="headerlink" title="Type|Name    |Value"></a>Type|Name    |Value</h2><h2 id="ref-appToken-com-android-server-am-ActivityRecord-Token-0x154811b0"><a href="#ref-appToken-com-android-server-am-ActivityRecord-Token-0x154811b0" class="headerlink" title="ref |appToken|com.android.server.am.ActivityRecord$Token @ 0x154811b0"></a>ref |appToken|com.android.server.am.ActivityRecord$Token @ 0x154811b0</h2><h2 id="Type-Name-Value-4"><a href="#Type-Name-Value-4" class="headerlink" title="Type|Name        |Value"></a>Type|Name        |Value</h2><h2 id="ref-weakActivity-java-lang-ref-WeakReference-0x154821a8"><a href="#ref-weakActivity-java-lang-ref-WeakReference-0x154821a8" class="headerlink" title="ref |weakActivity|java.lang.ref.WeakReference @ 0x154821a8"></a>ref |weakActivity|java.lang.ref.WeakReference @ 0x154821a8</h2><h2 id="Type-Name-Value-5"><a href="#Type-Name-Value-5" class="headerlink" title="Type|Name    |Value"></a>Type|Name    |Value</h2><h2 id="ref-referent-com-android-server-am-ActivityRecord-0x154821f0"><a href="#ref-referent-com-android-server-am-ActivityRecord-0x154821f0" class="headerlink" title="ref |referent|com.android.server.am.ActivityRecord @ 0x154821f0"></a>ref |referent|com.android.server.am.ActivityRecord @ 0x154821f0</h2><h2 id="Type-Name-Value-6"><a href="#Type-Name-Value-6" class="headerlink" title="Type|Name   |Value"></a>Type|Name   |Value</h2><h2 id="ref-appInfo-android-content-pm-ApplicationInfo-0x1444b0e0"><a href="#ref-appInfo-android-content-pm-ApplicationInfo-0x1444b0e0" class="headerlink" title="ref |appInfo|android.content.pm.ApplicationInfo @ 0x1444b0e0"></a>ref |appInfo|android.content.pm.ApplicationInfo @ 0x1444b0e0</h2><h2 id="Type-Name-Value-7"><a href="#Type-Name-Value-7" class="headerlink" title="Type|Name   |Value"></a>Type|Name   |Value</h2><h2 id="ref-dataDir-java-lang-String-0x1444bc58"><a href="#ref-dataDir-java-lang-String-0x1444bc58" class="headerlink" title="ref |dataDir|java.lang.String @ 0x1444bc58"></a>ref |dataDir|java.lang.String @ 0x1444bc58</h2><h2 id="Type-Name-Value-8"><a href="#Type-Name-Value-8" class="headerlink" title="Type|Name          |Value"></a>Type|Name          |Value</h2><p>ref |value         |/data/user/0/com.google.android.apps.searchlite</p>
+<h2 id="ref-shadow-klass-class-java-lang-String-0x706ea708"><a href="#ref-shadow-klass-class-java-lang-String-0x706ea708" class="headerlink" title="ref |shadow$klass|class java.lang.String @ 0x706ea708"></a>ref |shadow$<em>klass</em>|class java.lang.String @ 0x706ea708</h2><h2 id="Type-Name-Value-9"><a href="#Type-Name-Value-9" class="headerlink" title="Type|Name |Value"></a>Type|Name |Value</h2><h2 id="ref-value-com-google-android-apps-searchlite-SearchLiteApp-Application"><a href="#ref-value-com-google-android-apps-searchlite-SearchLiteApp-Application" class="headerlink" title="ref |value|com.google.android.apps.searchlite.SearchLiteApp_Application"></a>ref |value|com.google.android.apps.searchlite.SearchLiteApp_Application</h2><h2 id="Type-Name-Value-10"><a href="#Type-Name-Value-10" class="headerlink" title="Type|Name          |Value"></a>Type|Name          |Value</h2><p>ref |value         |/data/user/0/com.google.android.apps.searchlite</p>
+<h2 id="ref-shadow-klass-class-java-lang-String-0x706ea708-1"><a href="#ref-shadow-klass-class-java-lang-String-0x706ea708-1" class="headerlink" title="ref |shadow$klass|class java.lang.String @ 0x706ea708"></a>ref |shadow$<em>klass</em>|class java.lang.String @ 0x706ea708</h2><p>###################################################################################################</p>
+<h2 id="Type-Name-Value-11"><a href="#Type-Name-Value-11" class="headerlink" title="Type|Name        |Value"></a>Type|Name        |Value</h2><h2 id="ref-mAppAnimator-com-android-server-wm-AppWindowAnimator-0x154811d0"><a href="#ref-mAppAnimator-com-android-server-wm-AppWindowAnimator-0x154811d0" class="headerlink" title="ref |mAppAnimator|com.android.server.wm.AppWindowAnimator @ 0x154811d0"></a>ref |mAppAnimator|com.android.server.wm.AppWindowAnimator @ 0x154811d0</h2><p>###################################################################################################</p>
+<p>###################################################################################################</p>
+<h2 id="Class-Name-Shallow-Heap-Retained-Heap-Percentage-1"><a href="#Class-Name-Shallow-Heap-Retained-Heap-Percentage-1" class="headerlink" title="Class Name                                            | Shallow Heap | Retained Heap | Percentage"></a>Class Name                                            | Shallow Heap | Retained Heap | Percentage</h2><h2 id="com-android-server-wm-WindowStateAnimator-0x154838f0-224-544-0-00"><a href="#com-android-server-wm-WindowStateAnimator-0x154838f0-224-544-0-00" class="headerlink" title="com.android.server.wm.WindowStateAnimator @ 0x154838f0|          224 |           544 |      0.00%"></a>com.android.server.wm.WindowStateAnimator @ 0x154838f0|          224 |           544 |      0.00%</h2><h2 id="Type-Name-Value-12"><a href="#Type-Name-Value-12" class="headerlink" title="Type|Name        |Value"></a>Type|Name        |Value</h2><h2 id="ref-mAppAnimator-com-android-server-wm-AppWindowAnimator-0x154835f8"><a href="#ref-mAppAnimator-com-android-server-wm-AppWindowAnimator-0x154835f8" class="headerlink" title="ref |mAppAnimator|com.android.server.wm.AppWindowAnimator @ 0x154835f8"></a>ref |mAppAnimator|com.android.server.wm.AppWindowAnimator @ 0x154835f8</h2><h2 id="Type-Name-Value-13"><a href="#Type-Name-Value-13" class="headerlink" title="Type|Name     |Value"></a>Type|Name     |Value</h2><h2 id="ref-mAppToken-com-android-server-wm-AppWindowToken-0x15483288"><a href="#ref-mAppToken-com-android-server-wm-AppWindowToken-0x15483288" class="headerlink" title="ref |mAppToken|com.android.server.wm.AppWindowToken @ 0x15483288"></a>ref |mAppToken|com.android.server.wm.AppWindowToken @ 0x15483288</h2><h2 id="Type-Name-Value-14"><a href="#Type-Name-Value-14" class="headerlink" title="Type|Name    |Value"></a>Type|Name    |Value</h2><h2 id="ref-appToken-com-android-server-am-ActivityRecord-Token-0x154835d8"><a href="#ref-appToken-com-android-server-am-ActivityRecord-Token-0x154835d8" class="headerlink" title="ref |appToken|com.android.server.am.ActivityRecord$Token @ 0x154835d8"></a>ref |appToken|com.android.server.am.ActivityRecord$Token @ 0x154835d8</h2><h2 id="Type-Name-Value-15"><a href="#Type-Name-Value-15" class="headerlink" title="Type|Name    |Value"></a>Type|Name    |Value</h2><h2 id="ref-referent-com-android-server-am-ActivityRecord-0x15484618"><a href="#ref-referent-com-android-server-am-ActivityRecord-0x15484618" class="headerlink" title="ref |referent|com.android.server.am.ActivityRecord @ 0x15484618"></a>ref |referent|com.android.server.am.ActivityRecord @ 0x15484618</h2><h2 id="Type-Name-Value-16"><a href="#Type-Name-Value-16" class="headerlink" title="Type|Name   |Value"></a>Type|Name   |Value</h2><h2 id="ref-appInfo-android-content-pm-ApplicationInfo-0x1444b0e0-1"><a href="#ref-appInfo-android-content-pm-ApplicationInfo-0x1444b0e0-1" class="headerlink" title="ref |appInfo|android.content.pm.ApplicationInfo @ 0x1444b0e0"></a>ref |appInfo|android.content.pm.ApplicationInfo @ 0x1444b0e0</h2><h2 id="Type-Name-Value-17"><a href="#Type-Name-Value-17" class="headerlink" title="Type|Name   |Value"></a>Type|Name   |Value</h2><h2 id="ref-dataDir-java-lang-String-0x1444bc58-1"><a href="#ref-dataDir-java-lang-String-0x1444bc58-1" class="headerlink" title="ref |dataDir|java.lang.String @ 0x1444bc58"></a>ref |dataDir|java.lang.String @ 0x1444bc58</h2><h2 id="Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap-4"><a href="#Class-Name-Ref-Objects-Shallow-Heap-Ref-Shallow-Heap-Retained-Heap-4" class="headerlink" title="Class Name                              | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap"></a>Class Name                              | Ref. Objects | Shallow Heap | Ref. Shallow Heap | Retained Heap</h2><h2 id="mTokenMap-java-util-HashMap-0x1439cd50-1-40-224-27-152"><a href="#mTokenMap-java-util-HashMap-0x1439cd50-1-40-224-27-152" class="headerlink" title="mTokenMap java.util.HashMap @ 0x1439cd50|            1 |           40 |               224 |        27,152"></a>mTokenMap java.util.HashMap @ 0x1439cd50|            1 |           40 |               224 |        27,152</h2><h2 id="Type-Name-Value-18"><a href="#Type-Name-Value-18" class="headerlink" title="Type |Name            |Value"></a>Type |Name            |Value</h2><p>ref  |entrySet        |null<br>float|loadFactor      |0.75<br>int  |modCount        |10233<br>int  |size            |787<br>ref  |table           |java.util.HashMap$Node[2048] @ 0x1439d1f8<br>int  |threshold       |1536<br>ref  |keySet          |null<br>ref  |values          |java.util.HashMap$Values @ 0x1439d1e8<br>ref  |shadow$<em>klass</em>  |class java.util.HashMap @ 0x706ec4c8</p>
+<h2 id="int-shadow-monitor-0"><a href="#int-shadow-monitor-0" class="headerlink" title="int  |shadow$monitor|0"></a>int  |shadow$<em>monitor</em>|0</h2>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/12/13/bug-jie-xi/shan-ping-fen-xi/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    闪屏分析
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">system_server内存泄漏</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            彪彪 &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

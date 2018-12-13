@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Fota升级之后无法开机 | 彪彪</title>
+    
+    
+        <meta name="keywords" content="Fota升级之后无法开机">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Fota升级之后无法开机分析Crash的地方: 08-03 10:42:29.051   723   723 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main08-03 10:42:29.051   723   723 E AndroidRuntime: java.lang.NullPointerException: Att">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fota升级之后无法开机">
+<meta property="og:url" content="https://ifonly.me/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/index.html">
+<meta property="og:site_name" content="彪彪">
+<meta property="og:description" content="Fota升级之后无法开机分析Crash的地方: 08-03 10:42:29.051   723   723 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main08-03 10:42:29.051   723   723 E AndroidRuntime: java.lang.NullPointerException: Att">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-13T07:52:35.193Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fota升级之后无法开机">
+<meta name="twitter:description" content="Fota升级之后无法开机分析Crash的地方: 08-03 10:42:29.051   723   723 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main08-03 10:42:29.051   723   723 E AndroidRuntime: java.lang.NullPointerException: Att">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="彪彪" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">彪彪</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            BUG解析
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/bug-jie-xi/flash-yue-jie/">Flash越界</a></li>  <li class="file active"><a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">Fota升级之后无法开机</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">慢的问题2</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/">system_server内存泄漏</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/">长时间使用之后手机变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shan-ping-fen-xi/">闪屏分析</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/diag-kou-man-de-wen-ti/">Diag 口慢的问题</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shou-ji-fan-ying-ji-su-bian-man/">手机反应速度变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/whatsapp-lai-dian-qi-dong-man-de-wen-ti/">Whatsapp 来电启动慢的问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            React学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/">学习资料</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工作小贴士
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/android-mat-gong-ju-shi-yong/">Android_Mat_工具使用</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntuinstallshadowsocks/">ubuntu Shadowsocks 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/monkey-ce-shi-ming-ling-xing/">Monkey test command</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/">Git 下载代理设置</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/performance/">Performance</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/vts-ce-shi-bu-zou/">VTS测试说明</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gdb-diao-shi-shou-ce/">GDB调试手机工程</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejscluster/">解读Nodejs多核处理模块cluster</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/">Hello World</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/memory-debug/">Memory debug</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejs-an-zhuang/">nodejs 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/">qcn备份</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/trace32/">ubuntu trace32 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/">ubuntu Shadowsocks Error</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/binder-xin-xi/">binder 信息</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/">ubuntu Mysql 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/">Vtiger 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">批量替换代码中的字符串</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/">把所有CPU拉到最高</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/">科学上网</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/">常用暗码</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/flash-yue-jie/">Flash 越界</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/">黑屏分析</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gong-zuo-bi-ji/">工作笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/apache2-xia-zai-fu-wu-qi-pei-zhi/">apache2 下载服务器配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            框架设计
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/kuang-jia-she-ji/001-log-gong-ju-she-ji/">LOG工具设计</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            需求实现
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Fota功能的实现
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/">业务逻辑规划</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/bei-fen/">备份</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/shu-ju-ku-biao-de-jian-li/">数据库表的建立</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/databasesinfo/">DatabasesInfo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-BUG解析/Fota升级开不机" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">
+            <time datetime="2018-12-13T07:53:44.125Z" itemprop="datePublished">2018-12-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/BUG解析/Fota升级开不机.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/BUG解析/Fota升级开不机.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/BUG解析/Fota升级开不机.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Fota升级之后无法开机
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="Fota升级之后无法开机"><a href="#Fota升级之后无法开机" class="headerlink" title="Fota升级之后无法开机"></a>Fota升级之后无法开机</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>Crash的地方:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: java.lang.NullPointerException: Attempt to read from field &apos;java.lang.String com.android.server.pm.PackageSettingBase.name&apos; on a null object reference</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.pm.PackageManagerService.scanPackageInternalLI(PackageManagerService.java:9710)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.pm.PackageManagerService.scanPackageLI(PackageManagerService.java:9451)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.pm.PackageManagerService.scanDirLI(PackageManagerService.java:9265)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.pm.PackageManagerService.scanDirTracedLI(PackageManagerService.java:9212)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.pm.PackageManagerService.&lt;init&gt;(PackageManagerService.java:2656)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.pm.PackageManagerService.main(PackageManagerService.java:2338)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.SystemServer.startBootstrapServices(SystemServer.java:601)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.SystemServer.run(SystemServer.java:399)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.server.SystemServer.main(SystemServer.java:277)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:438)</span><br><span class="line">08-03 10:42:29.051   723   723 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:787)</span><br><span class="line">08-03 10:42:29.053   723   723 E AndroidRuntime: Error reporting crash</span><br><span class="line">08-03 10:42:29.053   723   723 E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke interface method &apos;void android.app.IActivityManager.handleApplicationCrash(android.os.IBinder, android.app.ApplicationErrorReport$ParcelableCrashInfo)&apos; on a null object reference</span><br><span class="line">08-03 10:42:29.053   723   723 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$KillApplicationHandler.uncaughtException(RuntimeInit.java:116)</span><br><span class="line">08-03 10:42:29.053   723   723 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1068)</span><br><span class="line">08-03 10:42:29.053   723   723 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1063)</span><br><span class="line">08-03 10:42:29.053   723   723 E AndroidRuntime: 	at java.lang.Thread.dispatchUncaughtException(Thread.java:1955)</span><br></pre></td></tr></table></figure>
+<p>直接原因是ps空指针造成的.</p>
+<p>发现是如下两个地方都返回了空.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (pkg.mOriginalPackages != null &amp;&amp; pkg.mOriginalPackages.contains(oldName)) &#123;</span><br><span class="line">    // This package has been renamed to its original name.  Let&apos;s</span><br><span class="line">    // use that.</span><br><span class="line">    ps = mSettings.getPackageLPr(oldName);</span><br><span class="line">&#125;</span><br><span class="line">// If there was no original package, see one for the real package name.</span><br><span class="line">if (ps == null) &#123;</span><br><span class="line">    ps = mSettings.getPackageLPr(pkg.packageName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查看代码发现,mSettings 是PMS初始化的时候一起初始化的，并且会维护所有包的信息,读写文件:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public PackageManagerService(Context context, Installer installer,</span><br><span class="line">        boolean factoryTest, boolean onlyCore) &#123;</span><br><span class="line">    LockGuard.installLock(mPackages, LockGuard.INDEX_PACKAGES);</span><br><span class="line">    Trace.traceBegin(TRACE_TAG_PACKAGE_MANAGER, &quot;create package manager&quot;);</span><br><span class="line">    EventLog.writeEvent(EventLogTags.BOOT_PROGRESS_PMS_START,</span><br><span class="line">            SystemClock.uptimeMillis());</span><br><span class="line"></span><br><span class="line">    if (mSdkVersion &lt;= 0) &#123;</span><br><span class="line">        Slog.w(TAG, &quot;**** ro.build.version.sdk not set!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mContext = context;</span><br><span class="line"></span><br><span class="line">    mPermissionReviewRequired = context.getResources().getBoolean(</span><br><span class="line">            R.bool.config_permissionReviewRequired);</span><br><span class="line"></span><br><span class="line">    mFactoryTest = factoryTest;</span><br><span class="line">    mOnlyCore = onlyCore;</span><br><span class="line">    /* niuwenchao modify 20180104 for 8909go preloadapp start */</span><br><span class="line">    mPreInstallDir = new File(&quot;/system/preloadapp&quot;);</span><br><span class="line">    /* niuwenchao modify 20180104 for 8909go preloadapp end */</span><br><span class="line">    mMetrics = new DisplayMetrics();</span><br><span class="line">    mSettings = new Settings(mPackages);</span><br><span class="line">    mSettings.addSharedUserLPw(&quot;android.uid.system&quot;, Process.SYSTEM_UID,</span><br><span class="line">            ApplicationInfo.FLAG_SYSTEM, ApplicationInfo.PRIVATE_FLAG_PRIVILEGED);</span><br><span class="line">    mSettings.addSharedUserLPw(&quot;android.uid.phone&quot;, RADIO_UID,</span><br><span class="line">            ApplicationInfo.FLAG_SYSTEM, ApplicationInfo.PRIVATE_FLAG_PRIVILEGED);</span><br><span class="line">    mSettings.addSharedUserLPw(&quot;android.uid.log&quot;, LOG_UID,</span><br><span class="line">            ApplicationInfo.FLAG_SYSTEM, ApplicationInfo.PRIVATE_FLAG_PRIVILEGED);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">PS: 不排除是&quot;niuwenchao&quot; 修改,或者是suyibang最近打的security patch引起的.(没有回退代码做压力测试,此问题也比较难复现)。</span><br></pre></td></tr></table></figure>
+<p>下面是自己加的LOG</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">05-31 02:05:29.416  3563  3563 W PackageSettings: mSystemDir/data/system, mSettingsFilename = /data/system/packages.xml,mBackupSettingsFilename = /data/system/packages-backup.xml,mPackageListFilename = /data/system/packages.list,mKernelMappingFilename =/config/sdcardfs,mStoppedPackagesFilename = /data/system/packages-stopped.xml,mBackupStoppedPackagesFilename = /data/system/packages-stopped-backup.xml</span><br></pre></td></tr></table></figure>
+<p>下载相应的PMS Settings使用的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb pull /data/system/packages.xml</span><br><span class="line">adb pull /data/system/packages-backup.xml</span><br><span class="line">adb pull /data/system/packages-stopped.xml</span><br><span class="line">adb pull /data/system/packages-stopped-backup.xml</span><br><span class="line">adb pull /data/system/packages.list</span><br></pre></td></tr></table></figure>
+<p>在 packages.xml 文件中,只有升级记录:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;updated-package name=&quot;com.google.android.gms&quot; codePath=&quot;/system/priv-app/GmsCore&quot; ft=&quot;1636e1ba6c0&quot; it=&quot;1636e1ba6c0&quot; ut=&quot;1636e1ba6c0&quot; version=&quot;12529018&quot; nativeLibraryPath=&quot;/system/priv-app/GmsCore/lib&quot; primaryCpuAbi=&quot;armeabi-v7a&quot; sharedUserId=&quot;10019&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>没有正常的，如下面的这种已经安装的记录:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;package name=&quot;com.android.providers.downloads.ui&quot; codePath=&quot;/system/app/DownloadProviderUi&quot; nativeLibraryPath=&quot;/system/app/DownloadProviderUi/lib&quot; publicFlags=&quot;944291397&quot; privateFlags=&quot;0&quot; ft=&quot;1648fe85388&quot; it=&quot;1636e1b9ef0&quot; ut=&quot;1648fe85388&quot; version=&quot;27&quot; sharedUserId=&quot;10013&quot; isOrphaned=&quot;true&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p> /data/system/packages.xml 里面没有GMS的相关节点.这里原因未知，可以暂时假设是某个流程没有走完，导致文件里面的内容未彻底修改完成.</p>
+<p> packages.xml 对应的是 mSettingsFilename 变量.</p>
+<h2 id="尝试不修改代码解决"><a href="#尝试不修改代码解决" class="headerlink" title="尝试不修改代码解决"></a>尝试不修改代码解决</h2><p>导出/data/system/packages.xml文件.</p>
+<p>删除以下下内容:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;updated-package name=&quot;com.google.android.gms&quot; codePath=&quot;/system/priv-app/GmsCore&quot; ft=&quot;1636e1ba6c0&quot; it=&quot;1636e1ba6c0&quot; ut=&quot;1636e1ba6c0&quot; version=&quot;12529018&quot; nativeLibraryPath=&quot;/system/priv-app/GmsCore/lib&quot; primaryCpuAbi=&quot;armeabi-v7a&quot; sharedUserId=&quot;10019&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>push回手机.</p>
+<p>手机可以正常启动.</p>
+<p>相关节点会重新生成，这说明问题的关键点在/data/system/packages.xml的维护当中。</p>
+<h2 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1:"></a>解决方案1:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (isUpdatedSystemPkg &amp;&amp; !isUpdatedPkgBetter &amp;&amp; ps != null) &#123;//jackywei</span><br><span class="line">    // Set CPU Abis to application info.</span><br><span class="line">    if ((scanFlags &amp; SCAN_FIRST_BOOT_OR_UPGRADE) != 0) &#123;</span><br><span class="line">        final String cpuAbiOverride = deriveAbiOverride(pkg.cpuAbiOverride, updatedPkg);</span><br><span class="line">        derivePackageAbi(pkg, scanFile, cpuAbiOverride, false, mAppLib32InstallDir);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        pkg.applicationInfo.primaryCpuAbi = updatedPkg.primaryCpuAbiString;</span><br><span class="line">        pkg.applicationInfo.secondaryCpuAbi = updatedPkg.secondaryCpuAbiString;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(ps != null)&#123;</span><br><span class="line">    throw new PackageManagerException(Log.WARN, &quot;Package &quot; + ps.name + &quot; at &quot;</span><br><span class="line">            + scanFile + &quot; ignored: updated version &quot; + ps.versionCode</span><br><span class="line">            + &quot; better than this &quot; + pkg.mVersionCode);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">    throw new PackageManagerException(Log.WARN, &quot;Package &quot; + &quot; at &quot;</span><br><span class="line">            + scanFile + &quot; ignored: updated version &quot;</span><br><span class="line">            + &quot; better than this &quot; + pkg.mVersionCode);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>手机可以正常开机，但是开机之后手机会提示GMS包没有安装，且依赖GMS包的相关应用无法启动。(Fail).<br>而且，/data/system/packages.xml 文件中GMS有关的节点不会更新.</p>
+<h2 id="解决方案2"><a href="#解决方案2" class="headerlink" title="解决方案2:"></a>解决方案2:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (isUpdatedSystemPkg &amp;&amp; !isUpdatedPkgBetter &amp;&amp; ps != null) &#123;//jackywei</span><br><span class="line">    // Set CPU Abis to application info.</span><br><span class="line">    if ((scanFlags &amp; SCAN_FIRST_BOOT_OR_UPGRADE) != 0) &#123;</span><br><span class="line">        final String cpuAbiOverride = deriveAbiOverride(pkg.cpuAbiOverride, updatedPkg);</span><br><span class="line">        derivePackageAbi(pkg, scanFile, cpuAbiOverride, false, mAppLib32InstallDir);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        pkg.applicationInfo.primaryCpuAbi = updatedPkg.primaryCpuAbiString;</span><br><span class="line">        pkg.applicationInfo.secondaryCpuAbi = updatedPkg.secondaryCpuAbiString;</span><br><span class="line">    &#125;</span><br><span class="line">    throw new PackageManagerException(Log.WARN, &quot;Package &quot; + ps.name + &quot; at &quot;</span><br><span class="line">            + scanFile + &quot; ignored: updated version &quot; + ps.versionCode</span><br><span class="line">            + &quot; better than this &quot; + pkg.mVersionCode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样修改之后,PMS会把GMS当成新包解析,并且删除/data/system/packages.xml里面的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;updated-package name=&quot;com.google.android.gms&quot; codePath=&quot;/system/priv-app/GmsCore&quot; ft=&quot;1636e1ba6c0&quot; it=&quot;1636e1ba6c0&quot; ut=&quot;1636e1ba6c0&quot; version=&quot;12529018&quot; nativeLibraryPath=&quot;/system/priv-app/GmsCore/lib&quot; primaryCpuAbi=&quot;armeabi-v7a&quot; sharedUserId=&quot;10019&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>并且,测试GMS包和相关应用都能正常使用。</p>
+<p>目前来看，这样是合理与安全的。</p>
+<h2 id="涉及到的代码"><a href="#涉及到的代码" class="headerlink" title="涉及到的代码."></a>涉及到的代码.</h2><p>两个文件，大概30000行左右的代码.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java</span><br><span class="line">frameworks/base/services/core/java/com/android/server/pm/Settings.java</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>1. 和Google play store升级GMS有关系。
+2. 原因：可能是某一步处理时，异步操作未正常结束导致packages.xml文件节点里面有未清除的数据，有可能是FOTA程序打断的。
+3. 暂时未搞清楚，为什么GMS包会有这样被删除的动作。
+    (方向有三点: 
+    a. PR 157058 有一个修改. 
+    b. suyibang 打的Google 的patch可能有问题。 
+    c. Android 8.1自己平台的问题。)
+4. 如需继续跟踪.
+   (1. 编译USER版本，
+    2. 并且需要打开相关LOG，
+    3. 并且修改LOG工具开机迅速启动
+    4. 需要google 翻墙WIFI
+    5. 大量压力测试).
+5. 从测试结果来看，第二种方案是安全的。
+</code></pre>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    慢的问题2
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/12/13/bug-jie-xi/flash-yue-jie/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Flash越界</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            彪彪 &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

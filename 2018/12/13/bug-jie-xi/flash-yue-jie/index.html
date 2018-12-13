@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Flash越界 | 彪彪</title>
+    
+    
+        <meta name="keywords" content="Flash越界">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="现象 [  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6 [  122.454233] attempt to access beyond end of device [  122.454263] mmcblk0p38: rw=17, want=25695648, limit=2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flash越界">
+<meta property="og:url" content="https://ifonly.me/2018/12/13/bug-jie-xi/flash-yue-jie/index.html">
+<meta property="og:site_name" content="彪彪">
+<meta property="og:description" content="现象 [  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6 [  122.454233] attempt to access beyond end of device [  122.454263] mmcblk0p38: rw=17, want=25695648, limit=2">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ifonly.me/2018/12/13/bug-jie-xi/flash-yue-jie/amWiki/images/flash_overflow01.png">
+<meta property="og:image" content="https://ifonly.me/2018/12/13/bug-jie-xi/flash-yue-jie/amWiki/images/compareOfPartition.png">
+<meta property="og:updated_time" content="2018-12-13T07:53:25.245Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flash越界">
+<meta name="twitter:description" content="现象 [  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6 [  122.454233] attempt to access beyond end of device [  122.454263] mmcblk0p38: rw=17, want=25695648, limit=2">
+<meta name="twitter:image" content="https://ifonly.me/2018/12/13/bug-jie-xi/flash-yue-jie/amWiki/images/flash_overflow01.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="彪彪" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">彪彪</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            BUG解析
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/2018/12/13/bug-jie-xi/flash-yue-jie/">Flash越界</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">Fota升级之后无法开机</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">慢的问题2</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/">system_server内存泄漏</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/">长时间使用之后手机变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shan-ping-fen-xi/">闪屏分析</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/diag-kou-man-de-wen-ti/">Diag 口慢的问题</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shou-ji-fan-ying-ji-su-bian-man/">手机反应速度变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/whatsapp-lai-dian-qi-dong-man-de-wen-ti/">Whatsapp 来电启动慢的问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            React学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/">学习资料</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工作小贴士
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/android-mat-gong-ju-shi-yong/">Android_Mat_工具使用</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntuinstallshadowsocks/">ubuntu Shadowsocks 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/monkey-ce-shi-ming-ling-xing/">Monkey test command</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/">Git 下载代理设置</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/performance/">Performance</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/vts-ce-shi-bu-zou/">VTS测试说明</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gdb-diao-shi-shou-ce/">GDB调试手机工程</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejscluster/">解读Nodejs多核处理模块cluster</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/">Hello World</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/memory-debug/">Memory debug</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejs-an-zhuang/">nodejs 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/">qcn备份</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/trace32/">ubuntu trace32 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/">ubuntu Shadowsocks Error</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/binder-xin-xi/">binder 信息</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/">ubuntu Mysql 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/">Vtiger 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">批量替换代码中的字符串</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/">把所有CPU拉到最高</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/">科学上网</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/">常用暗码</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/flash-yue-jie/">Flash 越界</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/">黑屏分析</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gong-zuo-bi-ji/">工作笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/apache2-xia-zai-fu-wu-qi-pei-zhi/">apache2 下载服务器配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            框架设计
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/kuang-jia-she-ji/001-log-gong-ju-she-ji/">LOG工具设计</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            需求实现
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Fota功能的实现
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/">业务逻辑规划</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/bei-fen/">备份</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/shu-ju-ku-biao-de-jian-li/">数据库表的建立</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/databasesinfo/">DatabasesInfo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-BUG解析/Flash越界" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/12/13/bug-jie-xi/flash-yue-jie/">
+            <time datetime="2018-12-13T07:53:38.381Z" itemprop="datePublished">2018-12-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/BUG解析/Flash越界.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/BUG解析/Flash越界.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/BUG解析/Flash越界.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Flash越界
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><pre name="code" class="Shell">
+[  120.430581] sps:BAM 0x04044000 (va:0x00000000) enabled: ver:0x25, number of pipes:6
+[  122.454233] attempt to access beyond end of device
+[  122.454263] mmcblk0p38: rw=17, want=25695648, limit=25695181
+
+[   15.461154] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.b09 took 16ms
+[   15.505953] attempt to access beyond end of device
+[   15.505985] mmcblk0p38: rw=1, want=25710752, limit=25695181
+[   15.513746] init: Service 'qcom-c_main-sh' (pid 392) exited with statu
+
+[   20.550126] attempt to access beyond end of device
+[   20.550152] mmcblk0p38: rw=145, want=25710592, limit=25695181
+[   20.550487] f2fs_msg: 97 callbacks suppressed
+[   20.550506] F2FS-fs (mmcblk0p38): Issue discard(3213312, 3213312, 512) failed, ret: -5
+</pre>
+
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><ul>
+<li><p>可能引起问题的地方:</p>
+<ul>
+<li><font size="5"><a href="http://10.10.1.18:8080/#/c/8254/1/common/build/partition.xml" target="_blank" rel="noopener">http://10.10.1.18:8080/#/c/8254/1/common/build/partition.xml</a></font><pre><br><img src="amWiki/images/flash_overflow01.png" alt="flash_overflow01" title="flash_overflow01"></pre></li>
+</ul>
+</li>
+<li><p>排查方法</p>
+</li>
+</ul>
+<p>先恢复出问题手机的出厂设置，看能否开机,再往里面填写数据，看能否复现问题.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">e1=&gt;end: 其他问题</span><br><span class="line">e2=&gt;end: 分区问题</span><br><span class="line">e3=&gt;end: 其他问题</span><br><span class="line">op1=&gt;operation: 恢复出厂设置</span><br><span class="line">cond1=&gt;condition: 可以开机？</span><br><span class="line">op2=&gt;operation: 写入大量数据</span><br><span class="line">cond2=&gt;condition: 能否复现?</span><br><span class="line"></span><br><span class="line">st-&gt;op1-&gt;cond1-&gt;op2-&gt;cond2</span><br><span class="line">cond1(yes)-&gt;op2</span><br><span class="line">cond1(no)-&gt;e1</span><br><span class="line">cond2(yes)-&gt;e2</span><br><span class="line">cond2(no)-&gt;e3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">A--&gt;B;</span><br><span class="line">A--&gt;C;</span><br><span class="line">B--&gt;D;</span><br><span class="line">C--&gt;D;</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>分区表对比(1A54恢复出厂设置之前和之后的分区表,没有区别,但是1A53-4和1A54的分区表有比较大的区别,但貌似不影响测试结果)<br><img src="amWiki/images/compareOfPartition.png" alt="compareOfPartition" title="compareOfPartition"></li>
+</ul>
+<hr>
+<ul>
+<li>填充手机的方法:<br><br> <font size="5"> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dd if=/dev/zero of=1M.txt bs=1M count=1</span><br></pre></td></tr></table></figure>
+</font></li>
+</ul>
+<p><br><br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dd if=/dev/zero of=100M.txt bs=100M count=1</span><br></pre></td></tr></table></figure></p>
+<p><br><br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dd if=/dev/zero of=1000M.txt bs=1000M count=1</span><br></pre></td></tr></table></figure></p>
+<p><br><br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for i in $(seq 1 1000); do adb -s 1f0 push 1000M.txt /sdcard/test/1000M$i.txt;done</span><br></pre></td></tr></table></figure></p>
+<pre><code>&lt;/font&gt;
+</code></pre><hr>
+<ul>
+<li><p>LOG:<br> 正常的LOG应该是提示: Quota exceeded<br> 不正常的LOG提示:  I/O error</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/temp/0329/ioerror$ for i in $(seq 1 1000); do adb -s 1f0 push 1000M.txt /sdcard/test/1000M$i.txt;done</span><br><span class="line">1000M.txt: 1 file pushed. 8.7 MB/s (1048576000 bytes in 114.662s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.4 MB/s (1048576000 bytes in 119.634s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.3 MB/s (1048576000 bytes in 120.693s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.3 MB/s (1048576000 bytes in 121.093s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.3 MB/s (1048576000 bytes in 120.021s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.3 MB/s (1048576000 bytes in 120.392s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.3 MB/s (1048576000 bytes in 119.923s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.3 MB/s (1048576000 bytes in 120.184s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.3 MB/s (1048576000 bytes in 120.583s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.3 MB/s (1048576000 bytes in 120.764s)</span><br><span class="line">1000M.txt: 1 file pushed. 8.0 MB/s (1048576000 bytes in 124.633s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M12.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">1000M.txt: 0 files pushed. 8.6 MB/s (302673832 bytes in 33.740s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M13.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">1000M.txt: 0 files pushed. 9.7 MB/s (298021344 bytes in 29.364s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M14.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">1000M.txt: 0 files pushed. 9.2 MB/s (300970104 bytes in 31.357s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M15.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">1000M.txt: 0 files pushed. 8.2 MB/s (300445880 bytes in 35.017s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M16.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">1000M.txt: 0 files pushed. 9.8 MB/s (297300536 bytes in 29.071s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M17.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">1000M.txt: 0 files pushed. 9.7 MB/s (297890288 bytes in 29.415s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M18.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">1000M.txt: 0 files pushed. 9.7 MB/s (297235008 bytes in 29.371s)</span><br><span class="line"></span><br><span class="line">android@U-NSGWD180020:/data/workspace/log$ for i in $(seq 8 1000); do adb -s 1e4fd635 push 100M.txt /sdcard/test/100M$i.txt;done</span><br><span class="line">adb: error: failed to copy &apos;100M.txt&apos; to &apos;/sdcard/test/100M8.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">100M.txt: 0 files pushed. 13.9 MB/s (99405976 bytes in 6.836s)</span><br><span class="line">adb: error: failed to copy &apos;100M.txt&apos; to &apos;/sdcard/test/100M9.txt&apos;: remote write failed: Quota exceeded</span><br><span class="line">100M.txt: 0 files pushed. 17.8 MB/s (99799144 bytes in 5.354s)</span><br><span class="line">[ 18%] /sdcard/test/100M10.txt^C</span><br><span class="line"></span><br><span class="line">error</span><br><span class="line">1000M.txt: 0 files pushed. 245.3 MB/s (2752176 bytes in 0.011s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M153.txt&apos;: remote couldn&apos;t create file: I/O error</span><br><span class="line">1000M.txt: 0 files pushed. 247.7 MB/s (2752176 bytes in 0.011s)</span><br><span class="line">adb: error: failed to copy &apos;1000M.txt&apos; to &apos;/sdcard/test/1000M154.txt&apos;: remote couldn&apos;t create file: I/O error</span><br><span class="line">1000M.txt: 0 files pushed. 184.7 MB/s (2883232 bytes in 0.015s)</span><br></pre></td></tr></table></figure>
+<h1 id="问题点"><a href="#问题点" class="headerlink" title="问题点"></a>问题点</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/temp/0329/ioerror$ adb -s 1f0 shell df -a</span><br><span class="line">Filesystem            1K-blocks     Used Available Use% Mounted on</span><br><span class="line">rootfs                   439876     1668    438208   1% /</span><br><span class="line">tmpfs                    452888      688    452200   1% /dev</span><br><span class="line">devpts                        0        0         0   0% /dev/pts</span><br><span class="line">proc                          0        0         0   0% /proc</span><br><span class="line">sysfs                         0        0         0   0% /sys</span><br><span class="line">selinuxfs                     0        0         0   0% /sys/fs/selinux</span><br><span class="line">/dev/block/mmcblk0p12   1401624   701420    683820  51% /system</span><br><span class="line">/dev/block/mmcblk0p37    247872   146556     96196  61% /vendor</span><br><span class="line">none                          0        0         0   0% /acct</span><br><span class="line">debugfs                       0        0         0   0% /sys/kernel/debug</span><br><span class="line">tmpfs                    452888        0    452888   0% /mnt</span><br><span class="line">none                          0        0         0   0% /config</span><br><span class="line">none                          0        0         0   0% /dev/cpuctl</span><br><span class="line">/dev/block/mmcblk0p38  13356808 12082296    799376  94% /data</span><br><span class="line">/dev/block/mmcblk0p14    253920      148    248532   1% /cache</span><br><span class="line">/dev/block/mmcblk0p13     28144      236     27256   1% /persist</span><br><span class="line">/dev/block/mmcblk0p8      65488    56896      8592  87% /firmware</span><br><span class="line">tmpfs                    452888        0    452888   0% /storage</span><br><span class="line">tracefs                       0        0         0   0% /sys/kernel/debug/tracing</span><br><span class="line">adb                           0        0         0   0% /dev/usb-ffs/adb</span><br><span class="line">/data/media            13356808 12082296    799376  94% /storage/emulated</span><br><span class="line">android@NSGWD180021:/data/workspace/temp/0329/ioerror$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="恢复出厂设置之后"><a href="#恢复出厂设置之后" class="headerlink" title="恢复出厂设置之后:"></a>恢复出厂设置之后:</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/temp/0329/ioerror$ adb -s 1f0 shell df -a</span><br><span class="line">Filesystem            1K-blocks   Used Available Use% Mounted on</span><br><span class="line">rootfs                   439876   1668    438208   1% /</span><br><span class="line">tmpfs                    452888    688    452200   1% /dev</span><br><span class="line">devpts                        0      0         0   0% /dev/pts</span><br><span class="line">proc                          0      0         0   0% /proc</span><br><span class="line">sysfs                         0      0         0   0% /sys</span><br><span class="line">selinuxfs                     0      0         0   0% /sys/fs/selinux</span><br><span class="line">/dev/block/mmcblk0p12   1401624 701420    683820  51% /system</span><br><span class="line">/dev/block/mmcblk0p37    247872 146556     96196  61% /vendor</span><br><span class="line">none                          0      0         0   0% /acct</span><br><span class="line">debugfs                       0      0         0   0% /sys/kernel/debug</span><br><span class="line">tmpfs                    452888      0    452888   0% /mnt</span><br><span class="line">none                          0      0         0   0% /config</span><br><span class="line">none                          0      0         0   0% /dev/cpuctl</span><br><span class="line">/dev/block/mmcblk0p38  12845524 377124  12001456   4% /data</span><br><span class="line">/dev/block/mmcblk0p14    237536    392    229284   1% /cache</span><br><span class="line">/dev/block/mmcblk0p13     28144    232     27260   1% /persist</span><br><span class="line">/dev/block/mmcblk0p8      65488  56896      8592  87% /firmware</span><br><span class="line">tmpfs                    452888      0    452888   0% /storage</span><br><span class="line">tracefs                       0      0         0   0% /sys/kernel/debug/tracing</span><br><span class="line">adb                           0      0         0   0% /dev/usb-ffs/adb</span><br><span class="line">/data/media            12845524 377124  12001456   4% /storage/emulated</span><br></pre></td></tr></table></figure>
+<h1 id="修改方案"><a href="#修改方案" class="headerlink" title="修改方案"></a>修改方案</h1><ul>
+<li><p>修改 BoardConfig.mk 里面</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Modify by weibiao@hipad.com</span><br><span class="line">BOARD_USERDATAIMAGE_PARTITION_SIZE := 13155932160</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改后第一开机的df情况  </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/temp/0329/ioerror$ adb shell df -a</span><br><span class="line">Filesystem            1K-blocks   Used Available Use% Mounted on</span><br><span class="line">rootfs                   440392   1668    438724   1% /</span><br><span class="line">tmpfs                    453400    688    452712   1% /dev</span><br><span class="line">devpts                        0      0         0   0% /dev/pts</span><br><span class="line">proc                          0      0         0   0% /proc</span><br><span class="line">sysfs                         0      0         0   0% /sys</span><br><span class="line">selinuxfs                     0      0         0   0% /sys/fs/selinux</span><br><span class="line">/dev/block/dm-0         1399728 706292    677052  52% /system</span><br><span class="line">/dev/block/dm-1          243892 148496     90360  63% /vendor</span><br><span class="line">none                          0      0         0   0% /acct</span><br><span class="line">debugfs                       0      0         0   0% /sys/kernel/debug</span><br><span class="line">tmpfs                    453400      0    453400   0% /mnt</span><br><span class="line">none                          0      0         0   0% /config</span><br><span class="line">none                          0      0         0   0% /dev/cpuctl</span><br><span class="line">/dev/block/mmcblk0p38  12845540 382924  11995672   4% /data</span><br><span class="line">/dev/block/mmcblk0p14    253920    148    248532   1% /cache</span><br><span class="line">/dev/block/mmcblk0p13     28144    236     27256   1% /persist</span><br><span class="line">/dev/block/mmcblk0p8      65488  57024      8464  88% /firmware</span><br><span class="line">tmpfs                    453400      0    453400   0% /storage</span><br><span class="line">tracefs                       0      0         0   0% /sys/kernel/debug/tracing</span><br><span class="line">adb                           0      0         0   0% /dev/usb-ffs/adb</span><br><span class="line">/data/media            12845540 382924  11995672   4% /storage/emulated</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改后第一次开机未重启的,最大填充. 433148 字节未填充满.  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/temp/0329/ioerror$ adb -s 1f0 shell df -a</span><br><span class="line">Filesystem            1K-blocks     Used Available Use% Mounted on</span><br><span class="line">rootfs                   440392     1668    438724   1% /</span><br><span class="line">tmpfs                    453400      688    452712   1% /dev</span><br><span class="line">devpts                        0        0         0   0% /dev/pts</span><br><span class="line">proc                          0        0         0   0% /proc</span><br><span class="line">sysfs                         0        0         0   0% /sys</span><br><span class="line">selinuxfs                     0        0         0   0% /sys/fs/selinux</span><br><span class="line">/dev/block/dm-0         1399728   706292    677052  52% /system</span><br><span class="line">/dev/block/dm-1          243892   148496     90360  63% /vendor</span><br><span class="line">none                          0        0         0   0% /acct</span><br><span class="line">debugfs                       0        0         0   0% /sys/kernel/debug</span><br><span class="line">tmpfs                    453400        0    453400   0% /mnt</span><br><span class="line">none                          0        0         0   0% /config</span><br><span class="line">none                          0        0         0   0% /dev/cpuctl</span><br><span class="line">/dev/block/mmcblk0p38  12845540 11945448    433148  97% /data</span><br><span class="line">/dev/block/mmcblk0p14    253920      148    248532   1% /cache</span><br><span class="line">/dev/block/mmcblk0p13     28144      236     27256   1% /persist</span><br><span class="line">/dev/block/mmcblk0p8      65488    57024      8464  88% /firmware</span><br><span class="line">tmpfs                    453400        0    453400   0% /storage</span><br><span class="line">tracefs                       0        0         0   0% /sys/kernel/debug/tracing</span><br><span class="line">adb                           0        0         0   0% /dev/usb-ffs/adb</span><br><span class="line">/data/media            12845540 11945448    433148  97% /storage/emulated</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改后第一次开机重启之后,最大填充. 与上面的数据有出入  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/temp/0329/ioerror$ adb -s 1f0 shell df -a</span><br><span class="line">Filesystem            1K-blocks     Used Available Use% Mounted on</span><br><span class="line">rootfs                   440392     1668    438724   1% /</span><br><span class="line">tmpfs                    453400      688    452712   1% /dev</span><br><span class="line">devpts                        0        0         0   0% /dev/pts</span><br><span class="line">proc                          0        0         0   0% /proc</span><br><span class="line">sysfs                         0        0         0   0% /sys</span><br><span class="line">selinuxfs                     0        0         0   0% /sys/fs/selinux</span><br><span class="line">/dev/block/dm-0         1399728   706292    677052  52% /system</span><br><span class="line">/dev/block/dm-1          243892   148496     90360  63% /vendor</span><br><span class="line">none                          0        0         0   0% /acct</span><br><span class="line">debugfs                       0        0         0   0% /sys/kernel/debug</span><br><span class="line">tmpfs                    453400        0    453400   0% /mnt</span><br><span class="line">none                          0        0         0   0% /config</span><br><span class="line">none                          0        0         0   0% /dev/cpuctl</span><br><span class="line">/dev/block/mmcblk0p38  12845540 11945304    433292  97% /data</span><br><span class="line">/dev/block/mmcblk0p14    253920      148    248532   1% /cache</span><br><span class="line">/dev/block/mmcblk0p13     28144      236     27256   1% /persist</span><br><span class="line">/dev/block/mmcblk0p8      65488    57024      8464  88% /firmware</span><br><span class="line">tmpfs                    453400        0    453400   0% /storage</span><br><span class="line">tracefs                       0        0         0   0% /sys/kernel/debug/tracing</span><br><span class="line">adb                           0        0         0   0% /dev/usb-ffs/adb</span><br></pre></td></tr></table></figure>
+<ul>
+<li>恢复出厂设置之后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/temp/0329/ioerror$ adb -s 1f0 shell df -a</span><br><span class="line">Filesystem            1K-blocks   Used Available Use% Mounted on</span><br><span class="line">rootfs                   440392   1668    438724   1% /</span><br><span class="line">tmpfs                    453400    688    452712   1% /dev</span><br><span class="line">devpts                        0      0         0   0% /dev/pts</span><br><span class="line">proc                          0      0         0   0% /proc</span><br><span class="line">sysfs                         0      0         0   0% /sys</span><br><span class="line">selinuxfs                     0      0         0   0% /sys/fs/selinux</span><br><span class="line">/dev/block/dm-0         1399728 706292    677052  52% /system</span><br><span class="line">/dev/block/dm-1          243892 148496     90360  63% /vendor</span><br><span class="line">none                          0      0         0   0% /acct</span><br><span class="line">debugfs                       0      0         0   0% /sys/kernel/debug</span><br><span class="line">tmpfs                    453400      0    453400   0% /mnt</span><br><span class="line">none                          0      0         0   0% /config</span><br><span class="line">none                          0      0         0   0% /dev/cpuctl</span><br><span class="line">/dev/block/mmcblk0p38  12845524 381700  11996880   4% /data</span><br><span class="line">/dev/block/mmcblk0p14    237536    392    229284   1% /cache</span><br><span class="line">/dev/block/mmcblk0p13     28144    236     27256   1% /persist</span><br><span class="line">/dev/block/mmcblk0p8      65488  57024      8464  88% /firmware</span><br><span class="line">tmpfs                    453400      0    453400   0% /storage</span><br><span class="line">tracefs                       0      0         0   0% /sys/kernel/debug/tracing</span><br><span class="line">adb                           0      0         0   0% /dev/usb-ffs/adb</span><br><span class="line">/data/media            12845524 381700  11996880   4% /storage/emulated</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Fota升级之后无法开机
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">学习资料</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            彪彪 &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

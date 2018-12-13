@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Whatsapp 来电启动慢的问题 | 彪彪</title>
+    
+    
+        <meta name="keywords" content="Whatsapp 来电启动慢的问题">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="现象描述 手机按POWER_OFF之后,被Whatsapp呼入,唤醒手机的时间长达10-40秒,目前有疑问:  android@NSGWD180021:/data/workspace/temp/0329/whatsapp_wechat_log_videos/hipadLogs/logs/adb$ grep -ri &amp;apos;Displayed com.whatsapp\|setPowerMode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Whatsapp 来电启动慢的问题">
+<meta property="og:url" content="https://ifonly.me/2018/12/13/bug-jie-xi/whatsapp-lai-dian-qi-dong-man-de-wen-ti/index.html">
+<meta property="og:site_name" content="彪彪">
+<meta property="og:description" content="现象描述 手机按POWER_OFF之后,被Whatsapp呼入,唤醒手机的时间长达10-40秒,目前有疑问:  android@NSGWD180021:/data/workspace/temp/0329/whatsapp_wechat_log_videos/hipadLogs/logs/adb$ grep -ri &amp;apos;Displayed com.whatsapp\|setPowerMode">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-13T07:41:48.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Whatsapp 来电启动慢的问题">
+<meta name="twitter:description" content="现象描述 手机按POWER_OFF之后,被Whatsapp呼入,唤醒手机的时间长达10-40秒,目前有疑问:  android@NSGWD180021:/data/workspace/temp/0329/whatsapp_wechat_log_videos/hipadLogs/logs/adb$ grep -ri &amp;apos;Displayed com.whatsapp\|setPowerMode">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="彪彪" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">彪彪</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            BUG解析
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/bug-jie-xi/flash-yue-jie/">Flash越界</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">Fota升级之后无法开机</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">慢的问题2</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/">system_server内存泄漏</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/">长时间使用之后手机变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shan-ping-fen-xi/">闪屏分析</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/diag-kou-man-de-wen-ti/">Diag 口慢的问题</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shou-ji-fan-ying-ji-su-bian-man/">手机反应速度变慢</a></li>  <li class="file active"><a href="/2018/12/13/bug-jie-xi/whatsapp-lai-dian-qi-dong-man-de-wen-ti/">Whatsapp 来电启动慢的问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            React学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/">学习资料</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工作小贴士
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/android-mat-gong-ju-shi-yong/">Android_Mat_工具使用</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntuinstallshadowsocks/">ubuntu Shadowsocks 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/monkey-ce-shi-ming-ling-xing/">Monkey test command</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/">Git 下载代理设置</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/performance/">Performance</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/vts-ce-shi-bu-zou/">VTS测试说明</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gdb-diao-shi-shou-ce/">GDB调试手机工程</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejscluster/">解读Nodejs多核处理模块cluster</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/">Hello World</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/memory-debug/">Memory debug</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejs-an-zhuang/">nodejs 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/">qcn备份</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/trace32/">ubuntu trace32 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/">ubuntu Shadowsocks Error</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/binder-xin-xi/">binder 信息</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/">ubuntu Mysql 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/">Vtiger 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">批量替换代码中的字符串</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/">把所有CPU拉到最高</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/">科学上网</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/">常用暗码</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/flash-yue-jie/">Flash 越界</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/">黑屏分析</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gong-zuo-bi-ji/">工作笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/apache2-xia-zai-fu-wu-qi-pei-zhi/">apache2 下载服务器配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            框架设计
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/kuang-jia-she-ji/001-log-gong-ju-she-ji/">LOG工具设计</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            需求实现
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Fota功能的实现
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/">业务逻辑规划</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/bei-fen/">备份</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/shu-ju-ku-biao-de-jian-li/">数据库表的建立</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/databasesinfo/">DatabasesInfo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-BUG解析/Whatsapp来电启动慢的问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/12/13/bug-jie-xi/whatsapp-lai-dian-qi-dong-man-de-wen-ti/">
+            <time datetime="2018-12-13T07:54:25.221Z" itemprop="datePublished">2018-12-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/BUG解析/Whatsapp来电启动慢的问题.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/BUG解析/Whatsapp来电启动慢的问题.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/BUG解析/Whatsapp来电启动慢的问题.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Whatsapp 来电启动慢的问题
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="现象描述"><a href="#现象描述" class="headerlink" title="现象描述"></a>现象描述</h1><ul>
+<li>手机按POWER_OFF之后,被Whatsapp呼入,唤醒手机的时间长达10-40秒,目前有疑问:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/temp/0329/whatsapp_wechat_log_videos/hipadLogs/logs/adb$ grep -ri &apos;Displayed com.whatsapp\|setPowerMode\|Set power mode=\|setTransactionState timed out waiting for previous animation frame&apos; main_log_20180329_100741.log</span><br><span class="line">03-29 10:06:35.996 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:06:35.997 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:06:36.388 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:07:08.331 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:07:08.331 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:07:08.660 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:07:42.621 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:07:42.622 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:07:43.008 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:07:43.013 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 392ms</span><br><span class="line">03-29 10:07:49.282 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:07:49.282 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:07:49.487 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:07:49.494 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 211ms</span><br><span class="line">03-29 10:07:49.711 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:07:49.713 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:07:50.088 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:07:50.088 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 377ms</span><br><span class="line">03-29 10:07:50.256 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s390ms (total +1s400ms)</span><br><span class="line">03-29 10:07:50.308 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:07:50.308 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:07:50.656 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:07:50.657 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 349ms</span><br><span class="line">03-29 10:07:56.754 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:07:56.760 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:07:57.144 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:07:57.144 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 393ms</span><br><span class="line">03-29 10:08:01.174 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:08:01.174 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:08:01.373 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:08:01.374 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 199ms</span><br><span class="line">03-29 10:08:01.400 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:08:01.483 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:08:01.848 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:08:01.849 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 448ms</span><br><span class="line">03-29 10:08:02.151 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s286ms (total +1s297ms)</span><br><span class="line">03-29 10:08:02.200 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:08:02.200 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:08:02.548 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:08:02.554 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 353ms</span><br><span class="line">03-29 10:08:08.811 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:08:08.820 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:08:09.202 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:08:09.206 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 395ms</span><br><span class="line">03-29 10:08:12.920 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:08:12.920 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:08:13.120 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:08:13.122 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 203ms</span><br><span class="line">03-29 10:08:13.283 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:08:13.286 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:08:13.668 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:08:13.668 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 385ms</span><br><span class="line">03-29 10:08:13.719 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s112ms (total +1s125ms)</span><br><span class="line">03-29 10:08:13.800 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:08:13.800 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:08:14.229 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:08:14.231 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 431ms</span><br><span class="line">03-29 10:08:33.799 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:08:33.807 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:08:34.219 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:08:34.220 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 428ms</span><br><span class="line">03-29 10:09:30.210 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:09:30.210 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:09:30.420 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:09:30.423 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 213ms</span><br><span class="line">03-29 10:09:31.580 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:09:31.583 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:09:32.004 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:09:32.006 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 425ms</span><br><span class="line">03-29 10:09:32.051 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s687ms (total +1s707ms)</span><br><span class="line">03-29 10:09:32.133 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:09:32.133 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:09:32.528 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:09:32.529 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 396ms</span><br><span class="line">03-29 10:09:39.985 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:09:39.985 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:09:40.407 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:09:40.408 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 423ms</span><br><span class="line">03-29 10:09:46.933 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:09:46.933 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:09:47.138 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:09:47.141 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 210ms</span><br><span class="line">03-29 10:09:47.253 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:09:47.257 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:09:47.623 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:09:47.624 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 384ms</span><br><span class="line">03-29 10:09:48.046 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s495ms (total +1s507ms)</span><br><span class="line">03-29 10:09:48.113 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:09:48.113 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:09:48.482 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:09:48.491 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 378ms</span><br><span class="line">03-29 10:09:58.077 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:09:58.084 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:09:58.463 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:09:58.463 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 387ms</span><br><span class="line">03-29 10:10:04.380 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +700ms (total +713ms)</span><br><span class="line">03-29 10:10:04.445 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:10:04.445 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:10:04.786 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:10:04.786 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 342ms</span><br><span class="line">03-29 10:11:32.899 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:11:32.909 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:11:33.286 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:11:33.290 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 391ms</span><br><span class="line">03-29 10:11:46.826 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:11:46.826 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:11:47.024 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:11:47.025 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 199ms</span><br><span class="line">03-29 10:11:47.140 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:11:47.141 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:11:47.508 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:11:47.509 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 418ms</span><br><span class="line">03-29 10:11:47.841 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s353ms (total +1s365ms)</span><br><span class="line">03-29 10:11:47.912 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:11:47.912 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:11:48.243 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:11:48.243 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 332ms</span><br><span class="line">03-29 10:11:54.559 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:11:54.561 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:11:54.944 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:11:54.947 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 393ms</span><br><span class="line">03-29 10:12:00.247 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:00.248 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:12:00.447 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:12:00.448 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 201ms</span><br><span class="line">03-29 10:12:00.604 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:00.607 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:12:00.989 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:12:00.989 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 389ms</span><br><span class="line">03-29 10:12:01.057 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s110ms (total +1s123ms)</span><br><span class="line">03-29 10:12:01.120 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:01.120 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:12:01.459 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:12:01.461 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 342ms</span><br><span class="line">03-29 10:12:07.794 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:07.799 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:12:08.182 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:12:08.183 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 389ms</span><br><span class="line">03-29 10:12:11.794 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:11.794 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:12:11.995 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:12:11.996 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 202ms</span><br><span class="line">03-29 10:12:12.120 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:12.121 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:12:12.497 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:12:12.498 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 434ms</span><br><span class="line">03-29 10:12:12.578 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s79ms (total +1s91ms)</span><br><span class="line">03-29 10:12:12.650 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:12.650 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:12:12.991 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:12:12.992 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 342ms</span><br><span class="line">03-29 10:12:19.242 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:19.242 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:12:19.625 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:12:19.627 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 392ms</span><br><span class="line">03-29 10:12:23.276 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +651ms (total +661ms)</span><br><span class="line">03-29 10:12:23.354 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:23.354 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:12:23.710 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:12:23.710 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 356ms</span><br><span class="line">03-29 10:12:31.077 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:31.086 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:12:31.493 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:12:31.498 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 422ms</span><br><span class="line">03-29 10:12:35.282 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:35.282 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:12:35.480 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:12:35.482 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 200ms</span><br><span class="line">03-29 10:12:35.628 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:35.637 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:12:36.014 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:12:36.014 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 386ms</span><br><span class="line">03-29 10:12:36.081 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +1s119ms (total +1s135ms)</span><br><span class="line">03-29 10:12:36.168 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:12:36.168 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:12:36.495 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:12:36.497 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 329ms</span><br><span class="line">03-29 10:13:13.554 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:13:13.569 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:13:13.947 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:13:13.952 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 399ms</span><br><span class="line">03-29 10:13:29.979 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:13:29.979 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:13:30.179 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:13:30.187 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 207ms</span><br><span class="line">03-29 10:13:30.312 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:13:30.315 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:13:35.332 W/SurfaceFlinger(  307): setTransactionState timed out waiting for previous animation frame</span><br><span class="line">03-29 10:13:39.744 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:13:39.746 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 9437ms</span><br><span class="line">03-29 10:13:39.882 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +10s199ms (total +45s962ms)</span><br><span class="line">03-29 10:13:39.962 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:13:39.962 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:13:40.284 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:13:40.285 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 323ms</span><br><span class="line">03-29 10:13:47.661 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:13:47.662 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:13:48.075 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:13:48.079 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 430ms</span><br><span class="line">03-29 10:14:02.664 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:02.664 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:14:02.870 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:14:02.871 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 207ms</span><br><span class="line">03-29 10:14:03.055 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:03.056 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:14:08.221 W/SurfaceFlinger(  307): setTransactionState timed out waiting for previous animation frame</span><br><span class="line">03-29 10:14:12.477 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:14:12.478 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 9423ms</span><br><span class="line">03-29 10:14:12.571 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +10s214ms (total +10s221ms)</span><br><span class="line">03-29 10:14:12.630 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:12.630 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:14:12.960 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:14:12.961 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 330ms</span><br><span class="line">03-29 10:14:27.596 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:27.610 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:14:28.000 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:14:28.000 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 404ms</span><br><span class="line">03-29 10:14:32.253 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:32.253 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:14:32.451 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:14:32.457 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 204ms</span><br><span class="line">03-29 10:14:32.577 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:32.577 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:14:37.500 W/SurfaceFlinger(  307): setTransactionState timed out waiting for previous animation frame</span><br><span class="line">03-29 10:14:41.984 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:14:41.987 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 9463ms</span><br><span class="line">03-29 10:14:42.113 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +10s248ms (total +10s272ms)</span><br><span class="line">03-29 10:14:42.166 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:42.166 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:14:42.509 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:14:42.511 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 345ms</span><br><span class="line">03-29 10:14:49.404 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:49.413 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:14:49.788 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:14:49.791 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 387ms</span><br><span class="line">03-29 10:14:53.201 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:53.201 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:14:53.403 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:14:53.406 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 205ms</span><br><span class="line">03-29 10:14:53.517 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:14:53.517 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:14:58.453 W/SurfaceFlinger(  307): setTransactionState timed out waiting for previous animation frame</span><br><span class="line">03-29 10:15:03.002 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:15:03.019 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 9544ms</span><br><span class="line">03-29 10:15:03.109 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +10s211ms (total +10s222ms)</span><br><span class="line">03-29 10:15:03.182 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:15:03.182 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:15:03.525 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:15:03.526 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 344ms</span><br><span class="line">03-29 10:15:12.194 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:15:12.195 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:15:12.586 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:15:12.591 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 397ms</span><br><span class="line">03-29 10:15:25.813 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:15:25.813 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:15:26.015 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:15:26.017 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 203ms</span><br><span class="line">03-29 10:15:26.137 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:15:26.141 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:15:31.126 W/SurfaceFlinger(  307): setTransactionState timed out waiting for previous animation frame</span><br><span class="line">03-29 10:15:35.554 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:15:35.555 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 9458ms</span><br><span class="line">03-29 10:15:35.634 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +10s121ms (total +10s135ms)</span><br><span class="line">03-29 10:15:35.734 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:15:35.734 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:15:36.073 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:15:36.073 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 343ms</span><br><span class="line">03-29 10:15:44.412 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:15:44.416 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:15:44.797 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:15:44.800 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 402ms</span><br><span class="line">03-29 10:15:59.235 D/SurfaceFlinger(  307): Set power mode=1, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:15:59.235 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 1 on display: 0</span><br><span class="line">03-29 10:15:59.435 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 1 on display 0</span><br><span class="line">03-29 10:15:59.436 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 201ms</span><br><span class="line">03-29 10:15:59.557 D/SurfaceFlinger(  307): Set power mode=0, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:15:59.557 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 0 on display: 0</span><br><span class="line">03-29 10:16:04.485 W/SurfaceFlinger(  307): setTransactionState timed out waiting for previous animation frame</span><br><span class="line">03-29 10:16:08.985 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 0 on display 0</span><br><span class="line">03-29 10:16:08.987 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 9478ms</span><br><span class="line">03-29 10:16:09.346 I/ActivityManager( 2374): Displayed com.whatsapp/.voipcalling.VoipActivityV2: +10s422ms (total +10s429ms)</span><br><span class="line">03-29 10:16:09.403 D/SurfaceFlinger(  307): Set power mode=2, type=0 flinger=0xacaa8000</span><br><span class="line">03-29 10:16:09.403 D/qdhwcomposer(  307): hwc_setPowerMode: Setting mode 2 on display: 0</span><br><span class="line">03-29 10:16:09.770 D/qdhwcomposer(  307): hwc_setPowerMode: Done setting mode 2 on display 0</span><br><span class="line">03-29 10:16:09.772 D/SurfaceControl( 2374): Excessive delay in setPowerMode(): 369ms</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    业务逻辑规划
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/12/13/bug-jie-xi/shou-ji-fan-ying-ji-su-bian-man/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">手机反应速度变慢</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            彪彪 &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

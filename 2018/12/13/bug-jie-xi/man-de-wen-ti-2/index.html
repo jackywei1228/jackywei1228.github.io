@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>慢的问题2 | 彪彪</title>
+    
+    
+        <meta name="keywords" content="慢的问题2">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="01-03 03:16:38.955   842  2369 I am_new_intent: [0,252403316,63,com.android.launcher3/.Launcher,android.intent.action.MAIN,NULL,NULL,268435712]01-03 03:16:39.025   842  2369 I am_focused_stack: [0,0,1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="慢的问题2">
+<meta property="og:url" content="https://ifonly.me/2018/12/13/bug-jie-xi/man-de-wen-ti-2/index.html">
+<meta property="og:site_name" content="彪彪">
+<meta property="og:description" content="01-03 03:16:38.955   842  2369 I am_new_intent: [0,252403316,63,com.android.launcher3/.Launcher,android.intent.action.MAIN,NULL,NULL,268435712]01-03 03:16:39.025   842  2369 I am_focused_stack: [0,0,1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-13T07:52:23.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="慢的问题2">
+<meta name="twitter:description" content="01-03 03:16:38.955   842  2369 I am_new_intent: [0,252403316,63,com.android.launcher3/.Launcher,android.intent.action.MAIN,NULL,NULL,268435712]01-03 03:16:39.025   842  2369 I am_focused_stack: [0,0,1">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="彪彪" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">彪彪</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            BUG解析
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/bug-jie-xi/flash-yue-jie/">Flash越界</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">Fota升级之后无法开机</a></li>  <li class="file active"><a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">慢的问题2</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/">system_server内存泄漏</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/">长时间使用之后手机变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shan-ping-fen-xi/">闪屏分析</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/diag-kou-man-de-wen-ti/">Diag 口慢的问题</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shou-ji-fan-ying-ji-su-bian-man/">手机反应速度变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/whatsapp-lai-dian-qi-dong-man-de-wen-ti/">Whatsapp 来电启动慢的问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            React学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/">学习资料</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工作小贴士
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/android-mat-gong-ju-shi-yong/">Android_Mat_工具使用</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntuinstallshadowsocks/">ubuntu Shadowsocks 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/monkey-ce-shi-ming-ling-xing/">Monkey test command</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/">Git 下载代理设置</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/performance/">Performance</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/vts-ce-shi-bu-zou/">VTS测试说明</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gdb-diao-shi-shou-ce/">GDB调试手机工程</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejscluster/">解读Nodejs多核处理模块cluster</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/">Hello World</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/memory-debug/">Memory debug</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejs-an-zhuang/">nodejs 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/">qcn备份</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/trace32/">ubuntu trace32 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/">ubuntu Shadowsocks Error</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/binder-xin-xi/">binder 信息</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/">ubuntu Mysql 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/">Vtiger 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">批量替换代码中的字符串</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/">把所有CPU拉到最高</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/">科学上网</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/">常用暗码</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/flash-yue-jie/">Flash 越界</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/">黑屏分析</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gong-zuo-bi-ji/">工作笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/apache2-xia-zai-fu-wu-qi-pei-zhi/">apache2 下载服务器配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            框架设计
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/kuang-jia-she-ji/001-log-gong-ju-she-ji/">LOG工具设计</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            需求实现
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Fota功能的实现
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/">业务逻辑规划</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/bei-fen/">备份</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/shu-ju-ku-biao-de-jian-li/">数据库表的建立</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/databasesinfo/">DatabasesInfo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-BUG解析/慢的问题2" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">
+            <time datetime="2018-12-13T07:53:48.693Z" itemprop="datePublished">2018-12-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/BUG解析/慢的问题2.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/BUG解析/慢的问题2.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/BUG解析/慢的问题2.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            慢的问题2
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>01-03 03:16:38.955   842  2369 I am_new_intent: [0,252403316,63,com.android.launcher3/.Launcher,android.intent.action.MAIN,NULL,NULL,268435712]<br>01-03 03:16:39.025   842  2369 I am_focused_stack: [0,0,1,bringingFoundTaskToFront]<br>01-03 03:16:39.113   842  2369 I am_pause_activity: [0,14608435,com.android.settings/.SubSettings]<br>01-03 03:16:39.280   842  2369 I am_set_resumed_activity: [0,com.android.launcher3/.Launcher,resumeTopActivityInnerLocked]<br>01-03 03:16:39.370   842  2369 I am_uid_active: 10025<br>01-03 03:16:40.337   842  2369 I am_resume_activity: [0,252403316,63,com.android.launcher3/.Launcher]<br>01-03 03:16:57.203   842  2369 I am_task_to_front: [0,63]<br>01-03 03:16:58.674   842   951 I am_stop_activity: [0,14608435,com.android.settings/.SubSettings]<br>01-03 03:16:58.739 12737 12737 I am_on_paused_called: [0,com.android.settings.SubSettings,handlePauseActivity]<br>01-03 03:16:58.751   842  5734 I am_failed_to_pause: [0,14608435,com.android.settings/.SubSettings,(none)]<br>01-03 03:17:11.507 12737 12737 I am_on_stop_called: [0,com.android.settings.SubSettings,handleStopActivity]<br>01-03 03:17:11.541  3973  3973 I am_on_resume_called: [0,com.android.launcher3.Launcher,RESUME_ACTIVITY]<br>01-03 03:17:12.350   842   950 I am_pss  : [3973,10025,com.android.launcher3,26974208,16146432,8455168]<br>01-03 03:17:15.915   842   950 I am_pss  : [18493,10031,com.google.android.setupwizard,6391808,3411968,1949696]<br>01-03 03:17:16.057   842   950 I am_pss  : [8314,10017,com.google.android.apps.nbu.files,38444032,20512768,13848576]</p>
+<p>01-01 18:18:20.729   842  4423 W jackywei: ======== removeTask ========<br>01-01 18:18:20.729   842  4423 W jackywei: java.lang.Throwable<br>01-01 18:18:20.729   842  4423 W jackywei:     at com.android.server.am.ActivityStack.removeTask(ActivityStack.java:5221)<br>01-01 18:18:20.729   842  4423 W jackywei:     at com.android.server.am.ActivityStack.removeActivityFromHistoryLocked(ActivityStack.java:4217)<br>01-01 18:18:20.729   842  4423 W jackywei:     at com.android.server.am.ActivityStack.activityDestroyedLocked(ActivityStack.java:4446)<br>01-01 18:18:20.729   842  4423 W jackywei:     at com.android.server.am.ActivityManagerService.activityDestroyed(ActivityManagerService.java:7646)<br>01-01 18:18:20.729   842  4423 W jackywei:     at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:960)<br>01-01 18:18:20.729   842  4423 W jackywei:     at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2978)<br>01-01 18:18:20.729   842  4423 W jackywei:     at android.os.Binder.execTransact(Binder.java:697)</p>
+<p>01-01 18:19:30.787   842  4423 W jackywei: ======== removeTask ========<br>01-01 18:19:30.789   842  4423 W jackywei: java.lang.Throwable<br>01-01 18:19:30.789   842  4423 W jackywei:     at com.android.server.am.ActivityStack.removeTask(ActivityStack.java:5221)<br>01-01 18:19:30.789   842  4423 W jackywei:     at com.android.server.am.ActivityStack.removeActivityFromHistoryLocked(ActivityStack.java:4217)<br>01-01 18:19:30.789   842  4423 W jackywei:     at com.android.server.am.ActivityStack.removeHistoryRecordsForAppLocked(ActivityStack.java:4554)<br>01-01 18:19:30.789   842  4423 W jackywei:     at com.android.server.am.ActivityStack.handleAppDiedLocked(ActivityStack.java:5105)<br>01-01 18:19:30.789   842  4423 W jackywei:     at com.android.server.am.ActivityStackSupervisor.handleAppDiedLocked(ActivityStackSupervisor.java:2008)<br>01-01 18:19:30.789   842  4423 W jackywei:     at com.android.server.am.ActivityManagerService.handleAppDiedLocked(ActivityManagerService.java:5414)<br>01-01 18:19:30.789   842  4423 W jackywei:     at com.android.server.am.ActivityManagerService.appDiedLocked(ActivityManagerService.java:5595)<br>01-01 18:19:30.789   842  4423 W jackywei:     at com.android.server.am.ActivityManagerService$AppDeathRecipient.binderDied(ActivityManagerService.java:1642)<br>01-01 18:19:30.789   842  4423 W jackywei:     at android.os.BinderProxy.sendDeathNotice(Binder.java:844)</p>
+<p>01-01 18:46:11.088   842  4423 W jackywei: ======== createTaskRecord ========<br>01-01 18:46:11.088   842  2236 V WindowManager: Window{b40586f u0 com.google.android.apps.photos/com.google.android.apps.photos.pager.HostPhotoPagerActivity}: wasAnimating=false, nowAnimating=false<br>01-01 18:46:11.089   842  4423 W jackywei: java.lang.Throwable<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityStack.createTaskRecord(ActivityStack.java:5280)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityStarter.setTaskFromReuseOrCreateNewTask(ActivityStarter.java:1799)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityStarter.startActivityUnchecked(ActivityStarter.java:1188)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityStarter.startActivity(ActivityStarter.java:1000)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityStarter.startActivity(ActivityStarter.java:577)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityStarter.startActivityLocked(ActivityStarter.java:283)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityStarter.startActivityMayWait(ActivityStarter.java:822)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityManagerService.startActivityAsUser(ActivityManagerService.java:4623)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityManagerService.startActivity(ActivityManagerService.java:4610)<br>01-01 18:46:11.089   842  4423 W jackywei:     at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:121)<br>01-01 18:46:11.089   842  4423 W jackywei:     at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2978)<br>01-01 18:46:11.089   842  4423 W jackywei:     at android.os.Binder.execTransact(Binder.java:697)</p>
+<p>7594    @Override<br>7595    public final void activityResumed(IBinder token) {<br>7596        final long origId = Binder.clearCallingIdentity();<br>7597        synchronized(this) {<br>7598            ActivityRecord.activityResumedLocked(token);<br>7599            mWindowManager.notifyAppResumedFinished(token);<br>7600        }<br>7601        Binder.restoreCallingIdentity(origId);<br>7602    }</p>
+<p>1720    static void activityResumedLocked(IBinder token) {<br>1721        final ActivityRecord r = ActivityRecord.forTokenLocked(token);<br>1722        if (DEBUG_SAVED_STATE) Slog.i(TAG_STATES, “Resumed activity; dropping state of: “ + r);<br>1723        if (r != null) {<br>1724            r.icicle = null;<br>1725            r.haveState = false;<br>1726        }<br>1727    }<br>1728</p>
+<p>只有 activityResumedLocked 才会导致 r.haveState 置成false.</p>
+<p>而haveState存在的话,就不会remove = true;</p>
+<p>也就不会<br>                    if (remove) {<br>                        removeActivityFromHistoryLocked(r, “appDied”);<br>                    }</p>
+<p>827    ActivityRecord(ActivityManagerService _service, ProcessRecord _caller, int _launchedFromPid,<br>828            int _launchedFromUid, String _launchedFromPackage, Intent _intent, String _resolvedType,<br>829            ActivityInfo aInfo, Configuration _configuration,<br>830            ActivityRecord _resultTo, String _resultWho, int _reqCode,<br>831            boolean _componentSpecified, boolean _rootVoiceInteraction,<br>832            ActivityStackSupervisor supervisor, ActivityOptions options,<br>833            ActivityRecord sourceRecord) {<br>834        service = _service;<br>835        appToken = new Token(this);<br>836        info = aInfo;<br>837        launchedFromPid = _launchedFromPid;<br>838        launchedFromUid = _launchedFromUid;<br>839        launchedFromPackage = _launchedFromPackage;<br>840        userId = UserHandle.getUserId(aInfo.applicationInfo.uid);<br>841        intent = _intent;<br>842        shortComponentName = _intent.getComponent().flattenToShortString();<br>843        resolvedType = _resolvedType;<br>844        componentSpecified = _componentSpecified;<br>845        rootVoiceInteraction = _rootVoiceInteraction;<br>846        mLastReportedConfiguration = new MergedConfiguration(_configuration);<br>847        resultTo = _resultTo;<br>848        resultWho = _resultWho;<br>849        requestCode = _reqCode;<br>850        state = INITIALIZING;<br>851        frontOfTask = false;<br>852        launchFailed = false;<br>853        stopped = false;<br>854        delayedResume = false;<br>855        finishing = false;<br>856        deferRelaunchUntilPaused = false;<br>857        keysPaused = false;<br>858        inHistory = false;<br>859        visible = false;<br>860        nowVisible = false;<br>861        idle = false;<br>862        hasBeenLaunched = false;<br>863        mStackSupervisor = supervisor;<br>864<br>865        mRotationAnimationHint = aInfo.rotationAnimation;<br>866<br>867        if (options != null) {<br>868            pendingOptions = options;<br>869            mLaunchTaskBehind = pendingOptions.getLaunchTaskBehind();<br>870<br>871            final int rotationAnimation = pendingOptions.getRotationAnimationHint();<br>872            // Only override manifest supplied option if set.<br>873            if (rotationAnimation &gt;= 0) {<br>874                mRotationAnimationHint = rotationAnimation;<br>875            }<br>876            PendingIntent usageReport = pendingOptions.getUsageTimeReport();<br>877            if (usageReport != null) {<br>878                appTimeTracker = new AppTimeTracker(usageReport);<br>879            }<br>880        }<br>881<br>882        // This starts out true, since the initial state of an activity is that we have everything,<br>883        // and we shouldn’t never consider it lacking in state to be removed if it dies.<br>884        haveState = true; //这里就直接会置为true<br>885<br>886        // If the class name in the intent doesn’t match that of the target, this is<br>887        // probably an alias. We have to create a new ComponentName object to keep track<br>888        // of the real activity name, so that FLAG_ACTIVITY_CLEAR_TOP is handled properly.</p>
+<pre><code>void notifyTaskPersisterLocked(TaskRecord task, boolean flush) {
+    final ActivityStack stack = task != null ? task.getStack() : null;
+    if (stack != null &amp;&amp; stack.isHomeOrRecentsStack()) {
+        // Never persist the home or recents stack.
+        return;
+    }
+    syncPersistentTaskIdsLocked();
+    mTaskPersister.wakeup(task, flush);
+}
+</code></pre><p>for i in {1..10000};do adb shell input tap 201 109 &amp;&amp; adb shell input keyevent 3 &amp;&amp; adb shell input tap 201 109 &amp;&amp; adb shell input tap 432 508 &amp;&amp; adb shell input tap 406 812 &amp;&amp; adb shell input tap 31 80 &amp;&amp; adb shell input keyevent 3;done</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    system_server内存泄漏
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Fota升级之后无法开机</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            彪彪 &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

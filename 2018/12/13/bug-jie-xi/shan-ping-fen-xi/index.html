@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>闪屏分析 | 彪彪</title>
+    
+    
+        <meta name="keywords" content="闪屏分析">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="闪屏和不闪屏的区别闪屏有两个 animation 而不闪屏的只有一个(设置同时设置lock screen和home screen的background image) 不闪屏的:01-02 02:39:03.159   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.androi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闪屏分析">
+<meta property="og:url" content="https://ifonly.me/2018/12/13/bug-jie-xi/shan-ping-fen-xi/index.html">
+<meta property="og:site_name" content="彪彪">
+<meta property="og:description" content="闪屏和不闪屏的区别闪屏有两个 animation 而不闪屏的只有一个(设置同时设置lock screen和home screen的background image) 不闪屏的:01-02 02:39:03.159   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.androi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-13T07:53:12.405Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="闪屏分析">
+<meta name="twitter:description" content="闪屏和不闪屏的区别闪屏有两个 animation 而不闪屏的只有一个(设置同时设置lock screen和home screen的background image) 不闪屏的:01-02 02:39:03.159   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.androi">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="彪彪" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">彪彪</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            BUG解析
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/bug-jie-xi/flash-yue-jie/">Flash越界</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">Fota升级之后无法开机</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">慢的问题2</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/">system_server内存泄漏</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/">长时间使用之后手机变慢</a></li>  <li class="file active"><a href="/2018/12/13/bug-jie-xi/shan-ping-fen-xi/">闪屏分析</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/diag-kou-man-de-wen-ti/">Diag 口慢的问题</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/shou-ji-fan-ying-ji-su-bian-man/">手机反应速度变慢</a></li>  <li class="file"><a href="/2018/12/13/bug-jie-xi/whatsapp-lai-dian-qi-dong-man-de-wen-ti/">Whatsapp 来电启动慢的问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            React学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/">学习资料</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工作小贴士
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/android-mat-gong-ju-shi-yong/">Android_Mat_工具使用</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntuinstallshadowsocks/">ubuntu Shadowsocks 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/monkey-ce-shi-ming-ling-xing/">Monkey test command</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/">Git 下载代理设置</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/performance/">Performance</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/vts-ce-shi-bu-zou/">VTS测试说明</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gdb-diao-shi-shou-ce/">GDB调试手机工程</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejscluster/">解读Nodejs多核处理模块cluster</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/">Hello World</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/memory-debug/">Memory debug</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejs-an-zhuang/">nodejs 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/">qcn备份</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/trace32/">ubuntu trace32 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/">ubuntu Shadowsocks Error</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/binder-xin-xi/">binder 信息</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/">ubuntu Mysql 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/">Vtiger 安装</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">批量替换代码中的字符串</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/">把所有CPU拉到最高</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/">科学上网</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/">常用暗码</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/flash-yue-jie/">Flash 越界</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/">黑屏分析</a></li>  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/gong-zuo-bi-ji/">工作笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            杂记
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/apache2-xia-zai-fu-wu-qi-pei-zhi/">apache2 下载服务器配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            框架设计
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/kuang-jia-she-ji/001-log-gong-ju-she-ji/">LOG工具设计</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            需求实现
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Fota功能的实现
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/">业务逻辑规划</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/bei-fen/">备份</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/shu-ju-ku-biao-de-jian-li/">数据库表的建立</a></li>  <li class="file"><a href="/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/databasesinfo/">DatabasesInfo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-BUG解析/闪屏分析" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/12/13/bug-jie-xi/shan-ping-fen-xi/">
+            <time datetime="2018-12-13T07:54:06.189Z" itemprop="datePublished">2018-12-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/BUG解析/闪屏分析.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/BUG解析/闪屏分析.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/BUG解析/闪屏分析.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            闪屏分析
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="闪屏和不闪屏的区别"><a href="#闪屏和不闪屏的区别" class="headerlink" title="闪屏和不闪屏的区别"></a>闪屏和不闪屏的区别</h2><p>闪屏有两个 animation</p>
+<p>而不闪屏的只有一个(设置同时设置lock screen和home screen的background image)</p>
+<p>不闪屏的:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">01-02 02:39:03.159   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:39:03.173   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,247.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:39:03.229   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,484.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:39:03.242   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,577.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:39:03.254   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,669.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:39:03.268   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,771.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:39:03.285   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,879.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:39:03.302   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,939.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">android@NSGWD180021:/data/workspace/issueAnalysis/systemui/0614$ </span><br><span class="line">android@NSGWD180021:/data/workspace/issueAnalysis/systemui/0614$ </span><br><span class="line">android@NSGWD180021:/data/workspace/issueAnalysis/systemui/0614$ </span><br><span class="line">android@NSGWD180021:/data/workspace/issueAnalysis/systemui/0614$ </span><br><span class="line">android@NSGWD180021:/data/workspace/issueAnalysis/systemui/0614$</span><br></pre></td></tr></table></figure></p>
+<p>闪屏的:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">android@NSGWD180021:/data/workspace/issueAnalysis/systemui/0614$ grep -i &apos;SURFACE POS&apos; main003_bad.log </span><br><span class="line">01-02 02:16:53.380   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 02:16:53.388   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:16:53.400   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,322.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 02:16:53.408   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,322.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:16:53.470   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,616.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 02:16:53.475   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,616.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:16:53.539   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,777.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 02:16:53.543   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,777.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:16:53.617   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,939.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 02:16:53.622   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,939.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 02:16:53.727   752  3074 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,0.0): com.android.systemui.ImageWallpaper</span><br></pre></td></tr></table></figure></p>
+<h1 id="这里调用动画"><a href="#这里调用动画" class="headerlink" title="这里调用动画"></a>这里调用动画</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">01-02 03:41:37.199   745  3054 W jackywei: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:633)</span><br><span class="line">01-02 03:41:37.199   745  3054 W jackywei: 	at com.android.server.wm.DisplayContent.prepareWindowSurfaces(DisplayContent.java:2637)</span><br><span class="line">01-02 03:41:37.199   745  3054 W jackywei: 	at com.android.server.wm.WindowAnimator.animate(WindowAnimator.java:208)</span><br></pre></td></tr></table></figure>
+<h1 id="差异LOG-闪屏的-SURFACE-POS-被执行了两次"><a href="#差异LOG-闪屏的-SURFACE-POS-被执行了两次" class="headerlink" title="差异LOG: 闪屏的 SURFACE POS 被执行了两次"></a>差异LOG: 闪屏的 SURFACE POS 被执行了两次</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">01-02 08:12:43.067   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.068   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 08:12:43.070   932  3088 W jackywei: this = Surface(name=com.android.systemui.ImageWallpaper),mSurfaceControl = Surface(name=com.android.systemui.ImageWallpaper),hashCode = 129717571</span><br><span class="line">01-02 08:12:43.074   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;9291c89 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 153689225</span><br><span class="line">01-02 08:12:43.075   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:12:43.078   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 8255557</span><br><span class="line">01-02 08:12:43.087   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:12:43.128   932  3088 W jackywei: mCurrentTime = 177639,hashCode = 210511779</span><br><span class="line">01-02 08:12:43.131   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.132   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,369.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 08:12:43.135   932  3088 W jackywei: this = Surface(name=com.android.systemui.ImageWallpaper),mSurfaceControl = Surface(name=com.android.systemui.ImageWallpaper),hashCode = 129717571</span><br><span class="line">01-02 08:12:43.137   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;9291c89 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 153689225</span><br><span class="line">01-02 08:12:43.139   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,369.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:12:43.141   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 8255557</span><br><span class="line">01-02 08:12:43.145   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:12:43.164   932  3088 W jackywei: mCurrentTime = 177689,hashCode = 210511779</span><br><span class="line">01-02 08:12:43.167   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.167   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,633.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 08:12:43.169   932  3088 W jackywei: this = Surface(name=com.android.systemui.ImageWallpaper),mSurfaceControl = Surface(name=com.android.systemui.ImageWallpaper),hashCode = 129717571</span><br><span class="line">01-02 08:12:43.171   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;9291c89 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 153689225</span><br><span class="line">01-02 08:12:43.173   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,633.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:12:43.175   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 8255557</span><br><span class="line">01-02 08:12:43.179   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:12:43.328   932  3088 W jackywei: mCurrentTime = 177722,hashCode = 210511779</span><br><span class="line">01-02 08:12:43.332   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.332   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,834.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 08:12:43.334   932  3088 W jackywei: this = Surface(name=com.android.systemui.ImageWallpaper),mSurfaceControl = Surface(name=com.android.systemui.ImageWallpaper),hashCode = 129717571</span><br><span class="line">01-02 08:12:43.336   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;9291c89 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 153689225</span><br><span class="line">01-02 08:12:43.337   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,834.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:12:43.340   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 8255557</span><br><span class="line">01-02 08:12:43.345   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:12:43.360   932  3088 W jackywei: mCurrentTime = 177889,hashCode = 210511779</span><br><span class="line">01-02 08:12:43.364   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.365   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,939.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 08:12:43.367   932  3088 W jackywei: this = Surface(name=com.android.systemui.ImageWallpaper),mSurfaceControl = Surface(name=com.android.systemui.ImageWallpaper),hashCode = 129717571</span><br><span class="line">01-02 08:12:43.371   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;9291c89 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 153689225</span><br><span class="line">01-02 08:12:43.372   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,939.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:12:43.374   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 8255557</span><br><span class="line">01-02 08:12:43.379   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:12:43.412   932  3088 W jackywei: mCurrentTime = 177922,hashCode = 210511779</span><br><span class="line">01-02 08:12:43.415   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.420   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;9291c89 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 153689225</span><br><span class="line">01-02 08:12:43.427   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:12:43.476   932  3088 W jackywei: mCurrentTime = 177972,hashCode = 210511779</span><br><span class="line">01-02 08:12:43.521   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,0.0): com.android.systemui.ImageWallpaper</span><br><span class="line">01-02 08:12:43.524   932  3088 W jackywei: this = Surface(name=com.android.systemui.ImageWallpaper),mSurfaceControl = Surface(name=com.android.systemui.ImageWallpaper),hashCode = 129717571</span><br><span class="line">01-02 08:12:43.539   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.545   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:12:43.560   932  3088 W jackywei: mCurrentTime = 178089,hashCode = 210511779</span><br><span class="line">01-02 08:12:43.563   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.570   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:12:43.631   932  3088 W jackywei: mCurrentTime = 178172,hashCode = 210511779</span><br><span class="line">01-02 08:12:43.634   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:12:43.641   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br></pre></td></tr></table></figure>
+<h1 id="差异LOG-闪屏的-SURFACE-POS只执行了一次"><a href="#差异LOG-闪屏的-SURFACE-POS只执行了一次" class="headerlink" title="差异LOG: 闪屏的 SURFACE POS只执行了一次"></a>差异LOG: 闪屏的 SURFACE POS只执行了一次</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">01-02 08:11:36.840   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,9.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:11:36.843   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 29961845</span><br><span class="line">01-02 08:11:36.847   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:11:36.852   932  3088 W jackywei: mCurrentTime = 111399,hashCode = 210511779</span><br><span class="line">01-02 08:11:36.855   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:11:36.857   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;5886ab2 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 92826290</span><br><span class="line">01-02 08:11:36.858   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,403.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:11:36.861   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 29961845</span><br><span class="line">01-02 08:11:36.866   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:11:36.935   932  3088 W jackywei: mCurrentTime = 111432,hashCode = 210511779</span><br><span class="line">01-02 08:11:36.938   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:11:36.940   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;5886ab2 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 92826290</span><br><span class="line">01-02 08:11:36.941   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,577.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:11:36.943   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 29961845</span><br><span class="line">01-02 08:11:36.946   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;68cbced StatusBar&#125;, recoveringMemory = true,hashCode = 109886701</span><br><span class="line">01-02 08:11:36.956   932  3088 W jackywei: mCurrentTime = 111499,hashCode = 210511779</span><br><span class="line">01-02 08:11:36.959   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;8cb7a54 com.android.systemui.ImageWallpaper&#125;, recoveringMemory = true,hashCode = 147552852</span><br><span class="line">01-02 08:11:36.960   932  3088 W jackywei: setSurfaceBoundariesLocked this = WindowStateAnimator&#123;5886ab2 com.android.phone/com.android.phone.EmergencyDialer&#125;, recoveringMemory = true,hashCode = 92826290</span><br><span class="line">01-02 08:11:36.961   932  3088 I WindowManager:   SURFACE POS (setPositionInTransaction) @ (0.0,939.0): com.android.phone/com.android.phone.EmergencyDialer</span><br><span class="line">01-02 08:11:36.963   932  3088 W jackywei: this = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),mSurfaceControl = Surface(name=com.android.phone/com.android.phone.EmergencyDialer),hashCode = 29961845</span><br></pre></td></tr></table></figure>
+<h1 id="这一段很重要"><a href="#这一段很重要" class="headerlink" title="这一段很重要:"></a>这一段很重要:</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">01-02 09:08:37.871   924  3080 W jackywei: 	at com.android.server.wm.WindowState.forAllWindows(WindowState.java:4035)</span><br><span class="line">01-02 09:08:37.871   924  3080 W jackywei: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:623)</span><br><span class="line">01-02 09:08:37.871   924  3080 W jackywei: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:623)</span><br><span class="line">01-02 09:08:37.871   924  3080 W jackywei: 	at com.android.server.wm.DisplayContent.forAllWindows(DisplayContent.java:1546)</span><br><span class="line">01-02 09:08:37.871   924  3080 W jackywei: 	at com.android.server.wm.WindowContainer.forAllWindows(WindowContainer.java:636)</span><br><span class="line">01-02 09:08:37.871   924  3080 W jackywei: 	at com.android.server.wm.DisplayContent.prepareWindowSurfaces(DisplayContent.java:2637)</span><br><span class="line">01-02 09:08:37.871   924  3080 W jackywei: 	at com.android.server.wm.WindowAnimator.animate(WindowAnimator.java:208)</span><br></pre></td></tr></table></figure>
+<h1 id="不闪屏时"><a href="#不闪屏时" class="headerlink" title="不闪屏时:"></a>不闪屏时:</h1><p>mTmpSize.set : w.mShownPosition.x = 0,w.mShownPosition.y = 9 这里的这个Y的值是不会变的mShownPosition.y 一直都是0</p>
+<p>WP target app xform: 这个LOG和上面的mShownPosition 有关系</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (wpAppAnimator != null &amp;&amp; wpAppAnimator.hasTransformation</span><br><span class="line">    &amp;&amp; wpAppAnimator.animation != null</span><br><span class="line">    &amp;&amp; !wpAppAnimator.animation.getDetachWallpaper()) &#123;</span><br><span class="line">appTransformation = wpAppAnimator.transformation;//jackywei</span><br><span class="line">if (DEBUG_WALLPAPER &amp;&amp; appTransformation != null) &#123;</span><br><span class="line">    Slog.v(TAG, &quot;WP target app xform: &quot; + appTransformation);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    android.util.Log.w(&quot;jackywei&quot;,&quot;this = &quot;+this.hashCode()+&quot;,WP target app xform: = null&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>WP target app xform 和这个wpAppAnimator变量有关系</p>
+<h1 id="可以Fix的代码"><a href="#可以Fix的代码" class="headerlink" title="可以Fix的代码"></a>可以Fix的代码</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void computeShownFrameLocked() &#123;</span><br><span class="line">    final boolean selfTransformation = mHasLocalTransformation;</span><br><span class="line">    Transformation attachedTransformation =</span><br><span class="line">            (mParentWinAnimator != null &amp;&amp; mParentWinAnimator.mHasLocalTransformation)</span><br><span class="line">            ? mParentWinAnimator.mTransformation : null;</span><br><span class="line">    Transformation appTransformation = (mAppAnimator != null &amp;&amp; mAppAnimator.hasTransformation)</span><br><span class="line">            ? mAppAnimator.transformation : null;</span><br><span class="line">    appTransformation = null; //jackywei is can fix the bug.这个代码可以解BUG,但是,不知道会引起其他什么问题.</span><br><span class="line">    // Wallpapers are animated based on the &quot;real&quot; window they</span><br><span class="line">    // are currently targeting.</span><br><span class="line">    final WindowState wallpaperTarget = mWallpaperControllerLocked.getWallpaperTarget();</span><br><span class="line">    android.util.Log.w(&quot;jackywei&quot;,&quot;this = &quot;+this.hashCode()+&quot;,wallpaperTarget= &quot;+wallpaperTarget+&quot;,mIsWallpaper = &quot;+mIsWallpaper);</span><br><span class="line">    android.util.Log.w(&quot;jackywei&quot;,&quot;this = &quot;+this.hashCode()+&quot;,mService.mAnimateWallpaperWithTarget= &quot;+mService.mAnimateWallpaperWithTarget);</span><br><span class="line">            wpAppAnimator.hasTransformation = false;//jackywei is can fix the bug.we must check where is the hasTransformation value from.这个代码可以解BUG,但是,不知道会引起其他什么问题.</span><br><span class="line">            if (wpAppAnimator != null &amp;&amp; wpAppAnimator.hasTransformation</span><br><span class="line">                &amp;&amp; wpAppAnimator.animation != null</span><br><span class="line">                &amp;&amp; !wpAppAnimator.animation.getDetachWallpaper()) &#123;</span><br><span class="line">            appTransformation = wpAppAnimator.transformation;//jackywei</span><br><span class="line">            if (DEBUG_WALLPAPER &amp;&amp; appTransformation != null) &#123;</span><br><span class="line">                Slog.v(TAG, &quot;WP target app xform: &quot; + appTransformation);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                android.util.Log.w(&quot;jackywei&quot;,&quot;this = &quot;+this.hashCode()+&quot;,WP target app xform: = null&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2018/12/13/bug-jie-xi/diag-kou-man-de-wen-ti/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Diag 口慢的问题
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/12/13/bug-jie-xi/chang-shi-jian-shi-yong-zhi-hou-shou-ji-fan-ying-bian-man/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">长时间使用之后手机变慢</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            彪彪 &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
