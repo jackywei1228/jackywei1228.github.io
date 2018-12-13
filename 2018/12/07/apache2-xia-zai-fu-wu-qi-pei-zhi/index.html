@@ -1,292 +1,421 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-<head>
-    
-
+<!DOCTYPE html>
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="apache2 下载服务器配置, 彪彪">
-    <meta name="description" content="apache2 下载服务器配置
-新建配置文件:
+  <meta charset="utf-8">
+  <title>apache2 下载服务器配置 | 彪彪</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="apache2 下载服务器配置 | 彪彪">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，你却怎么都找不到她.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="https://ifonly.me/about/index.html">
+<meta property="og:site_name" content="彪彪">
+<meta property="og:description" content="世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，你却怎么都找不到她.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-06T09:46:19.977Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，你却怎么都找不到她.">
 
-sudo vi /etc/apache2/sites-available/001-download.conf
-内容:&amp;lt;VirtualHost *:3002&amp;gt;        Ser">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>apache2 下载服务器配置 | 彪彪</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="icon" href="/img/avatar.jpg">
 
-    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet" href="/css/hl_theme/atom-light.css">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js"></script>
 </head>
-
-</head>
-
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+</div>
 <body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg">
+</a>
+<div class="author">
+    <span>彪彪</span>
+</div>
 
-<header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">彪彪</span>
-                    </a>
-                </div>
-                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
-<ul class="right">
+<div class="icon">
     
-    <li class="hide-on-med-and-down">
-        <a href="/" class="waves-effect waves-light">
+        
+        <a title="rss" href="/atom.xml" target="_blank">
             
-            <i class="fa fa-home"></i>
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"/>
+                </svg>
             
-            <span>Index</span>
         </a>
-    </li>
+        
     
-    <li class="hide-on-med-and-down">
-        <a href="/tags" class="waves-effect waves-light">
+        
+        <a title="github" href="https://github.com/yelog" target="_blank">
             
-            <i class="fa fa-tags"></i>
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"/>
+                </svg>
             
-            <span>Tags</span>
         </a>
-    </li>
+        
     
-    <li class="hide-on-med-and-down">
-        <a href="/categories" class="waves-effect waves-light">
+        
+        <a title="facebook" href="https://www.facebook.com/faker.tops" target="_blank">
             
-            <i class="fa fa-bookmark"></i>
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-facebook"/>
+                </svg>
             
-            <span>Categories</span>
         </a>
-    </li>
+        
     
-    <li class="hide-on-med-and-down">
-        <a href="/archives" class="waves-effect waves-light">
-            
-            <i class="fa fa-archive"></i>
-            
-            <span>Archives</span>
-        </a>
-    </li>
+        
     
-    <li class="hide-on-med-and-down">
-        <a href="/about" class="waves-effect waves-light">
-            
-            <i class="fa fa-user-circle-o"></i>
-            
-            <span>About</span>
-        </a>
-    </li>
+        
     
-    <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search"></i>
+        
+        <a title="instagram" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-instagram"/>
+                </svg>
+            
         </a>
-    </li>
+        
+    
+        
+        <a title="reddit" href="https://www.reddit.com/user/yelog/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-reddit"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="weibo" href="http://weibo.com/u/2307534817" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-weibo"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/ff56736de7cf" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="zhihu" href="https://www.zhihu.com/people/jaytp/activities" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"/>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"/>
+                </svg>
+            
+        </a>
+        
+    
+</div>
 
+
+
+<ul>
+    <li class="all active">全部文章</li>
+    
+    <li data-rel="Android"> Android </li>
+    
 </ul>
-
-<div class="side-nav" id="mobile-nav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">彪彪</div>
-        <div class="logo-desc">
-            
-            世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，你却怎么都找不到她.
-            
-        </div>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
     </div>
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li>
-            <a href="/" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-home"></i>
-                
-                Index
-            </a>
-        </li>
-        
-        <li>
-            <a href="/tags" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-tags"></i>
-                
-                Tags
-            </a>
-        </li>
-        
-        <li>
-            <a href="/categories" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-bookmark"></i>
-                
-                Categories
-            </a>
-        </li>
-        
-        <li>
-            <a href="/archives" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-archive"></i>
-                
-                Archives
-            </a>
-        </li>
-        
-        <li>
-            <a href="/about" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-user-circle-o"></i>
-                
-                About
-            </a>
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
-
-    <div class="social-link"><a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="mailto:chenjiayin1990@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
+    <div><a style="border-right: 1px solid #fff; width: 49%" class="about site_url" href="/about">关于</a><a style="width: 50%" class="friends">友链</a></div>
 </div>
+<input type="hidden" id="yelog_site_posts_number" value="26">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off" id="local-search-input">
+        <i class="cross"></i>
+        <span>
+        <label for="tagswitch">Tags:</label>
+        <input id="tagswitch" type="checkbox">
+    </span>
+    </form>
+    <div class="tags-list">
+    
+    <div class="clearfix"></div>
 </div>
 
-            </div>
-        </div>
-
+    
+    <nav id="title-list-nav">
         
-        <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewbox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
-    </svg>
-</a>
+        <a class="" href="/2018/12/13/android-mat-gong-ju-shi-yong/" data-tag="" data-author="">
+            <span class="post-title" title="Android_Mat_工具使用">Android_Mat_工具使用</span>
+            <span class="post-date" title="2018-12-13 12:01:58">2018/12/13</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/performance/" data-tag="" data-author="">
+            <span class="post-title" title="Performance">Performance</span>
+            <span class="post-date" title="2018-12-07 10:03:16">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/monkey-ce-shi-ming-ling-xing/" data-tag="" data-author="">
+            <span class="post-title" title="Monkey test command">Monkey test command</span>
+            <span class="post-date" title="2018-12-07 10:04:05">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/vts-ce-shi-bu-zou/" data-tag="" data-author="">
+            <span class="post-title" title="VTS测试说明">VTS测试说明</span>
+            <span class="post-date" title="2018-12-07 10:00:43">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/13/binder-xin-xi/" data-tag="" data-author="">
+            <span class="post-title" title="binder 信息">binder 信息</span>
+            <span class="post-date" title="2018-12-13 12:01:58">2018/12/13</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/apache2-xia-zai-fu-wu-qi-pei-zhi/" data-tag="" data-author="">
+            <span class="post-title" title="apache2 下载服务器配置">apache2 下载服务器配置</span>
+            <span class="post-date" title="2018-12-07 10:05:52">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/06/hello-world/" data-tag="" data-author="">
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2018-12-06 10:15:27">2018/12/06</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/memory-debug/" data-tag="" data-author="">
+            <span class="post-title" title="Memory debug">Memory debug</span>
+            <span class="post-date" title="2018-12-07 10:04:25">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/git-xia-zai-dai-li-she-zhi/" data-tag="" data-author="">
+            <span class="post-title" title="Git 下载代理设置">Git 下载代理设置</span>
+            <span class="post-date" title="2018-12-07 10:05:05">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/nodejs-an-zhuang/" data-tag="" data-author="">
+            <span class="post-title" title="nodejs 安装">nodejs 安装</span>
+            <span class="post-date" title="2018-12-07 10:03:30">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/qcn-bei-fen/" data-tag="" data-author="">
+            <span class="post-title" title="qcn备份">qcn备份</span>
+            <span class="post-date" title="2018-12-07 10:02:59">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/shadowsock/" data-tag="" data-author="">
+            <span class="post-title" title="ubuntu Shadowsocks Error">ubuntu Shadowsocks Error</span>
+            <span class="post-date" title="2018-12-07 10:02:27">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/nodejscluster/" data-tag="" data-author="">
+            <span class="post-title" title="解读Nodejs多核处理模块cluster">解读Nodejs多核处理模块cluster</span>
+            <span class="post-date" title="2018-12-07 10:03:46">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/trace32/" data-tag="" data-author="">
+            <span class="post-title" title="ubuntu trace32 安装">ubuntu trace32 安装</span>
+            <span class="post-date" title="2018-12-07 10:02:11">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/ubuntu-mysql-install/" data-tag="" data-author="">
+            <span class="post-title" title="ubuntu Mysql 安装">ubuntu Mysql 安装</span>
+            <span class="post-date" title="2018-12-07 10:01:13">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/an-zhuang-vtiger/" data-tag="" data-author="">
+            <span class="post-title" title="Vtiger 安装">Vtiger 安装</span>
+            <span class="post-date" title="2018-12-07 09:59:59">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/chang-yong-an-ma/" data-tag="" data-author="">
+            <span class="post-title" title="常用暗码">常用暗码</span>
+            <span class="post-date" title="2018-12-07 09:59:29">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/shou-ji-gua-duan-bu-liao-dian-hua/" data-tag="" data-author="">
+            <span class="post-title" title="多次拨打电话并且挂断之后.会在某一次拨号界面会冻住">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</span>
+            <span class="post-date" title="2018-12-07 09:59:06">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/gong-zuo-bi-ji/" data-tag="" data-author="">
+            <span class="post-title" title="工作笔记">工作笔记</span>
+            <span class="post-date" title="2018-12-07 17:00:18">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/" data-tag="" data-author="">
+            <span class="post-title" title="批量替换代码中的字符串">批量替换代码中的字符串</span>
+            <span class="post-date" title="2018-12-07 09:58:25">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/la-qi-suo-you-cpu/" data-tag="" data-author="">
+            <span class="post-title" title="把所有CPU拉到最高">把所有CPU拉到最高</span>
+            <span class="post-date" title="2018-12-07 09:58:05">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/ke-xue-shang-wang/" data-tag="" data-author="">
+            <span class="post-title" title="科学上网">科学上网</span>
+            <span class="post-date" title="2018-12-07 09:57:27">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/ubuntuinstallshadowsocks/" data-tag="" data-author="">
+            <span class="post-title" title="ubuntu Shadowsocks 安装">ubuntu Shadowsocks 安装</span>
+            <span class="post-date" title="2018-12-07 10:01:30">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/gdb-diao-shi-shou-ce/" data-tag="" data-author="">
+            <span class="post-title" title="GDB调试手机工程">GDB调试手机工程</span>
+            <span class="post-date" title="2018-12-07 10:05:35">2018/12/07</span>
+        </a>
+        
+        <a class="" href="/2018/12/06/flash-yue-jie/" data-tag="" data-author="">
+            <span class="post-title" title="Flash 越界">Flash 越界</span>
+            <span class="post-date" title="2018-12-06 17:51:15">2018/12/06</span>
+        </a>
+        
+        <a class="" href="/2018/12/07/hei-ping-fen-xi/" data-tag="" data-author="">
+            <span class="post-title" title="黑屏分析">黑屏分析</span>
+            <span class="post-date" title="2018-12-07 09:57:42">2018/12/07</span>
+        </a>
         
     </nav>
-</header>
-
-
-
-
-
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <div class="description center-align post-title">
-                        apache2 下载服务器配置
-                    </div>
-                </div>
-            </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
         </div>
     </div>
-</div>
-
-
-
-<main class="container content">
-
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-apache2下载服务器配置" class="article article-type-post" itemscope="" itemprop="blogPost">
     
-    <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            
-            <div class="post-info">
-                
-
-                <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-07
+        <h1 class="article-title">apache2 下载服务器配置</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title="更新时间: 2018-12-07 10:05:51">2018-12-07 10:05</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
                 </span>
-            </div>
-        </div>
-        <hr>
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h1 id="apache2-下载服务器配置"><a href="#apache2-下载服务器配置" class="headerlink" title="apache2 下载服务器配置"></a>apache2 下载服务器配置</h1><ul>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#apache2-下载服务器配置"><span class="toc-text">apache2 下载服务器配置</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="apache2-下载服务器配置"><a href="#apache2-下载服务器配置" class="headerlink" title="apache2 下载服务器配置"></a>apache2 下载服务器配置</h1><ul>
 <li>新建配置文件:</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/apache2/sites-available/001-download.conf</span><br></pre></td></tr></table></figure>
@@ -302,288 +431,232 @@ sudo vi /etc/apache2/sites-available/001-download.conf
 </li>
 </ul>
 
-            </div>
-            <hr>
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
 
-            
-            <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span>文章标题:</span>apache2 下载服务器配置</p>
+    
+    <p><span>本文作者:</span><a href="javascript:void(0)" title="彪彪">彪彪</a></p>
+    <p><span>发布时间:</span>2018-12-07, 10:05:52</p>
+    <p><span>最后更新:</span>2018-12-07, 10:05:51</p>
+    <span>原始链接:</span><a class="post-url" href="/2018/12/07/apache2-xia-zai-fu-wu-qi-pei-zhi/" title="apache2 下载服务器配置">https://ifonly.me/2018/12/07/apache2-xia-zai-fu-wu-qi-pei-zhi/</a>
+    <p>
+        <span>版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+    
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2017 Yelog</p>
+<p class="footer-entry">Buit with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="/js/script.js"></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': [],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1;
+            var $numbering = $('<ul/>').addClass('pre-numbering').attr("unselectable","on");
+            $(this).addClass('has-numbering')
+                    .parent()
+                    .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
     }
 
-    #reward .reward-link {
-        font-size: 1.88rem;
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
     }
+    
 
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 2px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
     }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
+    code.has-numbering{
+        margin-left: 30px;
     }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
+    .pre-numbering{
+        margin: 0px;
         position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff;
-        background-color: #22AB38;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff;
-        background-color: #019FE8;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
     }
 </style>
 
-<div id="reward">
-    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close"><i class="fa fa-close"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs">
-                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
-                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                    </ul>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('#reward .reward-link').on('click', function () {
-            $('#rewardModal').openModal();
-        });
-
-        $('#rewardModal .close').on('click', function () {
-            $('#rewardModal').closeModal();
-        });
-    });
-</script>
-            
-
-            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
-<div id="article-share">
+<!--自定义样式设置-->
+<style>
     
-    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
     
-</div>
-
-<script src="/libs/share/js/social-share.min.js"></script>
-
-            <div class="reprint">
-                <p>
-                    <span class="reprint-tip">转载请注明: </span>
-                    <a href="https://ifonly.me" class="b-link-green">彪彪</a>
-                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/07/apache2-xia-zai-fu-wu-qi-pei-zhi/" class="b-link-green">apache2 下载服务器配置</a>
-                </p>
-            </div>
-        </div>
-    </div>
-
     
 
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 2px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
     
 
+    /*引用块样式*/
+    
+    .post .pjax article blockquote {
+        padding: 10px 20px;
+        background-color: white;
+        border: none;
+        border-left: 4px solid #42b983;
+        border-right: 4px solid #42b983;
+        border-radius: 10px;
+    }
     
 
+    /*文章列表背景图*/
     
-
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background: url("http://img.xiangzhangshugongyi.com/FlSExUGfRSaqxkK5v42CpuI-tXAL.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
     
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
-            <div class="card">
-                <a href="/2018/12/07/binder-xin-xi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="binder 信息">
-                        
-                        <span class="card-title">binder 信息</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">大体信息:/sys/kernel/debug/binder/transactions
-每个进程的单个信息:/sys/kernel/debug/binder/proc
-</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            彪彪
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">下一篇</div>
-            <div class="card">
-                <a href="/2018/12/07/gdb-diao-shi-shou-ce/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="GDB调试手机工程">
-                        
-                        <span class="card-title">GDB调试手机工程</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">GDB调试手机工程挂载自己编译好的工程
-以我自己在10.1.6.32编译的工程为例.
-sudo mount -t cifs -o username=&quot;android&quot;,password=&quot;mobile#5&qu</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-07
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            彪彪
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-</div>
-    
-
-</main>
+</style>
 
 
-<footer class="page-footer bg-color">
-    <div class="container row center-align">
-        <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
-        </div>
-        <div class="col s12 m4 l4 social-link"><a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="mailto:chenjiayin1990@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
 
 
-<!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title">搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-</script>
-<!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fa fa-angle-up"></i>
-    </a>
-</div>
 
 
-<script src="/libs/materialize/js/materialize.min.js"></script>
-<script src="/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/libs/aos/aos.js"></script>
-<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/matery.js"></script>
-</body>
 </html>
