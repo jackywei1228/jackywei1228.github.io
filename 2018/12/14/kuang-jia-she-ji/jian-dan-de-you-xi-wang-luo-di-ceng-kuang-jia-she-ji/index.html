@@ -3,22 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>归档: 2018/12 | 彪彪</title>
+    <title>简单的游戏网络底层框架设计 | 彪彪</title>
     
     
-        <meta name="keywords" content="彪彪">
+        <meta name="keywords" content="简单的游戏网络底层框架设计">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，你却怎么都找不到她.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="彪彪">
-<meta property="og:url" content="https://ifonly.me/archives/2018/12/page/2/index.html">
+    <meta name="description" content="sequenceDiagram title: 序列图 participant NetWork Thread participant Message Thread participant AI Thread   NetWork Thread-&amp;gt;Message Thread: 收到网络信息 Message Thread-&amp;gt;Message Thread: Paser处理信息 Message Thread">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单的游戏网络底层框架设计">
+<meta property="og:url" content="https://ifonly.me/2018/12/14/kuang-jia-she-ji/jian-dan-de-you-xi-wang-luo-di-ceng-kuang-jia-she-ji/index.html">
 <meta property="og:site_name" content="彪彪">
-<meta property="og:description" content="世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，你却怎么都找不到她.">
+<meta property="og:description" content="sequenceDiagram title: 序列图 participant NetWork Thread participant Message Thread participant AI Thread   NetWork Thread-&amp;gt;Message Thread: 收到网络信息 Message Thread-&amp;gt;Message Thread: Paser处理信息 Message Thread">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-14T07:06:14.796Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="彪彪">
-<meta name="twitter:description" content="世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，你却怎么都找不到她.">
+<meta name="twitter:title" content="简单的游戏网络底层框架设计">
+<meta name="twitter:description" content="sequenceDiagram title: 序列图 participant NetWork Thread participant Message Thread participant AI Thread   NetWork Thread-&amp;gt;Message Thread: 收到网络信息 Message Thread-&amp;gt;Message Thread: Paser处理信息 Message Thread">
     
 
     
@@ -195,13 +196,13 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/13/gong-zuo-xiao-tie-shi/apache2-xia-zai-fu-wu-qi-pei-zhi/">apache2 下载服务器配置</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             框架设计
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/14/kuang-jia-she-ji/001-log-gong-ju-she-ji/">LOG工具设计</a></li>  <li class="file"><a href="/2018/12/14/kuang-jia-she-ji/jian-dan-de-you-xi-wang-luo-di-ceng-kuang-jia-she-ji/">简单的游戏网络底层框架设计</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2018/12/14/kuang-jia-she-ji/001-log-gong-ju-she-ji/">LOG工具设计</a></li>  <li class="file active"><a href="/2018/12/14/kuang-jia-she-ji/jian-dan-de-you-xi-wang-luo-di-ceng-kuang-jia-she-ji/">简单的游戏网络底层框架设计</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -292,419 +293,106 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar-o"></i></span>
-                <h1 class="title"><a href="/archives/2018/">2018</a></h1>
-            </div>
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title"><a href="/archives/2018/12/">2018-12</a><span class="archive-list-count">12</span></h1>
-            </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-框架设计/简单的游戏网络底层框架设计" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/">system_server内存泄漏</a>
-        </h1>
-    
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/框架设计/">框架设计</a>
+    </div>
 
-                
-                <div class="article-meta">
-                    
+                        
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/bug-jie-xi/system-server-nei-cun-xie-lu/">
-            <time datetime="2018-12-13T07:53:54.437Z" itemprop="datePublished">2018-12-13</time>
+        <a href="/2018/12/14/kuang-jia-she-ji/jian-dan-de-you-xi-wang-luo-di-ceng-kuang-jia-she-ji/">
+            <time datetime="2018-12-14T07:06:14.796Z" itemprop="datePublished">2018-12-14</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
-    </div>
-
-                    
-                </div>
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/框架设计/简单的游戏网络底层框架设计.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/框架设计/简单的游戏网络底层框架设计.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/框架设计/简单的游戏网络底层框架设计.md"> History </a>
+                            </div>
+                        
+                    </div>
                 
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">慢的问题2</a>
+        <h1 class="article-title" itemprop="name">
+            简单的游戏网络底层框架设计
         </h1>
     
 
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/bug-jie-xi/man-de-wen-ti-2/">
-            <time datetime="2018-12-13T07:53:48.693Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <pre class="mermaid">sequenceDiagram
+title: 序列图
+participant NetWork Thread
+participant Message Thread
+participant AI Thread
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
-    </div>
+NetWork Thread->Message Thread: 收到网络信息
+Message Thread->Message Thread: Paser处理信息
+Message Thread->AI Thread: 解析好的信息</pre>
 
-                    
-                </div>
-                
             </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">Fota升级之后无法开机</a>
-        </h1>
-    
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
 
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/bug-jie-xi/fota-sheng-ji-kai-bu-ji/">
-            <time datetime="2018-12-13T07:53:44.125Z" itemprop="datePublished">2018-12-13</time>
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2018/12/14/kuang-jia-she-ji/001-log-gong-ju-she-ji/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">LOG工具设计</div>
         </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
     
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
+</nav>
+
+
+
+
+
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/bug-jie-xi/flash-yue-jie/">Flash越界</a>
-        </h1>
     
 
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/bug-jie-xi/flash-yue-jie/">
-            <time datetime="2018-12-13T07:53:38.381Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/BUG解析/">BUG解析</a>
-    </div>
 
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/">学习资料</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/react-xue-xi/001-xue-xi-wang-zhi/">
-            <time datetime="2018-12-13T07:40:28.576Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/React学习/">React学习</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/">科学上网</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/">
-            <time datetime="2018-12-13T06:36:46.232Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/工作小贴士/">工作小贴士</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/">黑屏分析</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/">
-            <time datetime="2018-12-13T06:36:46.232Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/工作小贴士/">工作小贴士</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/">把所有CPU拉到最高</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/">
-            <time datetime="2018-12-13T06:36:46.232Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/工作小贴士/">工作小贴士</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">批量替换代码中的字符串</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/">
-            <time datetime="2018-12-13T06:36:46.232Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/工作小贴士/">工作小贴士</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/">多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/">
-            <time datetime="2018-12-13T06:36:46.232Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/工作小贴士/">工作小贴士</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/">常用暗码</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/">
-            <time datetime="2018-12-13T06:36:46.228Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/工作小贴士/">工作小贴士</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/">ubuntu Mysql 安装</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/">
-            <time datetime="2018-12-13T06:36:46.228Z" itemprop="datePublished">2018-12-13</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/工作小贴士/">工作小贴士</a>
-    </div>
-
-                    
-                </div>
-                
-            </div>
-        </div>
-    
-</div>
-
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2018/12/">&laquo; 上一页</a><a class="page-number" href="/archives/2018/12/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2018/12/page/3/">3</a><a class="page-number" href="/archives/2018/12/page/4/">4</a><a class="extend next" rel="next" href="/archives/2018/12/page/3/">下一页 &raquo;</a>
-    </nav>
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
 </section>
         </div>
         <footer id="footer">
