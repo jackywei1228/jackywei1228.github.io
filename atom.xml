@@ -410,6 +410,29 @@
   </entry>
   
   <entry>
+    <title>多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</title>
+    <link href="https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/"/>
+    <id>https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/</id>
+    <published>2018-12-13T06:36:46.232Z</published>
+    <updated>2018-12-07T01:59:06.781Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="多次拨打电话并且挂断之后-会在某一次拨号界面会冻住"><a href="#多次拨打电话并且挂断之后-会在某一次拨号界面会冻住" class="headerlink" title="多次拨打电话并且挂断之后.会在某一次拨号界面会冻住."></a>多次拨打电话并且挂断之后.会在某一次拨号界面会冻住.</h1><h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>出问题的</p><h2 id="有很多pending-async-transaction未返回"><a href="#有很多pending-async-transaction未返回" class="headerlink" title="有很多pending async transaction未返回."></a>有很多pending async transaction未返回.</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">binder proc state:</span><br><span class="line">proc 3419</span><br><span class="line">context hwbinder</span><br><span class="line">  thread 760: l 00 need_return 0 tr 0</span><br><span class="line">  thread 1655: l 00 need_return 0 tr 0</span><br><span class="line">  thread 2858: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3419: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3442: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3453: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3512: l 02 need_return 0 tr 0</span><br><span class="line">  thread 3586: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3597: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3600: l 00 need_return 0 tr 0</span><br><span class="line">  thread 4031: l 00 need_return 0 tr 0</span><br><span class="line">  node 123985: u0000000097ea23c0 c0000000097e9d8f0 pri 0:120 hs 0 hw 1 ls 0 lw 0 is 0 iw 1 tr 1 proc 251</span><br><span class="line">  node 138919: u0000000097ea2c60 c0000000097e9e750 pri 0:120 hs 0 hw 1 ls 0 lw 0 is 0 iw 1 tr 1 proc 251</span><br><span class="line">  node 15269: u00000000a64e9a40 c00000000a6712660 pri 0:120 hs 1 hw 1 ls 8 lw 0 is 1 iw 1 tr 1 proc 431</span><br><span class="line">    pending async transaction 149963: e6fb8c80 from 0:0 to 3419:0 code 63 flags 11 pri 0:120 r0 node 15269 size 452:68 data f6a004d4</span><br><span class="line">    pending async transaction 150734: c621e200 from 0:0 to 3419:0 code 37 flags 11 pri 0:120 r0 node 15269 size 68:4 data f6a008b8</span><br><span class="line">    pending async transaction 162914: e96bc400 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a040e4</span><br><span class="line">    pending async transaction 164153: dc771b80 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a04b3c</span><br><span class="line">    pending async transaction 166022: ce803000 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a05884</span><br><span class="line">    pending async transaction 168226: d996c600 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a06afc</span><br><span class="line">    pending async transaction 168903: dfc07200 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a07610</span><br><span class="line">  node 15271: u00000000a64e9a60 c00000000a67126a0 pri 0:120 hs 1 hw 1 ls 55 lw 0 is 1 iw 1 tr 1 proc 431</span><br><span class="line">    pending async transaction 148293: eac90a80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a00418</span><br><span class="line">    pending async transaction 154669: d2824780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a03580</span><br><span class="line">    pending async transaction 155165: ce943e00 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0363c</span><br><span class="line">    pending async transaction 159800: ec976600 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a038a8</span><br><span class="line">    pending async transaction 160862: ce943300 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a039d0</span><br><span class="line">    pending async transaction 162027: c6249780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a03cd4</span><br><span class="line">    pending async transaction 162517: ec2b6c80 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a03d90</span><br><span class="line">    pending async transaction 162713: d7bae800 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04028</span><br><span class="line">    pending async transaction 162915: c3dfa980 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a041a4</span><br><span class="line">    pending async transaction 162997: ec2b6400 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0443c</span><br><span class="line">    pending async transaction 163477: cea1c680 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a044f8</span><br><span class="line">    pending async transaction 163528: dfc07900 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a045b4</span><br><span class="line">    pending async transaction 163529: d086a080 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04670</span><br><span class="line">    pending async transaction 163571: d527dd80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04908</span><br><span class="line">    pending async transaction 163931: e96bc780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a049c4</span><br><span class="line">    pending async transaction 163968: d0a73900 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04a80</span><br><span class="line">    pending async transaction 164154: dc771680 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04bfc</span><br><span class="line">    pending async transaction 164192: d7bae280 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04e94</span><br><span class="line">    pending async transaction 164243: d7bae680 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04f50</span><br><span class="line">    pending async transaction 164271: d7bae980 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a051e8</span><br><span class="line">    pending async transaction 164388: e5a41f80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a052a4</span><br><span class="line">    pending async transaction 164785: e96bc800 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a05360</span><br><span class="line">    pending async transaction 164894: dc31c500 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0541c</span><br></pre></td></tr></table></figure><h2 id="另外-会有一个"><a href="#另外-会有一个" class="headerlink" title="另外,会有一个:"></a>另外,会有一个:</h2><pre><code>radio         2973  1612   270 1131000  78576 diagchar_read af10a6a0 S m.android.phone这样的进程.</code></pre><h2 id="kill-3-某个2973-程序会继续往下跑"><a href="#kill-3-某个2973-程序会继续往下跑" class="headerlink" title="kill -3 某个2973,程序会继续往下跑"></a>kill -3 某个2973,程序会继续往下跑</h2><h2 id="具体看附件"><a href="#具体看附件" class="headerlink" title="具体看附件"></a>具体看附件</h2><pre><code>file 目录下面</code></pre><h2 id="改NV值70287-可以规避问题-但未找到根本原因"><a href="#改NV值70287-可以规避问题-但未找到根本原因" class="headerlink" title="改NV值70287 可以规避问题,但未找到根本原因."></a>改NV值70287 可以规避问题,但未找到根本原因.</h2><pre><code>后续有时间继续跟踪</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;多次拨打电话并且挂断之后-会在某一次拨号界面会冻住&quot;&gt;&lt;a href=&quot;#多次拨打电话并且挂断之后-会在某一次拨号界面会冻住&quot; class=&quot;headerlink&quot; title=&quot;多次拨打电话并且挂断之后.会在某一次拨号界面会冻住.&quot;&gt;&lt;/a&gt;多次拨打电话并且挂断
+      
+    
+    </summary>
+    
+      <category term="工作小贴士" scheme="https://ifonly.me/categories/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E8%B4%B4%E5%A3%AB/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>科学上网</title>
     <link href="https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/"/>
     <id>https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/ke-xue-shang-wang/</id>
@@ -448,30 +471,6 @@
       
       
         &lt;h1 id=&quot;黑屏分析&quot;&gt;&lt;a href=&quot;#黑屏分析&quot; class=&quot;headerlink&quot; title=&quot;黑屏分析&quot;&gt;&lt;/a&gt;黑屏分析&lt;/h1&gt;&lt;h2 id=&quot;首先-分析各进程状态&quot;&gt;&lt;a href=&quot;#首先-分析各进程状态&quot; class=&quot;headerlink&quot; titl
-      
-    
-    </summary>
-    
-      <category term="工作小贴士" scheme="https://ifonly.me/categories/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E8%B4%B4%E5%A3%AB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>批量替换代码中的字符串</title>
-    <link href="https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/"/>
-    <id>https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/</id>
-    <published>2018-12-13T06:36:46.232Z</published>
-    <updated>2018-12-07T01:58:25.273Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="批量替换代码中的字符串"><a href="#批量替换代码中的字符串" class="headerlink" title="批量替换代码中的字符串"></a>批量替换代码中的字符串</h1><ul><li>下面command 的意思是： 找出所有含有xxx.字符串的文件,并且把xxx换成han<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep -r &apos;xxx\.&apos; . |awk -F&apos;:&apos; &apos;&#123;print $1&#125;&apos; | xargs sed -i &apos;s/xxx\./han\./&apos;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;批量替换代码中的字符串&quot;&gt;&lt;a href=&quot;#批量替换代码中的字符串&quot; class=&quot;headerlink&quot; title=&quot;批量替换代码中的字符串&quot;&gt;&lt;/a&gt;批量替换代码中的字符串&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;下面command 的意思是： 找出所有含有xxx.字符
       
     
     </summary>

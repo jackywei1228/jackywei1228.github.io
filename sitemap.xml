@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ifonly.me/about/index.html</loc>
+    
+    <lastmod>2018-12-14T02:56:11.936Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ifonly.me/2018/12/14/kuang-jia-she-ji/001-log-gong-ju-she-ji/</loc>
     
     <lastmod>2018-12-14T02:48:37.564Z</lastmod>
@@ -131,13 +138,6 @@
     <loc>https://ifonly.me/tags/index.html</loc>
     
     <lastmod>2018-12-13T06:08:58.985Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ifonly.me/about/index.html</loc>
-    
-    <lastmod>2018-12-13T06:08:58.977Z</lastmod>
     
   </url>
   
