@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ifonly.me/2018/12/14/kuang-jia-she-ji/001-log-gong-ju-she-ji/</loc>
+    
+    <lastmod>2018-12-14T02:48:37.564Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ifonly.me/2018/12/14/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/</loc>
+    
+    <lastmod>2018-12-14T02:17:43.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ifonly.me/2018/12/14/gong-zuo-xiao-tie-shi/gong-zuo-bi-ji/</loc>
+    
+    <lastmod>2018-12-14T02:14:28.195Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ifonly.me/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/databasesinfo/</loc>
     
     <lastmod>2018-12-13T07:56:30.358Z</lastmod>
@@ -19,13 +40,6 @@
     <loc>https://ifonly.me/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/bei-fen/</loc>
     
     <lastmod>2018-12-13T07:55:30.293Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ifonly.me/2018/12/13/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ye-wu-luo-ji-gui-hua/</loc>
-    
-    <lastmod>2018-12-13T07:55:15.181Z</lastmod>
     
   </url>
   
@@ -100,13 +114,6 @@
   </url>
   
   <url>
-    <loc>https://ifonly.me/2018/12/13/kuang-jia-she-ji/001-log-gong-ju-she-ji/</loc>
-    
-    <lastmod>2018-12-13T07:40:11.972Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/apache2-xia-zai-fu-wu-qi-pei-zhi/</loc>
     
     <lastmod>2018-12-13T06:34:12.350Z</lastmod>
@@ -114,14 +121,14 @@
   </url>
   
   <url>
-    <loc>https://ifonly.me/tags/index.html</loc>
+    <loc>https://ifonly.me/categories/index.html</loc>
     
     <lastmod>2018-12-13T06:08:58.985Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://ifonly.me/categories/index.html</loc>
+    <loc>https://ifonly.me/tags/index.html</loc>
     
     <lastmod>2018-12-13T06:08:58.985Z</lastmod>
     
@@ -145,13 +152,6 @@
     <loc>https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/android-mat-gong-ju-shi-yong/</loc>
     
     <lastmod>2018-12-13T04:01:58.137Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/gong-zuo-bi-ji/</loc>
-    
-    <lastmod>2018-12-07T09:00:18.721Z</lastmod>
     
   </url>
   
