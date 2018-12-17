@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ifonly.me/"/>
-  <updated>2018-12-14T07:10:16.018Z</updated>
+  <updated>2018-12-17T06:41:32.963Z</updated>
   <id>https://ifonly.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Centos7 相关配置</title>
+    <link href="https://ifonly.me/2018/12/17/xi-tong-an-zhuang/centos7-pei-zhi/"/>
+    <id>https://ifonly.me/2018/12/17/xi-tong-an-zhuang/centos7-pei-zhi/</id>
+    <published>2018-12-17T06:41:32.963Z</published>
+    <updated>2018-12-17T06:41:32.963Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-系统显示编码设置"><a href="#1-系统显示编码设置" class="headerlink" title="1.系统显示编码设置"></a>1.系统显示编码设置</h2><ul><li>执行如下命令</li></ul><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@linux ~]# echo &apos;LC_ALL=en_US.UTF-8&apos; &gt;&gt; /etc/profile</span><br><span class="line">[root@linux ~]# source /etc/profile</span><br></pre></td></tr></table></figure><ul><li>执行 locale 如下图所显示,说明是OK的<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@linux ~]# locale</span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LC_CTYPE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_NUMERIC=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_TIME=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_COLLATE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MONETARY=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MESSAGES=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_PAPER=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_NAME=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_ADDRESS=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_TELEPHONE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_ALL=en_US.UTF-8</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-系统显示编码设置&quot;&gt;&lt;a href=&quot;#1-系统显示编码设置&quot; class=&quot;headerlink&quot; title=&quot;1.系统显示编码设置&quot;&gt;&lt;/a&gt;1.系统显示编码设置&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;执行如下命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=
+      
+    
+    </summary>
+    
+      <category term="系统安装" scheme="https://ifonly.me/categories/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>简单的游戏网络底层框架设计</title>
@@ -455,29 +481,6 @@ NetWork Thread
         &lt;p&gt;让终端走代理的几种方法&lt;br&gt;Macproxyterminal&lt;br&gt;（2017.9.17更新）&lt;/p&gt;
 &lt;p&gt;方法1:&lt;br&gt;在终端中直接运行命令&lt;/p&gt;
 &lt;p&gt;export http_proxy=”socks5://127.0.0.1:1080”&lt;br&gt;export h
-      
-    
-    </summary>
-    
-      <category term="工作小贴士" scheme="https://ifonly.me/categories/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E8%B4%B4%E5%A3%AB/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>把所有CPU拉到最高</title>
-    <link href="https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/"/>
-    <id>https://ifonly.me/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/</id>
-    <published>2018-12-13T06:36:46.232Z</published>
-    <updated>2018-12-07T01:58:05.065Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="把所有CPU拉到最高"><a href="#把所有CPU拉到最高" class="headerlink" title="把所有CPU拉到最高"></a>把所有CPU拉到最高</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb root</span><br><span class="line">adb shell setenforce 0</span><br><span class="line">adb remount</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu0/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu1/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu2/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu3/online&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu2/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu3/cpufreq/cpuinfo_cur_freq</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;把所有CPU拉到最高&quot;&gt;&lt;a href=&quot;#把所有CPU拉到最高&quot; class=&quot;headerlink&quot; title=&quot;把所有CPU拉到最高&quot;&gt;&lt;/a&gt;把所有CPU拉到最高&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t
       
     
     </summary>

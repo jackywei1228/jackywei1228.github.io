@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title>Centos7 相关配置</title>
+      <link href="/2018/12/17/xi-tong-an-zhuang/centos7-pei-zhi/"/>
+      <url>/2018/12/17/xi-tong-an-zhuang/centos7-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-系统显示编码设置"><a href="#1-系统显示编码设置" class="headerlink" title="1.系统显示编码设置"></a>1.系统显示编码设置</h2><ul><li>执行如下命令</li></ul><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@linux ~]# echo &apos;LC_ALL=en_US.UTF-8&apos; &gt;&gt; /etc/profile</span><br><span class="line">[root@linux ~]# source /etc/profile</span><br></pre></td></tr></table></figure><ul><li>执行 locale 如下图所显示,说明是OK的<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@linux ~]# locale</span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LC_CTYPE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_NUMERIC=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_TIME=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_COLLATE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MONETARY=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MESSAGES=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_PAPER=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_NAME=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_ADDRESS=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_TELEPHONE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_ALL=en_US.UTF-8</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 系统安装 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>简单的游戏网络底层框架设计</title>
       <link href="/2018/12/14/kuang-jia-she-ji/jian-dan-de-you-xi-wang-luo-di-ceng-kuang-jia-she-ji/"/>
       <url>/2018/12/14/kuang-jia-she-ji/jian-dan-de-you-xi-wang-luo-di-ceng-kuang-jia-she-ji/</url>
@@ -317,23 +334,6 @@
     </entry>
     
     <entry>
-      <title>把所有CPU拉到最高</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/</url>
-      
-        <content type="html"><![CDATA[<h1 id="把所有CPU拉到最高"><a href="#把所有CPU拉到最高" class="headerlink" title="把所有CPU拉到最高"></a>把所有CPU拉到最高</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb root</span><br><span class="line">adb shell setenforce 0</span><br><span class="line">adb remount</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu0/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu1/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu2/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu3/online&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu2/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu3/cpufreq/cpuinfo_cur_freq</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作小贴士 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
       <title>黑屏分析</title>
       <link href="/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/"/>
       <url>/2018/12/13/gong-zuo-xiao-tie-shi/hei-ping-fen-xi/</url>
@@ -385,6 +385,23 @@
     </entry>
     
     <entry>
+      <title>把所有CPU拉到最高</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="把所有CPU拉到最高"><a href="#把所有CPU拉到最高" class="headerlink" title="把所有CPU拉到最高"></a>把所有CPU拉到最高</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb root</span><br><span class="line">adb shell setenforce 0</span><br><span class="line">adb remount</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu0/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu1/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu2/online&quot;</span><br><span class="line">adb shell &quot;echo 1 &gt; /sys/devices/system/cpu/cpu3/online&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor&quot;</span><br><span class="line">adb shell &quot;echo performance &gt; /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu2/cpufreq/cpuinfo_cur_freq</span><br><span class="line">adb shell cat /sys/devices/system/cpu/cpu3/cpufreq/cpuinfo_cur_freq</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作小贴士 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>VTS测试说明</title>
       <link href="/2018/12/13/gong-zuo-xiao-tie-shi/vts-ce-shi-bu-zou/"/>
       <url>/2018/12/13/gong-zuo-xiao-tie-shi/vts-ce-shi-bu-zou/</url>
@@ -402,11 +419,11 @@
     </entry>
     
     <entry>
-      <title>常用暗码</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/</url>
+      <title>Vtiger 安装</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/</url>
       
-        <content type="html"><![CDATA[<h1 id="常用暗码"><a href="#常用暗码" class="headerlink" title="常用暗码"></a>常用暗码</h1><table><thead><tr><th>描述</th><th>旧暗码</th><th>修过后暗码</th><th>来源</th><th>状态</th></tr></thead><tbody><tr><td>MMI_REGULATORY_INFO_DISPLAY</td><td>*#07#</td><td>*#07#</td><td>Android默认，不用修改</td><td>Delete, Default not show and no req to show this</td></tr><tr><td>PRL_VERSION_DISPLAY</td><td>*#0000#</td><td>*#0000#</td><td>Android默认，不用修改</td><td>Delete, Default not show and no req to show this</td></tr><tr><td>MMI_IMEI_DISPLAY</td><td>*#06#</td><td>*#06#</td><td>Android默认，不用修改</td><td>Done</td></tr><tr><td>Phone information</td><td><em>#</em>#4636#<em>#</em></td><td><em>#</em>#4636#<em>#</em></td><td>Android默认，不用修改</td><td>Done</td></tr><tr><td>MMI_SAR_DISPLAY</td><td>*#16#</td><td><em>#717#</em></td><td>OEM</td><td>Done</td></tr><tr><td>PRODUCT_NAME_AND_SOFTWARE_VERSION</td><td>*#4636#</td><td>*#6163#</td><td>OEM</td><td>Done</td></tr><tr><td>MMITEST_MODE</td><td>*#2886#</td><td>*#9999#</td><td>OEM</td><td>Done</td></tr><tr><td>Open Han logcat</td><td><em>#</em>#0574#<em>#</em></td><td><em>#</em>#6242#<em>#</em></td><td>OEM</td><td>Done</td></tr><tr><td>GOOGLE_APP_CONFIG_MODE</td><td>###666#</td><td>###466#</td><td>OEM</td><td>Done</td></tr><tr><td>DIAG_PROTECTOR_MODE</td><td>###2324#</td><td>###3414#</td><td>OEM</td><td>Done</td></tr><tr><td>Enable/disable auto answer mode</td><td>*#267934#</td><td>*#267934#</td><td>OEM</td><td>Done</td></tr><tr><td>MMI_CALLDURATION_COUNT_DISPLAY</td><td>###232#</td><td>###2155#</td><td>OEM</td><td>ongoing</td></tr><tr><td>ENGINEERING_MODE_CODE</td><td><em>#</em>#3646633#<em>#</em></td><td><em>#</em>#4267#<em>#</em></td><td>OEM</td><td>ongoing</td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h1 id="Vtiger-安装"><a href="#Vtiger-安装" class="headerlink" title="Vtiger 安装"></a>Vtiger 安装</h1><h2 id="1-安装阿里云ECS-centos-网页镜像"><a href="#1-安装阿里云ECS-centos-网页镜像" class="headerlink" title="1. 安装阿里云ECS centos 网页镜像."></a>1. 安装阿里云ECS centos 网页镜像.</h2><p>里面会有php,mysql,apache2等应用,不再需要自己安装.</p><h2 id="2-安装vtiger"><a href="#2-安装vtiger" class="headerlink" title="2. 安装vtiger"></a>2. 安装vtiger</h2><p>参考文档:<br><a href="https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps" target="_blank" rel="noopener">https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps</a></p><h2 id="3-修改文件"><a href="#3-修改文件" class="headerlink" title="3. 修改文件:"></a>3. 修改文件:</h2><ul><li><p>修改 /etc/my.cnf</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure></li><li><p>重启服务:</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure></li><li><p>修改/etc/php.ini文件.</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display_errors = On</span><br><span class="line">max_execution_time = 600</span><br><span class="line">error_reporting = E_WARNING &amp; ~E_NOTICE &amp; ~E_DEPRECATED</span><br><span class="line">log_errors = Off</span><br><span class="line">short_open_tag = On</span><br></pre></td></tr></table></figure></li></ul><h2 id="4-新增文件"><a href="#4-新增文件" class="headerlink" title="4. 新增文件"></a>4. 新增文件</h2><p>vi /etc/httpd/conf.d/crm.conf</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;Directory &quot;/var/www/html/crm&quot;&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Order deny,allow</span><br><span class="line">        Allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure><h2 id="5-下载vtiger"><a href="#5-下载vtiger" class="headerlink" title="5. 下载vtiger"></a>5. 下载vtiger</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://superb-dca2.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.1.0/Core%20Product/vtigercrm7.1.0.tar.gz</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -436,11 +453,11 @@
     </entry>
     
     <entry>
-      <title>Vtiger 安装</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/</url>
+      <title>常用暗码</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/</url>
       
-        <content type="html"><![CDATA[<h1 id="Vtiger-安装"><a href="#Vtiger-安装" class="headerlink" title="Vtiger 安装"></a>Vtiger 安装</h1><h2 id="1-安装阿里云ECS-centos-网页镜像"><a href="#1-安装阿里云ECS-centos-网页镜像" class="headerlink" title="1. 安装阿里云ECS centos 网页镜像."></a>1. 安装阿里云ECS centos 网页镜像.</h2><p>里面会有php,mysql,apache2等应用,不再需要自己安装.</p><h2 id="2-安装vtiger"><a href="#2-安装vtiger" class="headerlink" title="2. 安装vtiger"></a>2. 安装vtiger</h2><p>参考文档:<br><a href="https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps" target="_blank" rel="noopener">https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps</a></p><h2 id="3-修改文件"><a href="#3-修改文件" class="headerlink" title="3. 修改文件:"></a>3. 修改文件:</h2><ul><li><p>修改 /etc/my.cnf</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure></li><li><p>重启服务:</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure></li><li><p>修改/etc/php.ini文件.</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display_errors = On</span><br><span class="line">max_execution_time = 600</span><br><span class="line">error_reporting = E_WARNING &amp; ~E_NOTICE &amp; ~E_DEPRECATED</span><br><span class="line">log_errors = Off</span><br><span class="line">short_open_tag = On</span><br></pre></td></tr></table></figure></li></ul><h2 id="4-新增文件"><a href="#4-新增文件" class="headerlink" title="4. 新增文件"></a>4. 新增文件</h2><p>vi /etc/httpd/conf.d/crm.conf</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;Directory &quot;/var/www/html/crm&quot;&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Order deny,allow</span><br><span class="line">        Allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure><h2 id="5-下载vtiger"><a href="#5-下载vtiger" class="headerlink" title="5. 下载vtiger"></a>5. 下载vtiger</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://superb-dca2.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.1.0/Core%20Product/vtigercrm7.1.0.tar.gz</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="常用暗码"><a href="#常用暗码" class="headerlink" title="常用暗码"></a>常用暗码</h1><table><thead><tr><th>描述</th><th>旧暗码</th><th>修过后暗码</th><th>来源</th><th>状态</th></tr></thead><tbody><tr><td>MMI_REGULATORY_INFO_DISPLAY</td><td>*#07#</td><td>*#07#</td><td>Android默认，不用修改</td><td>Delete, Default not show and no req to show this</td></tr><tr><td>PRL_VERSION_DISPLAY</td><td>*#0000#</td><td>*#0000#</td><td>Android默认，不用修改</td><td>Delete, Default not show and no req to show this</td></tr><tr><td>MMI_IMEI_DISPLAY</td><td>*#06#</td><td>*#06#</td><td>Android默认，不用修改</td><td>Done</td></tr><tr><td>Phone information</td><td><em>#</em>#4636#<em>#</em></td><td><em>#</em>#4636#<em>#</em></td><td>Android默认，不用修改</td><td>Done</td></tr><tr><td>MMI_SAR_DISPLAY</td><td>*#16#</td><td><em>#717#</em></td><td>OEM</td><td>Done</td></tr><tr><td>PRODUCT_NAME_AND_SOFTWARE_VERSION</td><td>*#4636#</td><td>*#6163#</td><td>OEM</td><td>Done</td></tr><tr><td>MMITEST_MODE</td><td>*#2886#</td><td>*#9999#</td><td>OEM</td><td>Done</td></tr><tr><td>Open Han logcat</td><td><em>#</em>#0574#<em>#</em></td><td><em>#</em>#6242#<em>#</em></td><td>OEM</td><td>Done</td></tr><tr><td>GOOGLE_APP_CONFIG_MODE</td><td>###666#</td><td>###466#</td><td>OEM</td><td>Done</td></tr><tr><td>DIAG_PROTECTOR_MODE</td><td>###2324#</td><td>###3414#</td><td>OEM</td><td>Done</td></tr><tr><td>Enable/disable auto answer mode</td><td>*#267934#</td><td>*#267934#</td><td>OEM</td><td>Done</td></tr><tr><td>MMI_CALLDURATION_COUNT_DISPLAY</td><td>###232#</td><td>###2155#</td><td>OEM</td><td>ongoing</td></tr><tr><td>ENGINEERING_MODE_CODE</td><td><em>#</em>#3646633#<em>#</em></td><td><em>#</em>#4267#<em>#</em></td><td>OEM</td><td>ongoing</td></tr></tbody></table>]]></content>
       
       
       <categories>
@@ -475,6 +492,40 @@
       <url>/2018/12/13/gong-zuo-xiao-tie-shi/ubuntuinstallshadowsocks/</url>
       
         <content type="html"><![CDATA[<p>ubuntu 安装:<br>Shadowsocks<br><a href="https://blog.csdn.net/u012986684/article/details/53446107" target="_blank" rel="noopener">https://blog.csdn.net/u012986684/article/details/53446107</a></p><p>18.04 纠错:<br><a href="https://blog.csdn.net/blackfrog_unique/article/details/60320737" target="_blank" rel="noopener">https://blog.csdn.net/blackfrog_unique/article/details/60320737</a></p><pre class="mermaid">graph TD;A-->B;A-->C;B-->D;C-->D;</pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作小贴士 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>ubuntu Shadowsocks Error</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/</url>
+      
+        <content type="html"><![CDATA[<ol><li>Because the pac file has wrong data ,But there is no notify to show the problem.Fuck.</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作小贴士 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>qcn备份</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/</url>
+      
+        <content type="html"><![CDATA[<h1 id="qcn备份"><a href="#qcn备份" class="headerlink" title="qcn备份"></a>qcn备份</h1><p><font size="5"></font></p><ul><li>连接手机:<br></li></ul><hr><h2 id=""><a href="#" class="headerlink" title="  "></a><img src="amWiki/images/qcn01.png" alt="qcn" title="qcn">  </h2><h2 id="-1"><a href="#-1" class="headerlink" title="  "></a><img src="amWiki/images/qcn02.png" alt="qcn" title="qcn">  </h2><h2 id="-2"><a href="#-2" class="headerlink" title="  "></a><img src="amWiki/images/qcn03.png" alt="qcn" title="qcn">  </h2><p><img src="amWiki/images/qcn04.png" alt="qcn" title="qcn">  </p>]]></content>
       
       
       <categories>
@@ -538,62 +589,28 @@
     </entry>
     
     <entry>
-      <title>qcn备份</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/</url>
-      
-        <content type="html"><![CDATA[<h1 id="qcn备份"><a href="#qcn备份" class="headerlink" title="qcn备份"></a>qcn备份</h1><p><font size="5"></font></p><ul><li>连接手机:<br></li></ul><hr><h2 id=""><a href="#" class="headerlink" title="  "></a><img src="amWiki/images/qcn01.png" alt="qcn" title="qcn">  </h2><h2 id="-1"><a href="#-1" class="headerlink" title="  "></a><img src="amWiki/images/qcn02.png" alt="qcn" title="qcn">  </h2><h2 id="-2"><a href="#-2" class="headerlink" title="  "></a><img src="amWiki/images/qcn03.png" alt="qcn" title="qcn">  </h2><p><img src="amWiki/images/qcn04.png" alt="qcn" title="qcn">  </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作小贴士 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>ubuntu Shadowsocks Error</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/</url>
-      
-        <content type="html"><![CDATA[<ol><li>Because the pac file has wrong data ,But there is no notify to show the problem.Fuck.</li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作小贴士 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>Git 下载代理设置</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Git-下载代理设置"><a href="#Git-下载代理设置" class="headerlink" title="Git 下载代理设置"></a>Git 下载代理设置</h1><h2 id="永久代理"><a href="#永久代理" class="headerlink" title="永久代理"></a>永久代理</h2><p>git config –global http.proxy ‘socks5://127.0.0.1:1080’<br>git config –global https.proxy ‘socks5://127.0.0.1:1080’  </p><h2 id="临时代理"><a href="#临时代理" class="headerlink" title="临时代理"></a>临时代理</h2><p>export http_proxy=”socks5://127.0.0.1:1080”<br>export https_proxy=”socks5://127.0.0.1:1080”  </p><h1 id="设置ss"><a href="#设置ss" class="headerlink" title="设置ss"></a>设置ss</h1><p>git config –global http.proxy ‘socks5://127.0.0.1:1080’</p><p>git config –global https.proxy ‘socks5://127.0.0.1:1080’</p><h1 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h1><p>git config –global https.proxy <a href="http://127.0.0.1:1080" target="_blank" rel="noopener">http://127.0.0.1:1080</a></p><p>git config –global https.proxy <a href="https://127.0.0.1:1080" target="_blank" rel="noopener">https://127.0.0.1:1080</a></p><h1 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h1><p>git config –global –unset http.proxy<br>git config –global –unset https.proxy</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作小贴士 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
       <title>Monkey test command</title>
       <link href="/2018/12/13/gong-zuo-xiao-tie-shi/monkey-ce-shi-ming-ling-xing/"/>
       <url>/2018/12/13/gong-zuo-xiao-tie-shi/monkey-ce-shi-ming-ling-xing/</url>
       
         <content type="html"><![CDATA[<h1 id="Monkey-test-command"><a href="#Monkey-test-command" class="headerlink" title="Monkey test command"></a>Monkey test command</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb -s 202 shell monkey -s 500 --ignore-crashes --ignore-timeouts --monitor-native-crashes -v 1000000 | tee monkey_03.log</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell monkey -s 200 --ignore-crashes --ignore-timeouts --monitor-native-crashes -v 200 | tee monkey_03.log</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell monkey -s 500 --throttle 300 --ignore-crashes --ignore-timeouts --monitor-native-crashes -v 1000000 | tee monkey_03.log</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell monkey -s 500 --ignore-crashes --throttle 3000 --ignore-timeouts --monitor-native-crashes -v 1000000 | tee monkey_03.log</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb shell monkey --ignore-crashes --throttle 100 --ignore-timeouts --monitor-native-crashes -v 1000000 | tee monkey_03.log</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作小贴士 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
       
       
       <categories>
@@ -623,11 +640,11 @@
     </entry>
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/</url>
+      <title>Git 下载代理设置</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Git-下载代理设置"><a href="#Git-下载代理设置" class="headerlink" title="Git 下载代理设置"></a>Git 下载代理设置</h1><h2 id="永久代理"><a href="#永久代理" class="headerlink" title="永久代理"></a>永久代理</h2><p>git config –global http.proxy ‘socks5://127.0.0.1:1080’<br>git config –global https.proxy ‘socks5://127.0.0.1:1080’  </p><h2 id="临时代理"><a href="#临时代理" class="headerlink" title="临时代理"></a>临时代理</h2><p>export http_proxy=”socks5://127.0.0.1:1080”<br>export https_proxy=”socks5://127.0.0.1:1080”  </p><h1 id="设置ss"><a href="#设置ss" class="headerlink" title="设置ss"></a>设置ss</h1><p>git config –global http.proxy ‘socks5://127.0.0.1:1080’</p><p>git config –global https.proxy ‘socks5://127.0.0.1:1080’</p><h1 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h1><p>git config –global https.proxy <a href="http://127.0.0.1:1080" target="_blank" rel="noopener">http://127.0.0.1:1080</a></p><p>git config –global https.proxy <a href="https://127.0.0.1:1080" target="_blank" rel="noopener">https://127.0.0.1:1080</a></p><h1 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h1><p>git config –global –unset http.proxy<br>git config –global –unset https.proxy</p>]]></content>
       
       
       <categories>
@@ -729,7 +746,7 @@
       <link href="/2018/12/12/index/"/>
       <url>/2018/12/12/index/</url>
       
-        <content type="html"><![CDATA[<p><img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=400&amp;q=80" alt="Image of Yaktocat"></p><p>这是彪彪的个人 Wiki 站点，主要记录一些自己总结的只言片语的零散知识点。</p><p>我一直觉得 <strong>知识不能碎片化，要结构化</strong>，于是希望寻找一种优雅的方式来管理我的知识。</p>]]></content>
+        <content type="html"><![CDATA[<p><img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=400&amp;q=80" alt="Image of Yaktocat"></p><p><strong>如果你花费过多时间思考一件事，你永远也无法将它完成</strong></p><p><strong>不要思考，要去感受</strong></p><p><strong>别人告诉我说一个天才可以制造自己的机会，事实上，一个人的深切希望不但可以创造自己的机会，甚至可以创造自己的天才</strong></p><p>EMail: <a href="mailto:258106975@qq.com" target="_blank" rel="noopener">258106975@qq.com</a></p>]]></content>
       
       
       
