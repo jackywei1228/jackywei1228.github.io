@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://ifonly.me/2018/12/17/xi-tong-an-zhuang/centos7-pei-zhi/</loc>
+    <loc>https://ifonly.me/2018/12/18/xi-tong-an-zhuang/ubuntu-huan-jing-pei-zhi/</loc>
     
-    <lastmod>2018-12-17T06:41:32.963Z</lastmod>
+    <lastmod>2018-12-18T05:59:16.372Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ifonly.me/2018/12/18/xi-tong-an-zhuang/centos7-pei-zhi/</loc>
+    
+    <lastmod>2018-12-18T05:55:53.712Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ifonly.me/2018/12/17/xu-qiu-shi-xian/fota-gong-neng-de-shi-xian/ce-shi-huan-jing/</loc>
+    
+    <lastmod>2018-12-17T10:04:11.349Z</lastmod>
     
   </url>
   
@@ -149,14 +163,14 @@
   </url>
   
   <url>
-    <loc>https://ifonly.me/tags/index.html</loc>
+    <loc>https://ifonly.me/categories/index.html</loc>
     
     <lastmod>2018-12-13T06:08:58.985Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://ifonly.me/categories/index.html</loc>
+    <loc>https://ifonly.me/tags/index.html</loc>
     
     <lastmod>2018-12-13T06:08:58.985Z</lastmod>
     
