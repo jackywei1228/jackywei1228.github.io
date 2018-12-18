@@ -370,6 +370,40 @@
     </entry>
     
     <entry>
+      <title>多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/</url>
+      
+        <content type="html"><![CDATA[<h1 id="多次拨打电话并且挂断之后-会在某一次拨号界面会冻住"><a href="#多次拨打电话并且挂断之后-会在某一次拨号界面会冻住" class="headerlink" title="多次拨打电话并且挂断之后.会在某一次拨号界面会冻住."></a>多次拨打电话并且挂断之后.会在某一次拨号界面会冻住.</h1><h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>出问题的</p><h2 id="有很多pending-async-transaction未返回"><a href="#有很多pending-async-transaction未返回" class="headerlink" title="有很多pending async transaction未返回."></a>有很多pending async transaction未返回.</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">binder proc state:</span><br><span class="line">proc 3419</span><br><span class="line">context hwbinder</span><br><span class="line">  thread 760: l 00 need_return 0 tr 0</span><br><span class="line">  thread 1655: l 00 need_return 0 tr 0</span><br><span class="line">  thread 2858: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3419: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3442: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3453: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3512: l 02 need_return 0 tr 0</span><br><span class="line">  thread 3586: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3597: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3600: l 00 need_return 0 tr 0</span><br><span class="line">  thread 4031: l 00 need_return 0 tr 0</span><br><span class="line">  node 123985: u0000000097ea23c0 c0000000097e9d8f0 pri 0:120 hs 0 hw 1 ls 0 lw 0 is 0 iw 1 tr 1 proc 251</span><br><span class="line">  node 138919: u0000000097ea2c60 c0000000097e9e750 pri 0:120 hs 0 hw 1 ls 0 lw 0 is 0 iw 1 tr 1 proc 251</span><br><span class="line">  node 15269: u00000000a64e9a40 c00000000a6712660 pri 0:120 hs 1 hw 1 ls 8 lw 0 is 1 iw 1 tr 1 proc 431</span><br><span class="line">    pending async transaction 149963: e6fb8c80 from 0:0 to 3419:0 code 63 flags 11 pri 0:120 r0 node 15269 size 452:68 data f6a004d4</span><br><span class="line">    pending async transaction 150734: c621e200 from 0:0 to 3419:0 code 37 flags 11 pri 0:120 r0 node 15269 size 68:4 data f6a008b8</span><br><span class="line">    pending async transaction 162914: e96bc400 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a040e4</span><br><span class="line">    pending async transaction 164153: dc771b80 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a04b3c</span><br><span class="line">    pending async transaction 166022: ce803000 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a05884</span><br><span class="line">    pending async transaction 168226: d996c600 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a06afc</span><br><span class="line">    pending async transaction 168903: dfc07200 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a07610</span><br><span class="line">  node 15271: u00000000a64e9a60 c00000000a67126a0 pri 0:120 hs 1 hw 1 ls 55 lw 0 is 1 iw 1 tr 1 proc 431</span><br><span class="line">    pending async transaction 148293: eac90a80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a00418</span><br><span class="line">    pending async transaction 154669: d2824780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a03580</span><br><span class="line">    pending async transaction 155165: ce943e00 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0363c</span><br><span class="line">    pending async transaction 159800: ec976600 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a038a8</span><br><span class="line">    pending async transaction 160862: ce943300 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a039d0</span><br><span class="line">    pending async transaction 162027: c6249780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a03cd4</span><br><span class="line">    pending async transaction 162517: ec2b6c80 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a03d90</span><br><span class="line">    pending async transaction 162713: d7bae800 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04028</span><br><span class="line">    pending async transaction 162915: c3dfa980 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a041a4</span><br><span class="line">    pending async transaction 162997: ec2b6400 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0443c</span><br><span class="line">    pending async transaction 163477: cea1c680 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a044f8</span><br><span class="line">    pending async transaction 163528: dfc07900 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a045b4</span><br><span class="line">    pending async transaction 163529: d086a080 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04670</span><br><span class="line">    pending async transaction 163571: d527dd80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04908</span><br><span class="line">    pending async transaction 163931: e96bc780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a049c4</span><br><span class="line">    pending async transaction 163968: d0a73900 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04a80</span><br><span class="line">    pending async transaction 164154: dc771680 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04bfc</span><br><span class="line">    pending async transaction 164192: d7bae280 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04e94</span><br><span class="line">    pending async transaction 164243: d7bae680 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04f50</span><br><span class="line">    pending async transaction 164271: d7bae980 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a051e8</span><br><span class="line">    pending async transaction 164388: e5a41f80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a052a4</span><br><span class="line">    pending async transaction 164785: e96bc800 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a05360</span><br><span class="line">    pending async transaction 164894: dc31c500 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0541c</span><br></pre></td></tr></table></figure><h2 id="另外-会有一个"><a href="#另外-会有一个" class="headerlink" title="另外,会有一个:"></a>另外,会有一个:</h2><pre><code>radio         2973  1612   270 1131000  78576 diagchar_read af10a6a0 S m.android.phone这样的进程.</code></pre><h2 id="kill-3-某个2973-程序会继续往下跑"><a href="#kill-3-某个2973-程序会继续往下跑" class="headerlink" title="kill -3 某个2973,程序会继续往下跑"></a>kill -3 某个2973,程序会继续往下跑</h2><h2 id="具体看附件"><a href="#具体看附件" class="headerlink" title="具体看附件"></a>具体看附件</h2><pre><code>file 目录下面</code></pre><h2 id="改NV值70287-可以规避问题-但未找到根本原因"><a href="#改NV值70287-可以规避问题-但未找到根本原因" class="headerlink" title="改NV值70287 可以规避问题,但未找到根本原因."></a>改NV值70287 可以规避问题,但未找到根本原因.</h2><pre><code>后续有时间继续跟踪</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作小贴士 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>批量替换代码中的字符串</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/</url>
+      
+        <content type="html"><![CDATA[<h1 id="批量替换代码中的字符串"><a href="#批量替换代码中的字符串" class="headerlink" title="批量替换代码中的字符串"></a>批量替换代码中的字符串</h1><ul><li>下面command 的意思是： 找出所有含有xxx.字符串的文件,并且把xxx换成han<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep -r &apos;xxx\.&apos; . |awk -F&apos;:&apos; &apos;&#123;print $1&#125;&apos; | xargs sed -i &apos;s/xxx\./han\./&apos;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作小贴士 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>把所有CPU拉到最高</title>
       <link href="/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/"/>
       <url>/2018/12/13/gong-zuo-xiao-tie-shi/la-qi-suo-you-cpu/</url>
@@ -404,45 +438,11 @@
     </entry>
     
     <entry>
-      <title>批量替换代码中的字符串</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/pi-liang-shan-chu-dai-ma-zhong-de-zi-fu-chuan/</url>
+      <title>Vtiger 安装</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/</url>
       
-        <content type="html"><![CDATA[<h1 id="批量替换代码中的字符串"><a href="#批量替换代码中的字符串" class="headerlink" title="批量替换代码中的字符串"></a>批量替换代码中的字符串</h1><ul><li>下面command 的意思是： 找出所有含有xxx.字符串的文件,并且把xxx换成han<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep -r &apos;xxx\.&apos; . |awk -F&apos;:&apos; &apos;&#123;print $1&#125;&apos; | xargs sed -i &apos;s/xxx\./han\./&apos;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作小贴士 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>多次拨打电话并且挂断之后.会在某一次拨号界面会冻住</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/shou-ji-gua-duan-bu-liao-dian-hua/</url>
-      
-        <content type="html"><![CDATA[<h1 id="多次拨打电话并且挂断之后-会在某一次拨号界面会冻住"><a href="#多次拨打电话并且挂断之后-会在某一次拨号界面会冻住" class="headerlink" title="多次拨打电话并且挂断之后.会在某一次拨号界面会冻住."></a>多次拨打电话并且挂断之后.会在某一次拨号界面会冻住.</h1><h1 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h1><p>出问题的</p><h2 id="有很多pending-async-transaction未返回"><a href="#有很多pending-async-transaction未返回" class="headerlink" title="有很多pending async transaction未返回."></a>有很多pending async transaction未返回.</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">binder proc state:</span><br><span class="line">proc 3419</span><br><span class="line">context hwbinder</span><br><span class="line">  thread 760: l 00 need_return 0 tr 0</span><br><span class="line">  thread 1655: l 00 need_return 0 tr 0</span><br><span class="line">  thread 2858: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3419: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3442: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3453: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3512: l 02 need_return 0 tr 0</span><br><span class="line">  thread 3586: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3597: l 00 need_return 0 tr 0</span><br><span class="line">  thread 3600: l 00 need_return 0 tr 0</span><br><span class="line">  thread 4031: l 00 need_return 0 tr 0</span><br><span class="line">  node 123985: u0000000097ea23c0 c0000000097e9d8f0 pri 0:120 hs 0 hw 1 ls 0 lw 0 is 0 iw 1 tr 1 proc 251</span><br><span class="line">  node 138919: u0000000097ea2c60 c0000000097e9e750 pri 0:120 hs 0 hw 1 ls 0 lw 0 is 0 iw 1 tr 1 proc 251</span><br><span class="line">  node 15269: u00000000a64e9a40 c00000000a6712660 pri 0:120 hs 1 hw 1 ls 8 lw 0 is 1 iw 1 tr 1 proc 431</span><br><span class="line">    pending async transaction 149963: e6fb8c80 from 0:0 to 3419:0 code 63 flags 11 pri 0:120 r0 node 15269 size 452:68 data f6a004d4</span><br><span class="line">    pending async transaction 150734: c621e200 from 0:0 to 3419:0 code 37 flags 11 pri 0:120 r0 node 15269 size 68:4 data f6a008b8</span><br><span class="line">    pending async transaction 162914: e96bc400 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a040e4</span><br><span class="line">    pending async transaction 164153: dc771b80 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a04b3c</span><br><span class="line">    pending async transaction 166022: ce803000 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a05884</span><br><span class="line">    pending async transaction 168226: d996c600 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a06afc</span><br><span class="line">    pending async transaction 168903: dfc07200 from 0:0 to 3419:0 code 7b flags 11 pri 0:120 r0 node 15269 size 92:8 data f6a07610</span><br><span class="line">  node 15271: u00000000a64e9a60 c00000000a67126a0 pri 0:120 hs 1 hw 1 ls 55 lw 0 is 1 iw 1 tr 1 proc 431</span><br><span class="line">    pending async transaction 148293: eac90a80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a00418</span><br><span class="line">    pending async transaction 154669: d2824780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a03580</span><br><span class="line">    pending async transaction 155165: ce943e00 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0363c</span><br><span class="line">    pending async transaction 159800: ec976600 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a038a8</span><br><span class="line">    pending async transaction 160862: ce943300 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a039d0</span><br><span class="line">    pending async transaction 162027: c6249780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a03cd4</span><br><span class="line">    pending async transaction 162517: ec2b6c80 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a03d90</span><br><span class="line">    pending async transaction 162713: d7bae800 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04028</span><br><span class="line">    pending async transaction 162915: c3dfa980 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a041a4</span><br><span class="line">    pending async transaction 162997: ec2b6400 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0443c</span><br><span class="line">    pending async transaction 163477: cea1c680 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a044f8</span><br><span class="line">    pending async transaction 163528: dfc07900 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a045b4</span><br><span class="line">    pending async transaction 163529: d086a080 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04670</span><br><span class="line">    pending async transaction 163571: d527dd80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04908</span><br><span class="line">    pending async transaction 163931: e96bc780 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a049c4</span><br><span class="line">    pending async transaction 163968: d0a73900 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04a80</span><br><span class="line">    pending async transaction 164154: dc771680 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04bfc</span><br><span class="line">    pending async transaction 164192: d7bae280 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a04e94</span><br><span class="line">    pending async transaction 164243: d7bae680 from 0:0 to 3419:0 code a flags 11 pri 0:120 r0 node 15271 size 244:32 data f6a04f50</span><br><span class="line">    pending async transaction 164271: d7bae980 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a051e8</span><br><span class="line">    pending async transaction 164388: e5a41f80 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a052a4</span><br><span class="line">    pending async transaction 164785: e96bc800 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a05360</span><br><span class="line">    pending async transaction 164894: dc31c500 from 0:0 to 3419:0 code 9 flags 11 pri 0:120 r0 node 15271 size 76:4 data f6a0541c</span><br></pre></td></tr></table></figure><h2 id="另外-会有一个"><a href="#另外-会有一个" class="headerlink" title="另外,会有一个:"></a>另外,会有一个:</h2><pre><code>radio         2973  1612   270 1131000  78576 diagchar_read af10a6a0 S m.android.phone这样的进程.</code></pre><h2 id="kill-3-某个2973-程序会继续往下跑"><a href="#kill-3-某个2973-程序会继续往下跑" class="headerlink" title="kill -3 某个2973,程序会继续往下跑"></a>kill -3 某个2973,程序会继续往下跑</h2><h2 id="具体看附件"><a href="#具体看附件" class="headerlink" title="具体看附件"></a>具体看附件</h2><pre><code>file 目录下面</code></pre><h2 id="改NV值70287-可以规避问题-但未找到根本原因"><a href="#改NV值70287-可以规避问题-但未找到根本原因" class="headerlink" title="改NV值70287 可以规避问题,但未找到根本原因."></a>改NV值70287 可以规避问题,但未找到根本原因.</h2><pre><code>后续有时间继续跟踪</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作小贴士 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>常用暗码</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/</url>
-      
-        <content type="html"><![CDATA[<h1 id="常用暗码"><a href="#常用暗码" class="headerlink" title="常用暗码"></a>常用暗码</h1><table><thead><tr><th>描述</th><th>旧暗码</th><th>修过后暗码</th><th>来源</th><th>状态</th></tr></thead><tbody><tr><td>MMI_REGULATORY_INFO_DISPLAY</td><td>*#07#</td><td>*#07#</td><td>Android默认，不用修改</td><td>Delete, Default not show and no req to show this</td></tr><tr><td>PRL_VERSION_DISPLAY</td><td>*#0000#</td><td>*#0000#</td><td>Android默认，不用修改</td><td>Delete, Default not show and no req to show this</td></tr><tr><td>MMI_IMEI_DISPLAY</td><td>*#06#</td><td>*#06#</td><td>Android默认，不用修改</td><td>Done</td></tr><tr><td>Phone information</td><td><em>#</em>#4636#<em>#</em></td><td><em>#</em>#4636#<em>#</em></td><td>Android默认，不用修改</td><td>Done</td></tr><tr><td>MMI_SAR_DISPLAY</td><td>*#16#</td><td><em>#717#</em></td><td>OEM</td><td>Done</td></tr><tr><td>PRODUCT_NAME_AND_SOFTWARE_VERSION</td><td>*#4636#</td><td>*#6163#</td><td>OEM</td><td>Done</td></tr><tr><td>MMITEST_MODE</td><td>*#2886#</td><td>*#9999#</td><td>OEM</td><td>Done</td></tr><tr><td>Open Han logcat</td><td><em>#</em>#0574#<em>#</em></td><td><em>#</em>#6242#<em>#</em></td><td>OEM</td><td>Done</td></tr><tr><td>GOOGLE_APP_CONFIG_MODE</td><td>###666#</td><td>###466#</td><td>OEM</td><td>Done</td></tr><tr><td>DIAG_PROTECTOR_MODE</td><td>###2324#</td><td>###3414#</td><td>OEM</td><td>Done</td></tr><tr><td>Enable/disable auto answer mode</td><td>*#267934#</td><td>*#267934#</td><td>OEM</td><td>Done</td></tr><tr><td>MMI_CALLDURATION_COUNT_DISPLAY</td><td>###232#</td><td>###2155#</td><td>OEM</td><td>ongoing</td></tr><tr><td>ENGINEERING_MODE_CODE</td><td><em>#</em>#3646633#<em>#</em></td><td><em>#</em>#4267#<em>#</em></td><td>OEM</td><td>ongoing</td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h1 id="Vtiger-安装"><a href="#Vtiger-安装" class="headerlink" title="Vtiger 安装"></a>Vtiger 安装</h1><h2 id="1-安装阿里云ECS-centos-网页镜像"><a href="#1-安装阿里云ECS-centos-网页镜像" class="headerlink" title="1. 安装阿里云ECS centos 网页镜像."></a>1. 安装阿里云ECS centos 网页镜像.</h2><p>里面会有php,mysql,apache2等应用,不再需要自己安装.</p><h2 id="2-安装vtiger"><a href="#2-安装vtiger" class="headerlink" title="2. 安装vtiger"></a>2. 安装vtiger</h2><p>参考文档:<br><a href="https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps" target="_blank" rel="noopener">https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps</a></p><h2 id="3-修改文件"><a href="#3-修改文件" class="headerlink" title="3. 修改文件:"></a>3. 修改文件:</h2><ul><li><p>修改 /etc/my.cnf</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure></li><li><p>重启服务:</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure></li><li><p>修改/etc/php.ini文件.</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display_errors = On</span><br><span class="line">max_execution_time = 600</span><br><span class="line">error_reporting = E_WARNING &amp; ~E_NOTICE &amp; ~E_DEPRECATED</span><br><span class="line">log_errors = Off</span><br><span class="line">short_open_tag = On</span><br></pre></td></tr></table></figure></li></ul><h2 id="4-新增文件"><a href="#4-新增文件" class="headerlink" title="4. 新增文件"></a>4. 新增文件</h2><p>vi /etc/httpd/conf.d/crm.conf</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;Directory &quot;/var/www/html/crm&quot;&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Order deny,allow</span><br><span class="line">        Allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure><h2 id="5-下载vtiger"><a href="#5-下载vtiger" class="headerlink" title="5. 下载vtiger"></a>5. 下载vtiger</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://superb-dca2.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.1.0/Core%20Product/vtigercrm7.1.0.tar.gz</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -472,11 +472,11 @@
     </entry>
     
     <entry>
-      <title>ubuntu Mysql 安装</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/</url>
+      <title>常用暗码</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/chang-yong-an-ma/</url>
       
-        <content type="html"><![CDATA[<h1 id="ubuntu-Mysql-安装"><a href="#ubuntu-Mysql-安装" class="headerlink" title="ubuntu Mysql 安装"></a>ubuntu Mysql 安装</h1><h2 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqlclient-dev</span><br><span class="line">sudo apt-get install mysql-common</span><br></pre></td></tr></table></figure><h2 id="安装错误"><a href="#安装错误" class="headerlink" title="安装错误"></a>安装错误</h2><p>安装过程中未提示输入安装密码,导致不能用root登入，处理方法如下:<br><a href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost" target="_blank" rel="noopener">https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost</a></p><h2 id="删除mysql"><a href="#删除mysql" class="headerlink" title="删除mysql"></a>删除mysql</h2><p>按顺序执行以下命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get autoremove --purge mysql-server-5.0</span><br><span class="line">sudo apt-get remove mysql-server</span><br><span class="line">sudo apt-get autoremove mysql-server</span><br><span class="line">sudo apt-get remove mysql-common</span><br></pre></td></tr></table></figure></p><p>清理残留数据<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P</span><br></pre></td></tr></table></figure></p><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost" target="_blank" rel="noopener">https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost</a></p><p><a href="https://www.cnblogs.com/zhuyp1015/p/3561470.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhuyp1015/p/3561470.html</a></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="常用暗码"><a href="#常用暗码" class="headerlink" title="常用暗码"></a>常用暗码</h1><table><thead><tr><th>描述</th><th>旧暗码</th><th>修过后暗码</th><th>来源</th><th>状态</th></tr></thead><tbody><tr><td>MMI_REGULATORY_INFO_DISPLAY</td><td>*#07#</td><td>*#07#</td><td>Android默认，不用修改</td><td>Delete, Default not show and no req to show this</td></tr><tr><td>PRL_VERSION_DISPLAY</td><td>*#0000#</td><td>*#0000#</td><td>Android默认，不用修改</td><td>Delete, Default not show and no req to show this</td></tr><tr><td>MMI_IMEI_DISPLAY</td><td>*#06#</td><td>*#06#</td><td>Android默认，不用修改</td><td>Done</td></tr><tr><td>Phone information</td><td><em>#</em>#4636#<em>#</em></td><td><em>#</em>#4636#<em>#</em></td><td>Android默认，不用修改</td><td>Done</td></tr><tr><td>MMI_SAR_DISPLAY</td><td>*#16#</td><td><em>#717#</em></td><td>OEM</td><td>Done</td></tr><tr><td>PRODUCT_NAME_AND_SOFTWARE_VERSION</td><td>*#4636#</td><td>*#6163#</td><td>OEM</td><td>Done</td></tr><tr><td>MMITEST_MODE</td><td>*#2886#</td><td>*#9999#</td><td>OEM</td><td>Done</td></tr><tr><td>Open Han logcat</td><td><em>#</em>#0574#<em>#</em></td><td><em>#</em>#6242#<em>#</em></td><td>OEM</td><td>Done</td></tr><tr><td>GOOGLE_APP_CONFIG_MODE</td><td>###666#</td><td>###466#</td><td>OEM</td><td>Done</td></tr><tr><td>DIAG_PROTECTOR_MODE</td><td>###2324#</td><td>###3414#</td><td>OEM</td><td>Done</td></tr><tr><td>Enable/disable auto answer mode</td><td>*#267934#</td><td>*#267934#</td><td>OEM</td><td>Done</td></tr><tr><td>MMI_CALLDURATION_COUNT_DISPLAY</td><td>###232#</td><td>###2155#</td><td>OEM</td><td>ongoing</td></tr><tr><td>ENGINEERING_MODE_CODE</td><td><em>#</em>#3646633#<em>#</em></td><td><em>#</em>#4267#<em>#</em></td><td>OEM</td><td>ongoing</td></tr></tbody></table>]]></content>
       
       
       <categories>
@@ -489,11 +489,11 @@
     </entry>
     
     <entry>
-      <title>Vtiger 安装</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/an-zhuang-vtiger/</url>
+      <title>ubuntu Mysql 安装</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/ubuntu-mysql-install/</url>
       
-        <content type="html"><![CDATA[<h1 id="Vtiger-安装"><a href="#Vtiger-安装" class="headerlink" title="Vtiger 安装"></a>Vtiger 安装</h1><h2 id="1-安装阿里云ECS-centos-网页镜像"><a href="#1-安装阿里云ECS-centos-网页镜像" class="headerlink" title="1. 安装阿里云ECS centos 网页镜像."></a>1. 安装阿里云ECS centos 网页镜像.</h2><p>里面会有php,mysql,apache2等应用,不再需要自己安装.</p><h2 id="2-安装vtiger"><a href="#2-安装vtiger" class="headerlink" title="2. 安装vtiger"></a>2. 安装vtiger</h2><p>参考文档:<br><a href="https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps" target="_blank" rel="noopener">https://www.dailyrazor.com/blog/install-vtiger-crm-on-ubuntu-14.04-vps</a></p><h2 id="3-修改文件"><a href="#3-修改文件" class="headerlink" title="3. 修改文件:"></a>3. 修改文件:</h2><ul><li><p>修改 /etc/my.cnf</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure></li><li><p>重启服务:</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure></li><li><p>修改/etc/php.ini文件.</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">display_errors = On</span><br><span class="line">max_execution_time = 600</span><br><span class="line">error_reporting = E_WARNING &amp; ~E_NOTICE &amp; ~E_DEPRECATED</span><br><span class="line">log_errors = Off</span><br><span class="line">short_open_tag = On</span><br></pre></td></tr></table></figure></li></ul><h2 id="4-新增文件"><a href="#4-新增文件" class="headerlink" title="4. 新增文件"></a>4. 新增文件</h2><p>vi /etc/httpd/conf.d/crm.conf</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;Directory &quot;/var/www/html/crm&quot;&gt;</span><br><span class="line">        Options Indexes FollowSymLinks</span><br><span class="line">        AllowOverride All</span><br><span class="line">        Order deny,allow</span><br><span class="line">        Allow from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure><h2 id="5-下载vtiger"><a href="#5-下载vtiger" class="headerlink" title="5. 下载vtiger"></a>5. 下载vtiger</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https://superb-dca2.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%207.1.0/Core%20Product/vtigercrm7.1.0.tar.gz</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="ubuntu-Mysql-安装"><a href="#ubuntu-Mysql-安装" class="headerlink" title="ubuntu Mysql 安装"></a>ubuntu Mysql 安装</h1><h2 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqlclient-dev</span><br><span class="line">sudo apt-get install mysql-common</span><br></pre></td></tr></table></figure><h2 id="安装错误"><a href="#安装错误" class="headerlink" title="安装错误"></a>安装错误</h2><p>安装过程中未提示输入安装密码,导致不能用root登入，处理方法如下:<br><a href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost" target="_blank" rel="noopener">https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost</a></p><h2 id="删除mysql"><a href="#删除mysql" class="headerlink" title="删除mysql"></a>删除mysql</h2><p>按顺序执行以下命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get autoremove --purge mysql-server-5.0</span><br><span class="line">sudo apt-get remove mysql-server</span><br><span class="line">sudo apt-get autoremove mysql-server</span><br><span class="line">sudo apt-get remove mysql-common</span><br></pre></td></tr></table></figure></p><p>清理残留数据<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P</span><br></pre></td></tr></table></figure></p><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost" target="_blank" rel="noopener">https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost</a></p><p><a href="https://www.cnblogs.com/zhuyp1015/p/3561470.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhuyp1015/p/3561470.html</a></p>]]></content>
       
       
       <categories>
@@ -540,23 +540,6 @@
     </entry>
     
     <entry>
-      <title>qcn备份</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/</url>
-      
-        <content type="html"><![CDATA[<h1 id="qcn备份"><a href="#qcn备份" class="headerlink" title="qcn备份"></a>qcn备份</h1><p><font size="5"></font></p><ul><li>连接手机:<br></li></ul><hr><h2 id=""><a href="#" class="headerlink" title="  "></a><img src="amWiki/images/qcn01.png" alt="qcn" title="qcn">  </h2><h2 id="-1"><a href="#-1" class="headerlink" title="  "></a><img src="amWiki/images/qcn02.png" alt="qcn" title="qcn">  </h2><h2 id="-2"><a href="#-2" class="headerlink" title="  "></a><img src="amWiki/images/qcn03.png" alt="qcn" title="qcn">  </h2><p><img src="amWiki/images/qcn04.png" alt="qcn" title="qcn">  </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作小贴士 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
       <title>nodejs 安装</title>
       <link href="/2018/12/13/gong-zuo-xiao-tie-shi/nodejs-an-zhuang/"/>
       <url>/2018/12/13/gong-zuo-xiao-tie-shi/nodejs-an-zhuang/</url>
@@ -591,6 +574,40 @@
     </entry>
     
     <entry>
+      <title>Performance</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/performance/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/performance/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作小贴士 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>qcn备份</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/qcn-bei-fen/</url>
+      
+        <content type="html"><![CDATA[<h1 id="qcn备份"><a href="#qcn备份" class="headerlink" title="qcn备份"></a>qcn备份</h1><p><font size="5"></font></p><ul><li>连接手机:<br></li></ul><hr><h2 id=""><a href="#" class="headerlink" title="  "></a><img src="amWiki/images/qcn01.png" alt="qcn" title="qcn">  </h2><h2 id="-1"><a href="#-1" class="headerlink" title="  "></a><img src="amWiki/images/qcn02.png" alt="qcn" title="qcn">  </h2><h2 id="-2"><a href="#-2" class="headerlink" title="  "></a><img src="amWiki/images/qcn03.png" alt="qcn" title="qcn">  </h2><p><img src="amWiki/images/qcn04.png" alt="qcn" title="qcn">  </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作小贴士 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>ubuntu Shadowsocks Error</title>
       <link href="/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/"/>
       <url>/2018/12/13/gong-zuo-xiao-tie-shi/shadowsock/</url>
@@ -608,11 +625,11 @@
     </entry>
     
     <entry>
-      <title>Performance</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/performance/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/performance/</url>
+      <title>Git 下载代理设置</title>
+      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/"/>
+      <url>/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="Git-下载代理设置"><a href="#Git-下载代理设置" class="headerlink" title="Git 下载代理设置"></a>Git 下载代理设置</h1><h2 id="永久代理"><a href="#永久代理" class="headerlink" title="永久代理"></a>永久代理</h2><p>git config –global http.proxy ‘socks5://127.0.0.1:1080’<br>git config –global https.proxy ‘socks5://127.0.0.1:1080’  </p><h2 id="临时代理"><a href="#临时代理" class="headerlink" title="临时代理"></a>临时代理</h2><p>export http_proxy=”socks5://127.0.0.1:1080”<br>export https_proxy=”socks5://127.0.0.1:1080”  </p><h1 id="设置ss"><a href="#设置ss" class="headerlink" title="设置ss"></a>设置ss</h1><p>git config –global http.proxy ‘socks5://127.0.0.1:1080’</p><p>git config –global https.proxy ‘socks5://127.0.0.1:1080’</p><h1 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h1><p>git config –global https.proxy <a href="http://127.0.0.1:1080" target="_blank" rel="noopener">http://127.0.0.1:1080</a></p><p>git config –global https.proxy <a href="https://127.0.0.1:1080" target="_blank" rel="noopener">https://127.0.0.1:1080</a></p><h1 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h1><p>git config –global –unset http.proxy<br>git config –global –unset https.proxy</p>]]></content>
       
       
       <categories>
@@ -664,23 +681,6 @@
       <url>/2018/12/13/gong-zuo-xiao-tie-shi/hello-world/</url>
       
         <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工作小贴士 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>Git 下载代理设置</title>
-      <link href="/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/"/>
-      <url>/2018/12/13/gong-zuo-xiao-tie-shi/git-xia-zai-dai-li-she-zhi/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Git-下载代理设置"><a href="#Git-下载代理设置" class="headerlink" title="Git 下载代理设置"></a>Git 下载代理设置</h1><h2 id="永久代理"><a href="#永久代理" class="headerlink" title="永久代理"></a>永久代理</h2><p>git config –global http.proxy ‘socks5://127.0.0.1:1080’<br>git config –global https.proxy ‘socks5://127.0.0.1:1080’  </p><h2 id="临时代理"><a href="#临时代理" class="headerlink" title="临时代理"></a>临时代理</h2><p>export http_proxy=”socks5://127.0.0.1:1080”<br>export https_proxy=”socks5://127.0.0.1:1080”  </p><h1 id="设置ss"><a href="#设置ss" class="headerlink" title="设置ss"></a>设置ss</h1><p>git config –global http.proxy ‘socks5://127.0.0.1:1080’</p><p>git config –global https.proxy ‘socks5://127.0.0.1:1080’</p><h1 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h1><p>git config –global https.proxy <a href="http://127.0.0.1:1080" target="_blank" rel="noopener">http://127.0.0.1:1080</a></p><p>git config –global https.proxy <a href="https://127.0.0.1:1080" target="_blank" rel="noopener">https://127.0.0.1:1080</a></p><h1 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h1><p>git config –global –unset http.proxy<br>git config –global –unset https.proxy</p>]]></content>
       
       
       <categories>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ifonly.me/"/>
-  <updated>2018-12-18T05:59:16.372Z</updated>
+  <updated>2018-12-18T09:42:44.548Z</updated>
   <id>https://ifonly.me/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>Ubuntu环境配置</title>
     <link href="https://ifonly.me/2018/12/18/xi-tong-an-zhuang/ubuntu-huan-jing-pei-zhi/"/>
     <id>https://ifonly.me/2018/12/18/xi-tong-an-zhuang/ubuntu-huan-jing-pei-zhi/</id>
-    <published>2018-12-18T05:59:16.372Z</published>
-    <updated>2018-12-18T05:59:16.372Z</updated>
+    <published>2018-12-18T09:42:44.548Z</published>
+    <updated>2018-12-18T09:42:44.548Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-C-编译工具"><a href="#1-C-编译工具" class="headerlink" title="1. C++编译工具"></a>1. C++编译工具</h2><ul><li>安装build-essential<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br></pre></td></tr></table></figure></li></ul>]]></content>
     
