@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ifonly.me/"/>
-  <updated>2019-01-17T08:21:39.236Z</updated>
+  <updated>2019-01-17T08:34:55.571Z</updated>
   <id>https://ifonly.me/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <title>序列图</title>
     <link href="https://ifonly.me/2019/01/17/xu-qiu-shi-xian/wang-zheng-xu-qiu/xu-lie-tu/"/>
     <id>https://ifonly.me/2019/01/17/xu-qiu-shi-xian/wang-zheng-xu-qiu/xu-lie-tu/</id>
-    <published>2019-01-17T08:21:39.236Z</published>
-    <updated>2019-01-17T08:21:39.236Z</updated>
+    <published>2019-01-17T08:34:55.571Z</published>
+    <updated>2019-01-17T08:34:55.571Z</updated>
     
-    <content type="html"><![CDATA[<p><pre class="mermaid">    sequenceDiagram<br>    title: 序列图<br>    participant 客户端<br>    participant Token服务器<br>    participant 数据库<br>    participant 业务服务器<br>    participant 签名服务器<br>    participant 安全边界</pre></p><pre><code>客户端 -&gt;&gt; Token服务器 : 用户名 &amp; key &amp; 业务编号Token服务器 -&gt;&gt; 数据库 : 查验信息(name key op)数据库 -&gt;&gt; Token服务器 : 返回客户信息alt 正确的信息    Token服务器 -&gt;&gt; Token服务器 : 生成Token    Token服务器 --&gt;&gt;  数据库 : 写入数据库    Token服务器 -&gt;&gt; 客户端 : 用户名 &amp; key &amp; 业务编号 &amp; Tokenelse 错误的信息    Token服务器 -&gt;&gt; Token服务器 : 生成错误码    Token服务器 --&gt;&gt;  数据库 : 写错误信息入数据库    Token服务器 -&gt;&gt; 客户端 : 用户名 &amp; key &amp; 业务编号 &amp; 错误码end客户端 -&gt;&gt; 业务服务器 : 用户名 &amp; key &amp; 业务编号 &amp; Token &amp; 查询信息业务服务器 -&gt;&gt; 数据库 : 数据校验(用户名 &amp; key &amp; 业务编号 &amp; Token)数据库 -&gt;&gt; 业务服务器 : 返回数据校验结果alt 正确的信息    业务服务器 -&gt;&gt; 签名服务器 : 查验信息(name key op)    业务服务器 --&gt;&gt;  数据库 : 写入查验信息    签名服务器 -&gt;&gt;  业务服务器 : 返回name key op码    业务服务器 --&gt;&gt;  数据库 : 写入查验信息的返回结果    业务服务器 -&gt;&gt;  安全边界 : 发送name,key,op码,查询讯息    业务服务器 --&gt;&gt;  数据库 : 写入安全边界的返回结果    安全边界 -&gt;&gt; 业务服务器 : 返回查询结果else 错误的信息    业务服务器 -&gt;&gt; 业务服务器 : 生成错误码    业务服务器 --&gt;&gt;  数据库 : 写错误信息入数据库end业务服务器 -&gt;&gt; 客户端 : 返回查询结果&lt;/pre&gt;</code></pre><h2 id="简写对照"><a href="#简写对照" class="headerlink" title="简写对照"></a>简写对照</h2><ul><li>用户名 : name</li><li>密钥 : key</li><li>业务编号 : op</li></ul>]]></content>
+    <content type="html"><![CDATA[<p><pre class="mermaid">sequenceDiagram<br>title: 序列图<br>participant 客户端<br>participant Token服务器<br>participant 数据库<br>participant 业务服务器<br>participant 签名服务器<br>participant 安全边界<br>客户端 -&gt;&gt; Token服务器 : 用户名 &amp; key &amp; 业务编号<br>Token服务器 -&gt;&gt; 数据库 : 查验信息(name key op)<br>数据库 -&gt;&gt; Token服务器 : 返回客户信息<br>alt 正确的信息<br>    Token服务器 -&gt;&gt; Token服务器 : 生成Token<br>    Token服务器 –&gt;&gt;  数据库 : 写入数据库<br>    Token服务器 -&gt;&gt; 客户端 : 用户名 &amp; key &amp; 业务编号 &amp; Token<br>else 错误的信息<br>    Token服务器 -&gt;&gt; Token服务器 : 生成错误码<br>    Token服务器 –&gt;&gt;  数据库 : 写错误信息入数据库<br>    Token服务器 -&gt;&gt; 客户端 : 用户名 &amp; key &amp; 业务编号 &amp; 错误码<br>end<br>客户端 -&gt;&gt; 业务服务器 : 用户名 &amp; key &amp; 业务编号 &amp; Token &amp; 查询信息<br>业务服务器 -&gt;&gt; 数据库 : 数据校验(用户名 &amp; key &amp; 业务编号 &amp; Token)<br>数据库 -&gt;&gt; 业务服务器 : 返回数据校验结果<br>alt 正确的信息<br>    业务服务器 -&gt;&gt; 签名服务器 : 查验信息(name key op)<br>    业务服务器 –&gt;&gt;  数据库 : 写入查验信息<br>    签名服务器 -&gt;&gt;  业务服务器 : 返回name key op码<br>    业务服务器 –&gt;&gt;  数据库 : 写入查验信息的返回结果<br>    业务服务器 -&gt;&gt;  安全边界 : 发送name,key,op码,查询讯息<br>    业务服务器 –&gt;&gt;  数据库 : 写入安全边界的返回结果<br>    安全边界 -&gt;&gt; 业务服务器 : 返回查询结果<br>else 错误的信息<br>    业务服务器 -&gt;&gt; 业务服务器 : 生成错误码<br>    业务服务器 –&gt;&gt;  数据库 : 写错误信息入数据库<br>end<br>业务服务器 -&gt;&gt; 客户端 : 返回查询结果</pre></p><h2 id="简写对照"><a href="#简写对照" class="headerlink" title="简写对照"></a>简写对照</h2><ul><li>用户名 : name</li><li>密钥 : key</li><li>业务编号 : op</li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;pre class=&quot;mermaid&quot;&gt;    sequenceDiagram&lt;br&gt;    title: 序列图&lt;br&gt;    participant 客户端&lt;br&gt;    participant Token服务器&lt;br&gt;    participant 数据库&lt;br&gt; 
+        &lt;p&gt;&lt;pre class=&quot;mermaid&quot;&gt;sequenceDiagram&lt;br&gt;title: 序列图&lt;br&gt;participant 客户端&lt;br&gt;participant Token服务器&lt;br&gt;participant 数据库&lt;br&gt;participant 业务服务器&lt;br&gt;
       
     
     </summary>
